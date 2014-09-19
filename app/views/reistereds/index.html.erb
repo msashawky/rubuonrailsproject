@@ -1,0 +1,33 @@
+<h1>Listing reistereds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User name</th>
+      <th>Phone number</th>
+      <th>Password</th>
+      <th>Gender</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reistereds.each do |reistered| %>
+      <tr>
+        <td><%= reistered.name %></td>
+        <td><%= reistered.user_name %></td>
+        <td><%= reistered.phone_number %></td>
+        <td><%= reistered.password %></td>
+        <td><%= reistered.gender %></td>
+        <td><%= link_to 'Show', reistered %></td>
+        <td><%= link_to 'Edit', edit_reistered_path(reistered) %></td>
+        <td><%= link_to 'Destroy', reistered, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reistered', new_reistered_path %>
