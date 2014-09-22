@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ngos
+
   resources :reistereds
 
   resources :customers
