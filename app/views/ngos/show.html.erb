@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ngo name:</strong>
+  <%= @ngo.NGO_name %>
+</p>
+
+<p>
+  <strong>Bank account:</strong>
+  <%= @ngo.bank_account %>
+</p>
+
+<p>
+  <strong>Ngo number:</strong>
+  <%= @ngo.NGO_number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @ngo.address %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @ngo.website %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @ngo.ZIP_code %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @ngo.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @ngo.email %>
+</p>
+
+<p>
+  <strong>Fb link:</strong>
+  <%= @ngo.fb_link %>
+</p>
+
+<p>
+  <strong>Tw link:</strong>
+  <%= @ngo.tw_link %>
+</p>
+
+<p>
+  <strong>Gp link:</strong>
+  <%= @ngo.gp_link %>
+</p>
+
+<%= link_to 'Edit', edit_ngo_path(@ngo) %> |
+<%= link_to 'Back', ngos_path %>
