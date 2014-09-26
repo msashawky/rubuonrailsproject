@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140918143711) do
     t.string   "username"
     t.string   "password"
     t.integer  "phone"
-    t.string   "gender"
+    t.boolean   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

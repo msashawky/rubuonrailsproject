@@ -8,7 +8,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :username
       t.string :password
       t.integer :phone
-      t.string :gender
+      t.boolean :gender
 
       t.timestamps
     end
