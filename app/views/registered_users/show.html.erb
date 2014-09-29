@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Card number:</strong>
+  <%= @registered_user.card_number %>
+</p>
+
+<%= link_to 'Edit', edit_registered_user_path(@registered_user) %> |
+<%= link_to 'Back', registered_users_path %>
