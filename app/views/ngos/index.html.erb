@@ -1,0 +1,45 @@
+<h1>Listing ngos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ngo name</th>
+      <th>Bank account</th>
+      <th>Ngo number</th>
+      <th>Address</th>
+      <th>Website</th>
+      <th>Zip code</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Fb link</th>
+      <th>Tw link</th>
+      <th>Gp link</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ngos.each do |ngo| %>
+      <tr>
+        <td><%= ngo.NGO_name %></td>
+        <td><%= ngo.bank_account %></td>
+        <td><%= ngo.NGO_number %></td>
+        <td><%= ngo.address %></td>
+        <td><%= ngo.website %></td>
+        <td><%= ngo.ZIP_code %></td>
+        <td><%= ngo.phone_number %></td>
+        <td><%= ngo.email %></td>
+        <td><%= ngo.fb_link %></td>
+        <td><%= ngo.tw_link %></td>
+        <td><%= ngo.gp_link %></td>
+        <td><%= link_to 'Show', ngo %></td>
+        <td><%= link_to 'Edit', edit_ngo_path(ngo) %></td>
+        <td><%= link_to 'Destroy', ngo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ngo', new_ngo_path %>

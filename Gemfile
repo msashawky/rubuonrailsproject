@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
-
-
+group :development, :test do
+	gem 'rspec-rails'
+end
+#gem 'validates_email_format_of'
+gem 'valid_email'
+group :test do
+	gem 'capybara'
+	gem 'shoulda-matchers' , require: false
+end
+#gem 'shoulda-matchers', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
@@ -37,4 +45,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
