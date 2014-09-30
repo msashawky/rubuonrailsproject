@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :managers
+
+  resources :accountants
+
+  resources :site_admins
+
   resources :user_data
 
   resources :products

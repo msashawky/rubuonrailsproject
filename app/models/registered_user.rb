@@ -1,5 +1,4 @@
 class RegisteredUser < ActiveRecord::Base
-	self.table_name = 'registered_users'
 	acts_as :address
 	acts_as :user_datum
 	has_many :ngos

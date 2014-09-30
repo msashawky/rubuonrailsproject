@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929204150) do
+ActiveRecord::Schema.define(version: 20140930131712) do
+
+  create_table "accountants", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "actable_id"
+    t.string   "actable_type"
+  end
 
   create_table "addresses", force: true do |t|
     t.string   "country"
@@ -23,6 +30,11 @@ ActiveRecord::Schema.define(version: 20140929204150) do
     t.datetime "updated_at"
     t.integer  "actable_id"
     t.string   "actable_type"
+  end
+
+  create_table "managers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ngos", force: true do |t|
@@ -37,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140929204150) do
     t.string   "gp_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "registered_user_id"
   end
 
   create_table "products", force: true do |t|
@@ -47,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140929204150) do
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "projects_id"
   end
 
   create_table "projects", force: true do |t|
@@ -56,12 +70,20 @@ ActiveRecord::Schema.define(version: 20140929204150) do
     t.string   "project_social_state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "registered_user_id"
   end
 
   create_table "registered_users", force: true do |t|
     t.string   "card_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "site_admins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "actable_id"
+    t.string   "actable_type"
   end
 
   create_table "user_data", force: true do |t|
@@ -81,6 +103,8 @@ ActiveRecord::Schema.define(version: 20140929204150) do
   create_table "user_products", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "registered_user_id"
+    t.integer  "products_id"
   end
 
 end
