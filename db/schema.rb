@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930131712) do
+ActiveRecord::Schema.define(version: 20141001203544) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -20,16 +20,9 @@ ActiveRecord::Schema.define(version: 20140930131712) do
     t.string   "actable_type"
   end
 
-  create_table "addresses", force: true do |t|
-    t.string   "country"
-    t.string   "governorate"
-    t.string   "city"
-    t.string   "street"
-    t.string   "apartment"
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "actable_id"
-    t.string   "actable_type"
   end
 
   create_table "managers", force: true do |t|
@@ -52,6 +45,20 @@ ActiveRecord::Schema.define(version: 20140930131712) do
     t.integer  "registered_user_id"
   end
 
+  create_table "product_carts", force: true do |t|
+    t.integer  "product_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cart_id"
+    t.integer  "product_id"
+  end
+
+  create_table "product_categories", force: true do |t|
+    t.string   "category_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_photos"
@@ -61,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140930131712) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "projects_id"
+    t.integer  "product_categories_id"
   end
 
   create_table "projects", force: true do |t|
@@ -71,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140930131712) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "registered_user_id"
+    t.integer  "ngos_id"
   end
 
   create_table "registered_users", force: true do |t|
@@ -104,7 +113,7 @@ ActiveRecord::Schema.define(version: 20140930131712) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "registered_user_id"
-    t.integer  "products_id"
+    t.integer  "product_id"
   end
 
 end
