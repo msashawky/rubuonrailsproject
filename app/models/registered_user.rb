@@ -7,6 +7,10 @@ class RegisteredUser < ActiveRecord::Base
 
 	acts_as :user_datum
 	has_many :ngos
+	validates_associated :ngos
 	has_many :projects
+	validates_associated :projects
 	has_many :products, through: :user_products
+	validates :card_number, presence: true
+	validates :card_number, uniqueness: true
 end
