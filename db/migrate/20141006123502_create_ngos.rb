@@ -1,5 +1,6 @@
 class CreateNgos < ActiveRecord::Migration
   def change
+    drop_table :ngos
     create_table :ngos do |t|
       t.string :NGO_name
       t.string :bank_account
@@ -10,6 +11,11 @@ class CreateNgos < ActiveRecord::Migration
       t.string :fb_link
       t.string :tw_link
       t.string :gp_link
+      t.string :country
+      t.string :governorate
+      t.string :city
+      t.string :street
+      t.string :apartment
 
       t.timestamps
     end

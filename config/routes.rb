@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :registered_users
+
+  resources :ngos
+
   resources :product_carts
 
   resources :carts
@@ -14,12 +18,6 @@ Rails.application.routes.draw do
   resources :user_data
 
   resources :products
-
-  resources :addresses
-
-  resources :registered_users
-
-  resources :ngos
 
   resources :projects
 

@@ -5,5 +5,30 @@
   <%= @registered_user.card_number %>
 </p>
 
+<p>
+  <strong>Country:</strong>
+  <%= @registered_user.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @registered_user.city %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @registered_user.street %>
+</p>
+
+<p>
+  <strong>Apartment:</strong>
+  <%= @registered_user.apartment %>
+</p>
+
+<p>
+  <strong>Governorate:</strong>
+  <%= @registered_user.governorate %>
+</p>
+
 <%= link_to 'Edit', edit_registered_user_path(@registered_user) %> |
 <%= link_to 'Back', registered_users_path %>

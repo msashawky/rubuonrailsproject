@@ -69,18 +69,6 @@ class RegisteredUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registered_user_params
-      params.require(:registered_user).permit(:card_number)
+      params.require(:registered_user).permit(:card_number, :country, :city, :street, :apartment, :governorate)
     end
-
-  def pay_with_cash
-  end
-
-  def pay_with_visa
-  end
-
-  def view_history
-  end
-
-  def send_inquiries
-  end
 end

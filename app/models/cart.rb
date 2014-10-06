@@ -1,4 +1,4 @@
 class Cart < ActiveRecord::Base
+	belongs_to :registered_user
 	has_many :products, through: :product_carts
-	validates_associated :products
 end

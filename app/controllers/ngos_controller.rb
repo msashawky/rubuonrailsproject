@@ -69,18 +69,6 @@ class NgosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ngo_params
-      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link)
-    end
-
-    def receive_money
-    end
-
-    def add_admin
-    end
-
-    def report_NGO
-    end
-
-    def suspend_NGO
+      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :governorate, :city, :street, :apartment)
     end
 end

@@ -12,6 +12,11 @@
       <th>Fb link</th>
       <th>Tw link</th>
       <th>Gp link</th>
+      <th>Country</th>
+      <th>Governorate</th>
+      <th>City</th>
+      <th>Street</th>
+      <th>Apartment</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,6 +33,11 @@
         <td><%= ngo.fb_link %></td>
         <td><%= ngo.tw_link %></td>
         <td><%= ngo.gp_link %></td>
+        <td><%= ngo.country %></td>
+        <td><%= ngo.governorate %></td>
+        <td><%= ngo.city %></td>
+        <td><%= ngo.street %></td>
+        <td><%= ngo.apartment %></td>
         <td><%= link_to 'Show', ngo %></td>
         <td><%= link_to 'Edit', edit_ngo_path(ngo) %></td>
         <td><%= link_to 'Destroy', ngo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
