@@ -1,56 +1,29 @@
 <h1>Listing products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Photo</th>
-      <th>Details</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<br>
   <tbody>
     <% @products.each do |product| %>
       <tr>
-<a class="col-md-3" href="#">
-                            <div class="product-thumb">
-                                <header class="product-header">
-                                    <%= image_tag("800x600.png")%>
-                                </header>
-                                <div class="product-inner">
-                                    <h5 class="product-title"><%= product.name %></h5>
-                                    <h5 class="product-title"><%= product.category %></h5>
-                                    <p class="product-desciption"><%= product.details %></p>
-                                    <div class="product-meta"><span class="product-time"><i class="fa fa-clock-o"></i> 1 day 10 h remaining</span>
-                                        <ul class="product-price-list">
-                                            <li><span class="product-price">$85</span>
-                                            </li>
-                                            <li><span class="product-old-price">$173</span>
-                                            </li>
-                                            <li><span class="product-save">Save 49%</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="product-location"><i class="fa fa-map-marker"></i> Boston</p>
-                                </div>
-                            </div>
-                        </a>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag("800x600.png")%>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= product.name %></h5>
+              <h5 class="product-category"><%= product.category %></h5>
+              <p class="product-desciption"><%= product.details %></p>
+              <a class="product-price" href="products/<%= product.id%>/edit">Edit</a>
+              <a class="product-price" href="products/<%= product.id%>">Show</a>
+              
+              <a data-confirm="Are you sure?" data-method="delete" href="products/destroy/<%= product.id%>" rel="nofollow">Destroy</a>
+              <a data-confirm="Are you sure?" data-method="delete" href="/products/<%= product.id%>" rel="nofollow">Destroy</a>
+            </div>
+          </div>
+        </div>    
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+  <tbody>
+    <br><br>
 
 <%= link_to 'New Product', new_product_path %>
-
-
-
-
-
-

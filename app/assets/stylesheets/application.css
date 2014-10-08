@@ -17,6 +17,7 @@
  *= require ie
  *= require mystyles
  *= require styles
+ *= require orient
 
  *= require_tree .
 
