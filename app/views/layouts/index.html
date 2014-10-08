@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="boxed" style="background-image: url(textures/wood-1.jpg);">
+<body class="boxed" style="background-image: url(../../assets/wood-1.jpg);">
 
 
     <div class="global-wrap">
@@ -468,9 +468,10 @@
 
 
 
-        <div class="container">
+        <div class="bg-blur"  style="background-image: url(../../assets/backgrounds/phone.jpg);">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
+                    <div class="gap"></div>
                     <div class="text-center">
                         <h1>Explore Best Deals in Your City</h1>
                         <p class="text-bigger">Iaculis hendrerit integer fringilla at placerat bibendum gravida malesuada porta luctus fusce ad suscipit porttitor molestie litora cubilia fringilla parturient dictum ad lobortis turpis accumsan ligula posuere ad facilisis ultricies</p>
@@ -478,11 +479,12 @@
                 </div>
             </div>
             <div class="gap"></div>
-        </div>
+            <%=yield%>
+<div class="gap"></div>
+        
         <div class="container">
             
-            <%=yield%>
-        </div>
+                    </div>
         <div class="container">
             <div class="text-center">
                 <h2 class="mb30">New Deals in Your City</h2>
@@ -491,7 +493,7 @@
             <div class="gap"></div>
         </div>
 
-
+</div>
         <!-- //////////////////////////////////
 	//////////////END PAGE CONTENT///////// 
 	////////////////////////////////////-->
