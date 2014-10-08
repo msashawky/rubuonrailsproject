@@ -13,10 +13,11 @@
 
  *= require_self
  *= require boostrap
+ *= require styles
  *= require font_awesome
  *= require ie
  *= require mystyles
- *= require styles
+ 
  *= require orient
 
  *= require_tree .
