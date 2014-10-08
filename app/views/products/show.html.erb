@@ -24,6 +24,9 @@
   <strong>Product description:</strong>
   <%= @product.product_description %>
 </p>
-
+<p>
+  <!-- Link to view comments -->
+  <%= commontator_thread(@commontable) %>
+</p>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

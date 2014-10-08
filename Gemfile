@@ -28,6 +28,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# organize comments
+# DOC: http://rubydoc.info/gems/commontator/frames
+gem 'commontator', '~> 4.8.0'
+
+#Enable pagination " Comments "
+gem 'will_paginate'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
