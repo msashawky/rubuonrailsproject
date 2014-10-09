@@ -1,5 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  
+  # to autoload local files of commontator gem
+  config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
