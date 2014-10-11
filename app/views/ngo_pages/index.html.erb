@@ -21,7 +21,7 @@
         <td><%= ngo_page.description %></td>
         <td><%= ngo_page.email %></td>
         <td><%= ngo_page.address %></td>
-        <td><%= image_tag ngo_page.image.url(:medium) %></td>
+        <td><%= image_tag ngo_page.image.url(:thumb) %></td>
         <td><%= link_to 'Show', ngo_page %></td>
         <td><%= link_to 'Destroy', ngo_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
