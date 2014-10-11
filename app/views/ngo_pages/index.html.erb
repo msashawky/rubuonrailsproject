@@ -1,0 +1,35 @@
+<h1>Listing ngo_pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>License number</th>
+      <th>Description</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ngo_pages.each do |ngo_page| %>
+      <tr>
+        <td><%= ngo_page.name %></td>
+        <td><%= ngo_page.license_number %></td>
+        <td><%= ngo_page.description %></td>
+        <td><%= ngo_page.email %></td>
+        <td><%= ngo_page.address %></td>
+        <td><%= image_tag ngo_page.image.url %></td>
+        <td><%= link_to 'Show', ngo_page %></td>
+        <td><%= link_to 'Edit', edit_ngo_page_path(ngo_page) %></td>
+        <td><%= link_to 'Destroy', ngo_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ngo page', new_ngo_page_path %>

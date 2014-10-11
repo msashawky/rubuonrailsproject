@@ -1,0 +1,39 @@
+<%= form_for @ngo_page, :url => ngo_pages_path, :html => { :multipart => true } do |f| %>
+  <% if @ngo_page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ngo_page.errors.count, "error") %> prohibited this ngo_page from being saved:</h2>
+
+      <ul>
+      <% @ngo_page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :license_number %><br>
+    <%= f.text_field :license_number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <%= f.label :upload_image %><br>
+  <%= f.file_field :image %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

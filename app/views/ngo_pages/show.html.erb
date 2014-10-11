@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ngo_page.name %>
+</p>
+
+<p>
+  <strong>License number:</strong>
+  <%= @ngo_page.license_number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ngo_page.description %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @ngo_page.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @ngo_page.address %>
+</p>
+
+<%= link_to 'Edit', edit_ngo_page_path(@ngo_page) %> |
+<%= link_to 'Back', ngo_pages_path %>

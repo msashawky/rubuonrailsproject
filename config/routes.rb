@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ngo_pages
+
   resources :ngos
 
   resources :reistereds
