@@ -24,6 +24,8 @@
   <strong>Address:</strong>
   <%= @ngo_page.address %>
 </p>
-
-<%= link_to 'Edit', edit_ngo_page_path(@ngo_page) %> |
+<p>
+  <strong>Address:</strong>
+  <%= image_tag @ngo_page.image.url(:medium) %>
+</p>
 <%= link_to 'Back', ngo_pages_path %>

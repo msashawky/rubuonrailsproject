@@ -18,8 +18,7 @@ class NgoPagesController < ApplicationController
   end
 
   # GET /ngo_pages/1/edit
-  def edit
-  end
+  
 
   # POST /ngo_pages
   # POST /ngo_pages.json
@@ -39,17 +38,6 @@ class NgoPagesController < ApplicationController
 
   # PATCH/PUT /ngo_pages/1
   # PATCH/PUT /ngo_pages/1.json
-  def update
-    respond_to do |format|
-      if @ngo_page.update(ngo_page_params)
-        format.html { redirect_to @ngo_page, notice: 'Ngo page was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ngo_page }
-      else
-        format.html { render :edit }
-        format.json { render json: @ngo_page.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /ngo_pages/1
   # DELETE /ngo_pages/1.json
