@@ -25,16 +25,10 @@ class NgosController < ApplicationController
   # POST /ngos.json
   def create
     @ngo = Ngo.new(ngo_params)
-     mail = Mail.new do
-     from    'mikel@test.lindsaar.net'
-     to      @ngo.email
-     subject 'This is a test email'
-     body    'iuihdguihgyuyrueintyribyreiubtryutbiyrb'
-    end
 
-     mail.to_s
     respond_to do |format|
       if @ngo.save
+        Sendmail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
         format.json { render :show, status: :created, location: @ngo }
       else
