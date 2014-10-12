@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :registered_users
   resources :registered_users
 
   resources :ngos
