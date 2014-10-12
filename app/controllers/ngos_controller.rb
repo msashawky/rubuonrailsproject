@@ -1,6 +1,6 @@
+require 'mail'
 class NgosController < ApplicationController
   before_action :set_ngo, only: [:show, :edit, :update, :destroy]
-
   # GET /ngos
   # GET /ngos.json
   def index
@@ -25,7 +25,14 @@ class NgosController < ApplicationController
   # POST /ngos.json
   def create
     @ngo = Ngo.new(ngo_params)
+     mail = Mail.new do
+     from    'mikel@test.lindsaar.net'
+     to      @ngo.email
+     subject 'This is a test email'
+     body    'iuihdguihgyuyrueintyribyreiubtryutbiyrb'
+    end
 
+     mail.to_s
     respond_to do |format|
       if @ngo.save
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
