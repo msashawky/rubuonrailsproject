@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    current_user = current_registered_user.email
     commontator_thread_show(@product)
   end
 
