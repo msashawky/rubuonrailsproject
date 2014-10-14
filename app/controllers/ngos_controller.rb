@@ -1,6 +1,5 @@
-require 'mail'
 class NgosController < ApplicationController
-  before_action :set_ngo, only: [:show, :edit, :update, :destroy]
+  before_action :set_ngo, only: [:show,:destroy]
   # GET /ngos
   # GET /ngos.json
   def index
@@ -18,8 +17,6 @@ class NgosController < ApplicationController
   end
 
   # GET /ngos/1/edit
-  def edit
-  end
 
   # POST /ngos
   # POST /ngos.json
@@ -28,8 +25,13 @@ class NgosController < ApplicationController
 
     respond_to do |format|
       if @ngo.save
-        Sendmail.welcome_email(@ngo).deliver
-        format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
+        Mail.deliver do
+         to @ngo.email
+         from 'promohamed91@gmail.com'
+         subject 'testing sendmail'
+         body 'testing sendmail rfwjinfuryufbibfyubifywrbfiybfbiy'
+        end
+        format.html { redirect_to @ngo, notice: 'Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
         format.html { render :new }
@@ -40,17 +42,6 @@ class NgosController < ApplicationController
 
   # PATCH/PUT /ngos/1
   # PATCH/PUT /ngos/1.json
-  def update
-    respond_to do |format|
-      if @ngo.update(ngo_params)
-        format.html { redirect_to @ngo, notice: 'Ngo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ngo }
-      else
-        format.html { render :edit }
-        format.json { render json: @ngo.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /ngos/1
   # DELETE /ngos/1.json

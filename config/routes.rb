@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'create_ngo/index'
+
+  get 'create_ngo/show'
+
+  get 'create_ngo/new'
+
+  get 'create_ngo/create'
+
+  resources :charities
+
   resources :ngo_pages
 
   resources :ngos

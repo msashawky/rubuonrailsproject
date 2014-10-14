@@ -1,0 +1,23 @@
+<h1>Listing charities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Charity field</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charities.each do |charity| %>
+      <tr>
+        <td><%= charity.charity_field %></td>
+        <td><%= link_to 'Show', charity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Charity', new_charity_path %>

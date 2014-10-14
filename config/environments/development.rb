@@ -1,10 +1,26 @@
+require 'mail'
+
 Rails.application.configure do
+
+
+  options = { :address              => "smtp.gmail.com",
+            :port                 => 587,
+            :domain               => 'localhost',
+            :user_name            => 'promohamed91@gmail.com',
+            :password             => '01200531291',
+            :authentication       => 'plain',
+            :enable_starttls_auto => true  }
+            
+  Mail.defaults do
+    delivery_method :smtp, options
+  end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+
 
   # Do not eager load code on boot.
   config.eager_load = false

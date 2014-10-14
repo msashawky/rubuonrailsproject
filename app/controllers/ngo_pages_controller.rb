@@ -1,5 +1,5 @@
 class NgoPagesController < ApplicationController
-  before_action :set_ngo_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_ngo_page, only: [:show, :destroy]
 
   # GET /ngo_pages
   # GET /ngo_pages.json
@@ -27,7 +27,7 @@ class NgoPagesController < ApplicationController
 
     respond_to do |format|
       if @ngo_page.save
-        format.html { redirect_to @ngo_page, notice: 'Ngo page was successfully created.' }
+        format.html { redirect_to @ngo_page, notice: 'appending admin approval' }
         format.json { render :show, status: :created, location: @ngo_page }
       else
         format.html { render :new }
