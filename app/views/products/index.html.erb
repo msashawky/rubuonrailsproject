@@ -7,7 +7,7 @@
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
-              <%= image_tag("800x600.png")%>
+               <%= image_tag product.photo.url(:medium) %>
             </header>
             <div class="product-inner">
               <h5 class="product-title"><%= product.name %></h5>
