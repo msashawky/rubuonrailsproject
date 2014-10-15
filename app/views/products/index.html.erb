@@ -11,9 +11,9 @@
               <%= image_tag product.photo.url(:medium) %>
             </header>
             <div class="product-inner">
-              <h5 class="product-title"><%= product.name %></h5>
-              <h5 class="product-category"><%= product.category %></h5>
-              <p class="product-desciption"><%= product.details %></p>
+              <h5 class="product-title"><%= product.product_name %></h5>
+              <h5 class="product-category"><%= product.product_price%></h5>
+              <p class="product-desciption"><%= product.product_description %></p>
               <a class="product-price" href="products/<%= product.id%>/edit">Edit</a>
               <a class="product-price" href="products/<%= product.id%>">Show</a>
               
@@ -28,4 +28,3 @@
 </div>
 </div>
 <div class="gap"></div>
-

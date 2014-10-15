@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   string: 
   string: 
   text: 
@@ -9,3 +10,17 @@ two:
   string: 
   string: 
   text: 
+=======
+  product_name: MyString
+  product_photos: MyString
+  product_price: MyString
+  product_count: MyString
+  product_description: MyString
+
+two:
+  product_name: MyString
+  product_photos: MyString
+  product_price: MyString
+  product_count: MyString
+  product_description: MyString
+>>>>>>> 26deee34d4bb02d875306798bd1798709e4d0f11

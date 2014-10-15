@@ -1,12 +1,32 @@
 Rails.application.routes.draw do
-  resources :products
+
+  resources :registered_users
+
 
   resources :ngos
 
-  resources :reistereds
+  resources :product_carts
+
+  resources :carts
+
+  resources :product_categories
+
+  resources :managers
+
+  resources :accountants
+
+  resources :site_admins
+
+  resources :user_data
+
+  resources :products
+
 
   resources :customers
   match ":controller(/:action(/:id))",:via =>:get
+
+  resources :projects
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

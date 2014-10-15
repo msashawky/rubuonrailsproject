@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+
   layout "index"
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -70,6 +72,23 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :category, :details, :photo)
+
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo)
     end
+
+  def add_product
+  end
+
+  def remove_product
+  end
+
+  def promote_product
+  end
+
+  def report_product
+  end
+
+  def suspend_product
+  end
+
 end

@@ -1,9 +1,13 @@
+
   <div class="row">
+        <%= render "layouts/partials/header" %>
   <div class="col-md-6">
     <%= form_for(@product) do |f| %>
     <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+
       <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,35 +16,45 @@
     </div>
   <% end %>
 
+
   </div>
-  </div>
+
 <div class="row">
   
-    <%= render "layouts/partials/header" %>
+
   
 
 
   <div class="col-md-6">
       <form accept-charset="UTF-8" action="/products" class="new_product" id="new_product"method="post">
           <div class="form-group">
-            <%= f.label :name %><br>
-            <input id="product_name" name="product[name]" type="text" placeholde="name" class="form-control" value="<%= @product.name%>" >
+            <%= f.label :product_name %><br>
+            <input id="product_name" name="product[product_name]" type="text" placeholde="name" class="form-control" value="<%= @product.product_name%>" >
           </div>
+
           <div class="form-group">
-              <%= f.label :category %><br>
-              <input id="product_category" name="product[category]" type="text" placeholder="Doe" class="form-control" value="<%= @product.category%>">
+              <%= f.label :product_price %><br>
+              <input id="product_price" name="product[product_price]" type="text" placeholder="Doe" class="form-control" value="<%= @product.product_price%>">
           </div>
+
+          <div class="form-group">
+              <%= f.label :product_count %><br>
+              <input id="product_count" name="product[product_count]" type="text" placeholder="Doe" class="form-control" value="<%= @product.product_count%>">
+          </div>
+
+
+
+          <div class="form-group">
+              <%= f.label :product_descreption %><br>
+              <textarea id="product_details" name="product[product_description]" type="text" placeholder="datails" class="form-control" value="<%= @product.product_description%>"></textarea>
+          </div>
+
           <div class="form-group">
               <%= f.label :upload_image %><br>
               <%= f.file_field :photo %>
           </div>
-          <div class="form-group">
-              <%= f.label :details %><br>
-              <textarea id="product_details" name="product[details]" type="text" placeholder="datails" class="form-control" value="<%= @product.details%>"></textarea>
-          </div>
-
-
           <input type="submit" placeholder="Save Changes" class="btn btn-primary">
+          <%= link_to 'Back', products_path ,:class=>"btn btn-danger"%>
       </form>
   </div>
 
@@ -48,3 +62,6 @@
 </div>
 
 <%end%>
+
+
+

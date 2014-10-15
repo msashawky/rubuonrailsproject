@@ -3,6 +3,7 @@
 
 
 
+
 <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -21,9 +22,9 @@
                         <div class="col-md-5">
                             <div class="product-info box">
 	                           <small><a href="#" class="text-muted">based on 8 reviews</a></small>
-                                <h3><%= @product.name %></h3>
-                                <p class="product-info-price">$150</p>
-                                <p class="text-smaller text-muted"><%= @product.details %></p>
+                                <h3><%= @product.product_name %></h3>
+                                <p class="product-info-price">$<%= @product.product_price%></p>
+                                <p class="text-smaller text-muted"><%= @product.product_description %></p>
 
                                 <ul class="list-inline">
                                     <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
