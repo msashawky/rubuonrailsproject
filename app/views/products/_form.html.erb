@@ -15,20 +15,20 @@
   </div>
   </div>
 <div class="row">
-  <div class="col-md-4 col-md-offset-1">
+  
     <%= render "layouts/partials/header" %>
-  </div>
+  
 
 
   <div class="col-md-6">
       <form accept-charset="UTF-8" action="/products" class="new_product" id="new_product"method="post">
           <div class="form-group">
             <%= f.label :name %><br>
-            <input id="product_name" name="product[name]" type="text" placeholde="name" class="form-control">
+            <input id="product_name" name="product[name]" type="text" placeholde="name" class="form-control" value="<%= @product.name%>" >
           </div>
           <div class="form-group">
               <%= f.label :category %><br>
-              <input id="product_category" name="product[category]" type="text" placeholder="Doe" class="form-control">
+              <input id="product_category" name="product[category]" type="text" placeholder="Doe" class="form-control" value="<%= @product.category%>">
           </div>
           <div class="form-group">
               <%= f.label :upload_image %><br>
@@ -36,7 +36,7 @@
           </div>
           <div class="form-group">
               <%= f.label :details %><br>
-              <textarea id="product_details" name="product[details]" type="text" placeholder="datails" class="form-control"></textarea>
+              <textarea id="product_details" name="product[details]" type="text" placeholder="datails" class="form-control" value="<%= @product.details%>"></textarea>
           </div>
 
 

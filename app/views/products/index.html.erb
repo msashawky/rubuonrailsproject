@@ -1,13 +1,14 @@
+
+<div class="row">
+<%= render "layouts/partials/header" %>
 <h1>Listing products</h1>
 
-<br>
-  <tbody>
     <% @products.each do |product| %>
-      <tr>
+
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
-               <%= image_tag product.photo.url(:medium) %>
+              <%= image_tag product.photo.url(:medium) %>
             </header>
             <div class="product-inner">
               <h5 class="product-title"><%= product.name %></h5>
@@ -21,9 +22,10 @@
             </div>
           </div>
         </div>    
-      </tr>
     <% end %>
-  <tbody>
-    <br><br>
+    <div class="row">
+<%= link_to 'New Product', new_product_path, :class=> "btn btn-primary" %>
+</div>
+</div>
+<div class="gap"></div>
 
-<%= link_to 'New Product', new_product_path %>
