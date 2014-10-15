@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :registered_users
 
 
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   match ":controller(/:action(/:id))",:via =>:get
 
   resources :projects
-
+root :to => "products#show", :id => '11'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
