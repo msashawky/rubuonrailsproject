@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015091055) do
+ActiveRecord::Schema.define(version: 20141015144008) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141015091055) do
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
-    t.string   "product_count"
+    t.integer  "product_count",       limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
