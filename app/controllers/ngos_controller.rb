@@ -1,4 +1,5 @@
 class NgosController < ApplicationController
+layout "index"
   before_action :set_ngo, only: [:show, :edit, :update, :destroy]
 
   # GET /ngos
