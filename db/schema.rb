@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141016081820) do
-=======
-ActiveRecord::Schema.define(version: 20141012192436) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -70,7 +67,6 @@ ActiveRecord::Schema.define(version: 20141012192436) do
   end
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
   create_table "customers", force: true do |t|
     t.string   "first_name"
@@ -181,33 +177,6 @@ ActiveRecord::Schema.define(version: 20141012192436) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password"
-    t.string   "phone_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-=======
   create_table "site_admins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -235,6 +204,31 @@ ActiveRecord::Schema.define(version: 20141012192436) do
     t.integer  "registered_user_id"
     t.integer  "product_id"
   end
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "password"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

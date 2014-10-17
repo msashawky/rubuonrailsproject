@@ -40,12 +40,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-<<<<<<< HEAD
-=======
     commontator (4.8.0)
       jquery-rails
       rails (>= 3.1)
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
     devise (3.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -72,10 +69,7 @@ GEM
     minitest (5.4.2)
     multi_json (1.10.1)
     orm_adapter (0.5.0)
-<<<<<<< HEAD
-=======
     pg (0.17.1)
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -135,10 +129,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-<<<<<<< HEAD
-=======
     will_paginate (3.0.7)
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
 PLATFORMS
   ruby
@@ -146,10 +137,7 @@ PLATFORMS
 DEPENDENCIES
   active_record-acts_as
   coffee-rails (~> 4.0.0)
-<<<<<<< HEAD
-=======
   commontator (~> 4.8.0)
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
   devise
   jbuilder (~> 2.0)
   jquery-rails (~> 2.3.0)
