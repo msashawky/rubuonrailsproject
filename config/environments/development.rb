@@ -1,5 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  
+  # to autoload local files of commontator gem
+  config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -34,4 +37,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+#config for email
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 end

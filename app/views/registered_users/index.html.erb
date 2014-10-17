@@ -1,0 +1,35 @@
+<h1>Listing registered_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card number</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Street</th>
+      <th>Apartment</th>
+      <th>Governorate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registered_users.each do |registered_user| %>
+      <tr>
+        <td><%= registered_user.card_number %></td>
+        <td><%= registered_user.country %></td>
+        <td><%= registered_user.city %></td>
+        <td><%= registered_user.street %></td>
+        <td><%= registered_user.apartment %></td>
+        <td><%= registered_user.governorate %></td>
+        <td><%= link_to 'Show', registered_user %></td>
+        <td><%= link_to 'Edit', edit_registered_user_path(registered_user) %></td>
+        <td><%= link_to 'Destroy', registered_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Registered user', new_registered_user_path %>
