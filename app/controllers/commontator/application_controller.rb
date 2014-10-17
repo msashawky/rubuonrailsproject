@@ -3,7 +3,7 @@ module Commontator
     before_filter :get_user, :ensure_user
     
     rescue_from SecurityTransgression, :with => lambda { head(:forbidden) }
-    
+    protect_from_forgery
     
     protected
 
