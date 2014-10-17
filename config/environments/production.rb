@@ -1,6 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+<<<<<<< HEAD
 config.action_mailer.default_url_options = { host: 'mohamedshawky.herokuapp.com' }
+=======
+  
+  # to autoload local files of commontator gem
+  config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
+>>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
   # Code is not reloaded between requests.
   config.cache_classes = true

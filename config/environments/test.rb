@@ -1,6 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+<<<<<<< HEAD
 config.action_mailer.default_url_options = { host: 'localhost:3000' }
+=======
+  
+  # to autoload local files of commontator gem
+  config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
+>>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that

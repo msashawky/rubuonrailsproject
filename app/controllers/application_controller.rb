@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
 layout "index"
   # Prevent CSRF attacks by raising an exception.
+<<<<<<< HEAD
   # For APIs, you may want to use :null_session instead.
   helper :all
+=======
+  # For APIs, you may want to use :null_session instead.   
+>>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
   protect_from_forgery with: :exception
   protect_from_forgery
   helper_method :current_cart
