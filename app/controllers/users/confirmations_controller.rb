@@ -1,4 +1,5 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
+    layout"index"
   # def new
   #   super
   # end

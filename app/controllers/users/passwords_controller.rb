@@ -1,4 +1,5 @@
 class Users::PasswordsController < Devise::PasswordsController
+  layout"index"
   # def new
   #   super
   # end

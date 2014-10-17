@@ -1,4 +1,5 @@
 class Users::UnlocksController < Devise::UnlocksController
+	layout "index"
   # def new
   #   super
   # end
