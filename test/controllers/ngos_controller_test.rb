@@ -18,7 +18,7 @@ class NgosControllerTest < ActionController::TestCase
 
   test "should create ngo" do
     assert_difference('Ngo.count') do
-      post :create, ngo: { NGO_name: @ngo.NGO_name, NGO_number: @ngo.NGO_number, ZIP_code: @ngo.ZIP_code, address: @ngo.address, bank_account: @ngo.bank_account, email: @ngo.email, fb_link: @ngo.fb_link, gp_link: @ngo.gp_link, phone_number: @ngo.phone_number, tw_link: @ngo.tw_link, website: @ngo.website }
+      post :create, ngo: { NGO_name: @ngo.NGO_name, NGO_number: @ngo.NGO_number, ZIP_code: @ngo.ZIP_code, apartment: @ngo.apartment, bank_account: @ngo.bank_account, city: @ngo.city, country: @ngo.country, fb_link: @ngo.fb_link, governorate: @ngo.governorate, gp_link: @ngo.gp_link, phone_number: @ngo.phone_number, street: @ngo.street, tw_link: @ngo.tw_link, website: @ngo.website }
     end
 
     assert_redirected_to ngo_path(assigns(:ngo))
@@ -35,7 +35,7 @@ class NgosControllerTest < ActionController::TestCase
   end
 
   test "should update ngo" do
-    patch :update, id: @ngo, ngo: { NGO_name: @ngo.NGO_name, NGO_number: @ngo.NGO_number, ZIP_code: @ngo.ZIP_code, address: @ngo.address, bank_account: @ngo.bank_account, email: @ngo.email, fb_link: @ngo.fb_link, gp_link: @ngo.gp_link, phone_number: @ngo.phone_number, tw_link: @ngo.tw_link, website: @ngo.website }
+    patch :update, id: @ngo, ngo: { NGO_name: @ngo.NGO_name, NGO_number: @ngo.NGO_number, ZIP_code: @ngo.ZIP_code, apartment: @ngo.apartment, bank_account: @ngo.bank_account, city: @ngo.city, country: @ngo.country, fb_link: @ngo.fb_link, governorate: @ngo.governorate, gp_link: @ngo.gp_link, phone_number: @ngo.phone_number, street: @ngo.street, tw_link: @ngo.tw_link, website: @ngo.website }
     assert_redirected_to ngo_path(assigns(:ngo))
   end
 
