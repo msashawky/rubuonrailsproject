@@ -68,19 +68,6 @@ ActiveRecord::Schema.define(version: 20141016081820) do
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
 
-  create_table "customers", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.date     "date_of_birth"
-    t.string   "username"
-    t.string   "password"
-    t.integer  "phone"
-    t.string   "gender"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "managers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -166,16 +153,6 @@ ActiveRecord::Schema.define(version: 20141016081820) do
 
   add_index "registered_users", ["email"], name: "index_registered_users_on_email", unique: true
   add_index "registered_users", ["reset_password_token"], name: "index_registered_users_on_reset_password_token", unique: true
-
-  create_table "reistereds", force: true do |t|
-    t.string   "name"
-    t.string   "user_name"
-    t.string   "phone_number"
-    t.integer  "password"
-    t.string   "gender"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "site_admins", force: true do |t|
     t.datetime "created_at"
