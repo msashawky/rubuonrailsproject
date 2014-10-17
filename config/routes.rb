@@ -25,10 +25,17 @@ Rails.application.routes.draw do
   # Route for Commontator gem
   mount Commontator::Engine => '/commontator'
 
+<<<<<<< HEAD
+  resources :customers
+  devise_for :users, controllers: { sessions: "users/sessions" }
+  root to: "home#index"
+  resources:profile
+=======
 #for autocomplete gem
   resources :products do
     get :autocomplete_comment_body, :on => :collection
   end
+>>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

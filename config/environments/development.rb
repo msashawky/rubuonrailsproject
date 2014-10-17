@@ -1,4 +1,6 @@
 Rails.application.configure do
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
   
   # to autoload local files of commontator gem
@@ -38,7 +40,21 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+<<<<<<< HEAD
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: "masshawky@gmail.com",
+      password: "Ab#12345"
+
+  }
+=======
 #config for email
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+>>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 end
