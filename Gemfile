@@ -53,6 +53,10 @@ gem 'commontator', '~> 4.8.0'
 #Enable pagination " Comments "
 gem 'will_paginate'
 
+#gems for testing
+gem "rspec"
+gem "factory_girl"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
