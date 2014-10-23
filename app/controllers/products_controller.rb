@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
+# ...before_action :authenticate_user!
+  layout "index"
+  
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   autocomplete :comments, :body
+
   # GET /products
   # GET /products.json
   def index
@@ -70,7 +76,8 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_name, :product_photos, :product_price, :product_count, :product_description)
+
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo)
     end
 
   def add_product
@@ -87,4 +94,5 @@ class ProductsController < ApplicationController
 
   def suspend_product
   end
+
 end

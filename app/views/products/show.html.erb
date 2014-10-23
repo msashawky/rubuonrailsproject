@@ -1,32 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Product name:</strong>
-  <%= @product.product_name %>
-</p>
 
-<p>
-  <strong>Product photos:</strong>
-  <%= @product.product_photos %>
-</p>
 
-<p>
-  <strong>Product price:</strong>
-  <%= @product.product_price %>
-</p>
+<div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
 
-<p>
-  <strong>Product count:</strong>
-  <%= @product.product_count %>
-</p>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
+                                
+                                <%= image_tag @product.photo.url(:large) %>
 
-<p>
-  <strong>Product description:</strong>
-  <%= @product.product_description %>
-</p>
-<p>
-  <!-- Link to view comments -->
-  <%= commontator_thread(@product) %>
-</p>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+                            </div>
+                            <div class="gap"></div>
+                            <%= link_to 'Edit', edit_product_path(@product) ,:class=>"btn btn-primary"%> |
+                            <%= link_to 'Back', products_path,:class=>"btn btn-danger" %>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="product-info box">
+	                           <small><a href="#" class="text-muted">based on 8 reviews</a></small>
+                                <h3><%= @product.product_name %></h3>
+                                <p class="product-info-price">$<%= @product.product_price%></p>
+                                <p class="product-info-price"> <%= @product.product_count%>  Pieces</p>
+                                <p class="text-smaller text-muted"><%= @product.product_description %></p>
+
+                                <ul class="list-inline">
+                                    <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    </li>
+                                    <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="gap"></div>
+                </div>    
+			</div>        
+        </div>
+

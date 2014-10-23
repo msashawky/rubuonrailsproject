@@ -1,33 +1,31 @@
+
+<div class="row">
+<%= render "layouts/partials/header" %>
 <h1>Listing products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Product name</th>
-      <th>Product photos</th>
-      <th>Product price</th>
-      <th>Product count</th>
-      <th>Product description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.product_name %></td>
-        <td><%= product.product_photos %></td>
-        <td><%= product.product_price %></td>
-        <td><%= product.product_count %></td>
-        <td><%= product.product_description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag product.photo.url(:medium) %>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= product.product_name %></h5>
+              <h3 > <%= product.product_price%>  $</h3>
+              <h5 class="product-count"><%= product.product_count%>  pieces</h5>
+              <p class="product-desciption"><%= product.product_description %></p>
+              <a class="product-price" href="products/<%= product.id%>/edit">Edit</a>
+              <a class="product-price" href="products/<%= product.id%>">Show</a>
+              
+              <a data-confirm="Are you sure?" data-method="delete" href="products/destroy/<%= product.id%>" rel="nofollow">Destroy</a>
+              
+            </div>
+          </div>
+        </div>    
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+    <div class="row">
+<%= link_to 'New Product', new_product_path, :class=> "btn btn-primary" %>
+</div>
+</div>
+<div class="gap"></div>

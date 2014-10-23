@@ -11,21 +11,23 @@
 // about supported directives.
 //
 
-//= require boostrap
-//= require countdown
-//= require card-payment
-//= require fitvids
-//= require flexnav
-//= require fotorama
-//= require icheck
-//= require ionrangeslider
-//= require jquery
-//= require magnific
-//= require mail
-//= require masonry
-//= require nicescroll
-//= require owl-carousel
 
-//= require tweet
+
+        //= require jquery
+        //= require boostrap
+        //= require countdown
+        //= require flexnav
+        //= require magnific
+        //= require tweet
+        //= require fitvids
+        //= require mail
+        //= require ionrangeslider
+        //= require icheck
+        //= require fotorama
+        //= require card-payment
+        //= require owl-carousel
+        //= require masonry
+        //= require nicescroll
+        //= require custom
 
 

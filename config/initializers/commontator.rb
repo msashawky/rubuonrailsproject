@@ -3,6 +3,7 @@
 
 # Note: Do not "return" from a Proc, use "next" instead if necessary
 #       "return" in a lambda is OK
+
 Commontator.configure do |config|
   # Engine Configuration
 

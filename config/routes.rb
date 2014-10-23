@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :registered_users
+
+
+
   resources :registered_users
+
 
   resources :ngos
 
@@ -20,7 +25,12 @@ Rails.application.routes.draw do
 
   resources :products
 
+
+  resources :customers
+  match ":controller(/:action(/:id))",:via =>:get
+
   resources :projects
+
 
   # Route for Commontator gem
   mount Commontator::Engine => '/commontator'
