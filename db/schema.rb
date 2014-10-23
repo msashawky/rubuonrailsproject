@@ -68,6 +68,19 @@ ActiveRecord::Schema.define(version: 20141016081820) do
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
 
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.date     "date_of_birth"
+    t.string   "username"
+    t.string   "password"
+    t.integer  "phone"
+    t.string   "gender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "managers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -109,14 +122,15 @@ ActiveRecord::Schema.define(version: 20141016081820) do
 
   create_table "products", force: true do |t|
     t.string   "product_name"
-    t.string   "product_photos"
     t.string   "product_price"
-    t.string   "product_count"
+    t.integer  "product_count",       limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
-    t.integer  "product_category_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "projects", force: true do |t|
@@ -154,6 +168,16 @@ ActiveRecord::Schema.define(version: 20141016081820) do
   add_index "registered_users", ["email"], name: "index_registered_users_on_email", unique: true
   add_index "registered_users", ["reset_password_token"], name: "index_registered_users_on_reset_password_token", unique: true
 
+  create_table "reistereds", force: true do |t|
+    t.string   "name"
+    t.string   "user_name"
+    t.string   "phone_number"
+    t.integer  "password"
+    t.string   "gender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "site_admins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -183,7 +207,7 @@ ActiveRecord::Schema.define(version: 20141016081820) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -193,14 +217,6 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password"
-    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
