@@ -15,6 +15,11 @@ module Commontator
       :scope => [:creator_type, :creator_id, :thread_id, :deleted_at],
       :message => I18n.t('commontator.comment.errors.double_posted')
 
+
+    # including rakismet AntiSpam model
+    include Rakismet::Model
+    rakismet_attrs :author => current_registered_user, :author_email => current_registered_user.email, :content => :body
+    
     protected
 
     cattr_accessor :acts_as_votable_initialized

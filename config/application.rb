@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module MarketPlace
   class Application < Rails::Application
+    
+    # rakismet AntiSpam config 
+    config.rakismet.key = 'f0be1abe2644'
+    config.rakismet.url = 'localhost:3000'
+    config.rakismet.test = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -38,6 +38,9 @@ gem "jquery-rails", "~> 2.3.0"
  gem "rails-ajax"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+#to make pop-up messages
+gem 'facebox-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -56,6 +59,13 @@ gem 'will_paginate'
 #gems for testing
 gem "rspec"
 gem "factory_girl"
+
+# Wrappers for JavaScript alert(), confirm() and other flexible dialogs
+gem 'bootbox-rails'
+gem 'bootstrap-sass'
+
+# gem for SPAM
+gem 'rakismet'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

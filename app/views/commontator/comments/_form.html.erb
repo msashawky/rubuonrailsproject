@@ -35,6 +35,14 @@
     <%= f.submit t("commontator.comment.actions.#{comment.id.blank? ? 'create' : 'update'}") %>
     <%= f.submit t('commontator.comment.actions.cancel'), :name => 'cancel' %>
   </div>
+
+  <script>
+$(function() {
+  $('#create').click(function() {
+    bootbox.alert("Your Inquiry was successfully sent to Admin , Waiting for Admin's answer ....");  
+  })
+})
+</script>
   
 <% end %>
 
