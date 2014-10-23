@@ -25,7 +25,7 @@
 //= require masonry
 //= require nicescroll
 //= require owl-carousel
-//= require reistereds
+
 //= require tweet
 
 
