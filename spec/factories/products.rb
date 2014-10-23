@@ -1,9 +1,6 @@
-# FactroyGirls.define do 
-# 	factory :product do
-# 		product_name "moamen"
-# 		product_price "50"
-# 		product_count "5"
-		
-# 	end
-	
-# end
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :product, :class => 'Products' do
+  end
+end
