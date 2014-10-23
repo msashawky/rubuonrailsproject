@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
-before_action :authenticate_user!
+# ...before_action :authenticate_user!
   layout "index"
   
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+
+  def products 
+    @products
+  end
+  
   # GET /products
   # GET /products.json
   def index
