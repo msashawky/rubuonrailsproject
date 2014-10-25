@@ -1,14 +1,1 @@
 == README
-
-please make these commands for first time only you pull it
-
-- rake db:drop
-- rake db:create
-- uncomment change method in "./db/migrate/20141006123502_create_ngos.rb" file
-- rails c
-       require "./db/migrate/20141006123502_create_ngos.rb"
-       CreateNgos.new.migrate(:up)
-       
-- comment change method in "./db/migrate/20141006123502_create_ngos.rb" file
-then 
-- rake db:migrate
