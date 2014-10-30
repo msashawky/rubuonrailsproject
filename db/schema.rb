@@ -73,6 +73,25 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.datetime "updated_at"
   end
 
+  create_table "ngos", force: true do |t|
+    t.string   "NGO_name"
+    t.string   "bank_account"
+    t.string   "NGO_number"
+    t.string   "website"
+    t.string   "ZIP_code"
+    t.string   "phone_number"
+    t.string   "fb_link"
+    t.string   "tw_link"
+    t.string   "gp_link"
+    t.string   "country"
+    t.string   "governorate"
+    t.string   "city"
+    t.string   "street"
+    t.string   "apartment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "product_carts", force: true do |t|
     t.integer  "product_amount"
     t.datetime "created_at"
