@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :registered_users
-
 
   resources :ngos
 

@@ -4,6 +4,21 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  acts_as :user_datum
+  has_one :ngo
+  has_one :cart, dependent: :destroy
+  has_many :projects
+  has_many :products, through: :user_products
+
+  # Some validations
+  #validates :card_number, uniqueness: true
+  #validates :country, :governorate, :city, :street, :apartment, presence: true
+
+  # Registered user can comment on a product
+  acts_as_commontator
+
+  
   validates_presence_of :first_name
   validates_length_of :first_name, :maximum => 50
   validates_presence_of :last_name
