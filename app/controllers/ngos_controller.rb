@@ -61,7 +61,12 @@ layout "index"
       format.json { head :no_content }
     end
   end
-
+    # Add admin to NGO
+  def add_admin
+      @email = :email
+      User.invite!(:email => @email, :ngo => current_user.ngo)
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ngo
@@ -72,4 +77,5 @@ layout "index"
     def ngo_params
       params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :governorate, :city, :street, :apartment)
     end
+
 end
