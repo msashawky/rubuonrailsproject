@@ -9,7 +9,14 @@
   <strong>Bank account:</strong>
   <%= @ngo.bank_account %>
 </p>
-
+<p>
+  <strong>NGO email:</strong>
+  <%= @ngo.email %>
+</p>
+<p>
+  <strong>NGO description:</strong>
+  <%= @ngo.description%>
+</p>
 <p>
   <strong>Ngo number:</strong>
   <%= @ngo.NGO_number %>
@@ -69,6 +76,7 @@
   <strong>Apartment:</strong>
   <%= @ngo.apartment %>
 </p>
+<%= image_tag @ngo.image.url(:medium) %>
 
 <%= link_to 'Edit', edit_ngo_path(@ngo) %> |
 <%= link_to 'Back', ngos_path %>

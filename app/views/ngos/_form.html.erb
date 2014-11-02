@@ -1,6 +1,5 @@
-
-
-<%= form_for(@ngo) do |f| %>
+<div class="col-md-3">
+<%= form_for @ngo , :url => ngos_path, :html => { :class => "dialog-form" , :multipart => true } do |f| %>
   <% if @ngo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ngo.errors.count, "error") %> prohibited this ngo from being saved:</h2>
@@ -13,63 +12,83 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="form-group">
     <%= f.label :NGO_name %><br>
-    <%= f.text_field :NGO_name %>
+    <%= f.text_field :NGO_name , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
+    <%= f.label :NGO_email %><br>
+    <%= f.text_field :email ,:class=> "form-control"%>
+  </div>
+  <div class="form-group">
     <%= f.label :bank_account %><br>
-    <%= f.text_field :bank_account %>
+    <%= f.text_field :bank_account , :class=> "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :NGO_number %><br>
-    <%= f.text_field :NGO_number %>
+    <%= f.text_field :NGO_number , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :website %><br>
-    <%= f.text_field :website %>
+    <%= f.text_field :website , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :ZIP_code %><br>
-    <%= f.text_field :ZIP_code %>
+    <%= f.text_field :ZIP_code , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :fb_link %><br>
-    <%= f.text_field :fb_link %>
+    <%= f.text_field :fb_link , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :tw_link %><br>
-    <%= f.text_field :tw_link %>
+    <%= f.text_field :tw_link , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :gp_link %><br>
-    <%= f.text_field :gp_link %>
+    <%= f.text_field :gp_link , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.text_field :country , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :governorate %><br>
-    <%= f.text_field :governorate %>
+    <%= f.text_field :governorate , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.text_field :city , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :street %><br>
-    <%= f.text_field :street %>
+    <%= f.text_field :street , :class=> "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :apartment %><br>
-    <%= f.text_field :apartment %>
+    <%= f.text_field :apartment , :class=> "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description , :class=> "form-control" , :size=> '10x10' %>
+  </div>
+  <div class="form-group">
+  <%= f.label :image %><br>
+   <%= f.file_field :image %>
+   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  :class=> "btn btn-primary" %>
   </div>
+
 <% end %>
+</div>
+
+
+ 
+
+
+

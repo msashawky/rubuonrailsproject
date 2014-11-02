@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016081820) do
+ActiveRecord::Schema.define(version: 20141102171641) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "registered_user_id"
+  end
+
+  create_table "charities", force: true do |t|
+    t.string   "charity_field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "commontator_comments", force: true do |t|
@@ -90,6 +96,12 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.string   "apartment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "email"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "product_carts", force: true do |t|

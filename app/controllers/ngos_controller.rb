@@ -5,6 +5,7 @@ layout "index"
   # GET /ngos
   # GET /ngos.json
   def index
+   # AdminMail.welcome_email().deliver
     @ngos = Ngo.all
   end
 
@@ -29,7 +30,8 @@ layout "index"
 
     respond_to do |format|
       if @ngo.save
-        format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
+       AdminMail.welcome_email().deliver
+        format.html { redirect_to @ngo, notice: 'Ngo was successfully created, Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
         format.html { render :new }
@@ -70,6 +72,6 @@ layout "index"
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ngo_params
-      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :governorate, :city, :street, :apartment)
+      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :governorate, :city, :street, :apartment , :description , :email , :image )
     end
 end
