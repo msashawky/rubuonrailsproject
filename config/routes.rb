@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :product_carts
 
   resources :carts
-
+  resources :charities
   resources :product_categories
 
   resources :managers
