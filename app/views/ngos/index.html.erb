@@ -1,6 +1,6 @@
 <h1>Listing ngos</h1>
 
-<table>
+<!--<table>
   <thead>
     <tr>
       <th>Ngo name</th>
@@ -24,34 +24,68 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody>-->
     <% @ngos.each do |ngo| %>
-      <tr>
-        <td><%= ngo.NGO_name %></td>
-        <td><%= ngo.bank_account %></td>
-        <td><%= ngo.NGO_number %></td>
-        <td><%= ngo.website %></td>
-        <td><%= ngo.ZIP_code %></td>
-        <td><%= ngo.phone_number %></td>
-        <td><%= ngo.fb_link %></td>
-        <td><%= ngo.tw_link %></td>
-        <td><%= ngo.gp_link %></td>
-        <td><%= ngo.country %></td>
-        <td><%= ngo.governorate %></td>
-        <td><%= ngo.city %></td>
-        <td><%= ngo.street %></td>
-        <td><%= ngo.apartment %></td>
-         <td><%= ngo.description %></td>
-          <td><%= ngo.email %></td>
-          <%= image_tag ngo.image.url(:medium) %>
-        <td><%= link_to 'Show', ngo %></td>
-        <td><%= link_to 'Edit', edit_ngo_path(ngo) %></td>
-        <td><%= link_to 'Destroy', ngo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="col-md-4">
+    <div class="team-member">
+     <%= image_tag ngo.image.url%>
+      <h4> <%= ngo.NGO_name %></h4>
+      <p class="team-member-position">
+          <%= ngo.city %>
+        </p>
+        <p class="team-member-desciption">
+
+            <%= link_to 'Show', ngo %>
+
+        </p>
+           <ul class="team-member-social">
+           <li>
+             <a class="fa fa-google-plus" href="<% ngo.gp_link %>"></a>
+           </li>
+           <li>
+            <a class="fa fa-twitter" href="<% ngo.tw_link %>"></a>
+           </li>
+           <li>
+           <a class="fa fa-facebook" href="<% ngo.fb_link %>"></a>
+           </li>
+           </ul>
+     <!-- <tr>
+        <td></td>
+        <td>ngo.bank_account </td>
+        <td> ngo.NGO_number </td>
+        <td> ngo.website </td>
+        <td> ngo.ZIP_code </td>
+        <td> ngo.phone_number </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> ngo.country </td>
+        <td> ngo.governorate </td>
+        <td></td>
+        <td> ngo.street </td>
+        <td> ngo.apartment </td>
+         <td> ngo.description </td>
+          <td> ngo.email </td>
+          
+        <td></td>
+       <td> link_to 'Edit', edit_ngo_path(ngo) </td>
+        <td> link_to 'Destroy', ngo, method: :delete, data: { confirm: 'Are you sure?' } </td>
+      </tr>-->
+      </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+ 
 
 <br>
 
 <%= link_to 'New Ngo', new_ngo_path %>
+
+
+    
+       
+       
+        
+        
+     
+       
+

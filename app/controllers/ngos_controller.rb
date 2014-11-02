@@ -5,7 +5,6 @@ layout "index"
   # GET /ngos
   # GET /ngos.json
   def index
-   # AdminMail.welcome_email().deliver
     @ngos = Ngo.all
   end
 
@@ -30,8 +29,8 @@ layout "index"
 
     respond_to do |format|
       if @ngo.save
-       AdminMail.welcome_email().deliver
-        format.html { redirect_to @ngo, notice: 'Ngo was successfully created, Waiting admin approval' }
+        #AdminMail.welcome_email().deliver
+        format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
         format.json { render :show, status: :created, location: @ngo }
       else
         format.html { render :new }

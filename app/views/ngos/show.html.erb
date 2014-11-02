@@ -1,82 +1,201 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+<div class="col-md-6">
 
-<p>
+    <!--
+
+     START BOOTSTRAP CAROUSEL 
+
+    -->
+    <div id="my-carousel" class="carousel slide">
+        <div class="carousel-inner">
+            
+                <%= image_tag @ngo.image.url %>
+            
+        </div>
+       
+    </div>
+    <!--
+
+     END BOOTSTRAP CAROUSEL 
+
+    --> 
+
+</div>
+  
+
+<div class="col-md-4">
+
+    <div class="product-page-meta box">
+        <h4>
+         <%= @ngo.NGO_name %>
+        </h4>
+        <p>
+           <%= @ngo.phone_number %>
+        </p>
+        <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
+           Our Website
+        </a>
+        <ul class="list product-page-meta-info">
+            <li>
+                <ul class="list product-page-meta-price-list">
+                    <li>
+                        <span class="product-page-meta-title">
+
+                            Facebock
+
+                        </span>
+                        <span class="product-page-meta-price">
+
+                            <a class="fa fa-facebook" href="<% @ngo.fb_link %>"></a>
+
+                        </span>
+                    </li>
+                    <li>
+                        <span class="product-page-meta-title">
+
+                            Twitter
+
+                        </span>
+                        <span class="product-page-meta-price">
+
+                            <a class="fa fa-twitter" href="<% @ngo.tw_link %>"></a>
+
+                        </span>
+                    </li>
+                    <li>
+                        <span class="product-page-meta-title">
+
+                            Google+
+
+                        </span>
+                        <span class="product-page-meta-price">
+
+                              <a class="fa fa-google-plus" href="<% @ngo.gp_link %>"></a>
+
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="product-page-meta-title">
+                  Address
+                </span>
+                <!--
+
+                 COUNTDOWN 
+
+                -->
+                <div >
+                    <div class="days">   <%= @ngo.country %>  &nbsp <%= @ngo.city %> &nbsp <%= @ngo.street %></div>
+                  
+                </div>
+            </li>
+            <li>
+                <span class="product-page-meta-title">
+
+                    
+                     <%= link_to 'Back', ngos_path %>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+        <h3>
+
+            Discription
+
+        </h3>
+        <p>
+
+        <%= @ngo.description%>
+
+        </p>
+      
+    </div>
+
+</div>
+</div>
+<!--<p>
   <strong>Ngo name:</strong>
-  <%= @ngo.NGO_name %>
+  
 </p>
 
 <p>
   <strong>Bank account:</strong>
-  <%= @ngo.bank_account %>
+   @ngo.bank_account 
 </p>
 <p>
   <strong>NGO email:</strong>
-  <%= @ngo.email %>
+   @ngo.email 
 </p>
 <p>
   <strong>NGO description:</strong>
-  <%= @ngo.description%>
+
 </p>
 <p>
   <strong>Ngo number:</strong>
-  <%= @ngo.NGO_number %>
+   @ngo.NGO_number 
 </p>
 
 <p>
   <strong>Website:</strong>
-  <%= @ngo.website %>
+  
 </p>
 
 <p>
   <strong>Zip code:</strong>
-  <%= @ngo.ZIP_code %>
+   @ngo.ZIP_code
 </p>
 
 <p>
   <strong>Phone number:</strong>
-  <%= @ngo.phone_number %>
+ 
 </p>
 
 <p>
   <strong>Fb link:</strong>
-  <%= @ngo.fb_link %>
+   @ngo.fb_link 
 </p>
 
 <p>
   <strong>Tw link:</strong>
-  <%= @ngo.tw_link %>
+   @ngo.tw_link 
 </p>
 
 <p>
   <strong>Gp link:</strong>
-  <%= @ngo.gp_link %>
+   @ngo.gp_link 
 </p>
 
 <p>
   <strong>Country:</strong>
-  <%= @ngo.country %>
+
 </p>
 
 <p>
   <strong>Governorate:</strong>
-  <%= @ngo.governorate %>
+   @ngo.governorate 
 </p>
 
 <p>
   <strong>City:</strong>
-  <%= @ngo.city %>
+
 </p>
 
 <p>
   <strong>Street:</strong>
-  <%= @ngo.street %>
+  
 </p>
 
 <p>
   <strong>Apartment:</strong>
-  <%= @ngo.apartment %>
-</p>
-<%= image_tag @ngo.image.url(:medium) %>
+  @ngo.apartment 
+</p>-->
 
-<%= link_to 'Edit', edit_ngo_path(@ngo) %> |
-<%= link_to 'Back', ngos_path %>
+
+ <!--link_to 'Edit', edit_ngo_path(@ngo)-->
