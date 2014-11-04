@@ -1,3 +1,4 @@
+<% if @ngo.approved == true %>
 <p id="notice"><%= notice %></p>
 <div class="row">
 <div class="col-md-6">
@@ -120,6 +121,15 @@
 
 </div>
 </div>
+<% else %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<!-- link_to 'approve', approve_ngo_path(@ngo)-->
+<!-- link_to 'Disapprove', @ngo , method: :disapprove , data: { confirm: 'Are you sure?' } -->
+<!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
+ <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
+ <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
+ <!-- else -->
+ <h1> Appending until admin approval </h1>
+<% end %>
 <!--<p>
   <strong>Ngo name:</strong>
   

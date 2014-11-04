@@ -5,6 +5,7 @@ layout "index"
   # GET /ngos
   # GET /ngos.json
   def index
+    #AdminMail.welcome_email().deliver
     @ngos = Ngo.all
   end
 
@@ -25,12 +26,12 @@ layout "index"
   # POST /ngos
   # POST /ngos.json
   def create
-    @ngo = Ngo.new(ngo_params)
+    @ngo = Ngo.new(ngo_params,false )
 
     respond_to do |format|
       if @ngo.save
         #AdminMail.welcome_email().deliver
-        format.html { redirect_to @ngo, notice: 'Ngo was successfully created.' }
+        format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ layout "index"
   # PATCH/PUT /ngos/1.json
   def update
     respond_to do |format|
-      if @ngo.update(ngo_params)
+      if @ngo.update(ngo_params,true )
         format.html { redirect_to @ngo, notice: 'Ngo was successfully updated.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
