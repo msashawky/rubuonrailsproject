@@ -1,4 +1,6 @@
 class ProductCartsController < ApplicationController
+  layout "index"
+  before_action :authenticate_user!
   before_action :set_product_cart, only: [:show, :edit, :update, :destroy]
 
   # GET /product_carts
@@ -61,6 +63,37 @@ class ProductCartsController < ApplicationController
     end
   end
 
+ #    def add_to_cart #Dummy add to product function "registered user does not has a cart"
+ #      @product_cart=ProductCart.new
+ #      @product_cart.cart_id=1
+ #      @product_cart.product_id=params[:id]
+ #      @product_cart.product_amount=10
+ #       if  @product_cart.save!
+ #     redirect_to("/products")
+ #   else
+ #     render "new"
+ #   end
+ # end
+
+ 
+
+       def add_to_cart 
+        @cart=Cart.new
+      @cart.registered_user_id = current_user.id
+      @product_cart = ProductCart.new
+      @product_cart.cart = @cart
+       @product_cart.product_id = params[:id]
+             @product_cart.product_amount=10
+             if  @product_cart.save!
+     redirect_to("/products")
+   else
+     render "new"
+   end
+      end
+      
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product_cart
@@ -72,9 +105,18 @@ class ProductCartsController < ApplicationController
       params.require(:product_cart).permit(:product_amount)
     end
 
-    def add_to_cart
-    end
+
 
     def cancel_product
     end
 end
+
+
+
+
+
+
+
+
+
+
