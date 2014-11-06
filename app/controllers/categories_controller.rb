@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   autocomplete :comments, :body
 
+if user_session ? do
   def index
     @categories = Category.all
   end
@@ -57,4 +58,5 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
+  end
 end
