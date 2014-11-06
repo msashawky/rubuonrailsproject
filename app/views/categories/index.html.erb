@@ -1,0 +1,24 @@
+<h1>Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><h4>Category Name</h4></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %>&nbsp;</td>
+        <td><%= link_to 'Edit', edit_category_path(category) %>&nbsp;</td>
+        <td><a data-confirm="Are you sure you want to delete this category?" data-method="delete" href="categories/destroy/<%= category.id%>" rel="nofollow">Destroy</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

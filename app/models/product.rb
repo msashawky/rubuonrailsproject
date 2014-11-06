@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 
+
 	# Product can be commented on
 	acts_as_commontable
 
@@ -17,7 +18,7 @@ class Product < ActiveRecord::Base
   validates_with AttachmentSizeValidator, :attributes => :photo, :less_than => 1.megabytes
 	 has_many :registered_users, through: :user_products
 	 belongs_to :project
-	 belongs_to :product_category
+	 belongs_to :category
 	 has_many :carts, through: :product_carts
 	 validates :product_name,  :product_price, :product_description, presence: true
 	 validates :product_price, :product_count, numericality: { only_integer: true }
