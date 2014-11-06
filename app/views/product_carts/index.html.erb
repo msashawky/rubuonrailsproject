@@ -23,6 +23,7 @@
                                     <% @my_product=product_cart.product_id %>
                                     <%@products.each do |product|%>
                                         <% if product.id==@my_product%>
+                                           <% @totalprice = @totalprice.to_i+product.product_price.to_i%>
                                             <tr>
                                                 <td class="cart-item-image">
                                                     <a href="#">
@@ -52,16 +53,17 @@
                             <% end %>
                         </tbody>
                     </table>  <a href="#" class="btn btn-primary">Update the cart</a>
+                    <%= link_to "Empty cart", {:action => "empty_cart" }%>
                 </div>
                 <div class="col-md-3">
                     <ul class="cart-total-list">
-                        <li><span>Sub Total</span><span>$500.00</span>
+                        <li><span>Sub Total</span><span>$<%=@totalprice%></span>
                         </li>
                         <li><span>Shipping</span><span>$0.00</span>
                         </li>
                         <li><span>Taxes</span><span>$0.00</span>
                         </li>
-                        <li><span>Total</span><span>$500.00</span>
+                        <li><span>Total</span><span>$<%=@totalprice%></span>
                         </li>
                     </ul>
                     <a href="#" class="btn btn-primary btn-lg">Checkout</a>

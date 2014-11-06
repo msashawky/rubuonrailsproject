@@ -68,20 +68,64 @@ class ProductCartsController < ApplicationController
 
 
 
+      def add_to_cart 
 
-       def add_to_cart 
-        @cart=Cart.new
-      @cart.registered_user_id = current_user.id
-      @product_cart = ProductCart.new
-      @product_cart.cart = @cart
-       @product_cart.product_id = params[:id]
-             @product_cart.product_amount=10
-             if  @product_cart.save!
-     redirect_to("/products")
-   else
-     render "new"
-   end
+          if !@carts=Cart.all
+          @carts.each do |cart|
+            if cart.registered_user_id==current_user.id
+                @mycart=cart
+            else
+               @mycart=Cart.new
+               @mycart.registered_user_id = current_user.id
+             end
+          end
+        else
+               @mycart=Cart.new
+               @mycart.registered_user_id = current_user.id
+end
+          @product_cart = ProductCart.new
+           @product_cart.cart_id=@mycart.id
+          @product_cart.cart = @mycart
+          @product_cart.product_id = params[:id]
+          @product_cart.product_amount=1
+          if  @product_cart.save!       
+            redirect_to("/products")
+          else
+            render "new"
+          end           
+      end        
+       
+
+
+
+
+      def empty_cart
+        @carts=Cart.all
+        @product_carts=ProductCart.all
+        @carts.each do |cart|
+          if cart.registered_user_id==current_user.id
+            @current_user_cart=cart.id
+            break
+          end
+        end
+        @product_carts.each do |product_cart|
+          if product_cart.cart_id==@current_user_cart
+             product_cart.destroy
+          else
+          end
+               
+            redirect_to("/product_carts")and return
+          
+    
+        end 
       end
+
+        
+
+
+      
+
+    
       
 
 
@@ -94,7 +138,7 @@ class ProductCartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_cart_params
-      params.require(:product_cart).permit(:product_amount)
+      params.require(:product_cart).permit(:product_)
     end
 
 
