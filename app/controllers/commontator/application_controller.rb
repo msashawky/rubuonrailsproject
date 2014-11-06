@@ -3,7 +3,6 @@ module Commontator
     before_filter :get_user, :ensure_user
     
     rescue_from SecurityTransgression, :with => lambda { head(:forbidden) }
-    protect_from_forgery
     
     protected
 
@@ -25,7 +24,6 @@ module Commontator
         Commontator::Thread.find(params[:thread_id])
       security_transgression_unless @thread.can_be_read_by? @user
     end
-      
   end
 end
 

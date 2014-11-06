@@ -31,9 +31,7 @@ gem 'rails4-autocomplete'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem "jquery-rails", "~> 2.3.0"
-
- gem "jquery-ui-rails"
+gem "jquery-rails"
 
 # email invitation
 gem 'devise_invitable'
