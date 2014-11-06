@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   #validates :card_number, uniqueness: true
   #validates :country, :governorate, :city, :street, :apartment, presence: true
 
-  # Registered user can comment on a product
+  # user can comment on a product
   acts_as_commontator
 
 

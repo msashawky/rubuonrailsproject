@@ -63,8 +63,7 @@ layout "index"
   end
     # Add admin to NGO
   def add_admin
-      @email = :email
-      User.invite!(:email => @email, :ngo => current_user.ngo)
+      User.invite!(:email => params[:user][:email], :ngo => current_user.ngo)
   end
   
   private

@@ -36,7 +36,7 @@ Commontator.configure do |config|
   # Arguments: a user (acts_as_commontator)
   # Returns: the user's name (String)
   # Default: lambda { |user| I18n.t('commontator.anonymous') } (all users are anonymous)
-  config.user_name_proc = lambda { |registered_user| registered_user.email }
+  config.user_name_proc = lambda { |user| user.email }
 
   # user_link_proc
   # Type: Proc

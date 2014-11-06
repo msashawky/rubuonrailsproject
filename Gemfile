@@ -24,9 +24,6 @@ gem 'active_record-acts_as'
 #for authentication
 gem 'devise'
 
-#for autocomplete
-gem 'rails4-autocomplete'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

@@ -36,12 +36,6 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources:profile
 
-#for autocomplete gem
-  resources :products do
-    get :autocomplete_comment_body, :on => :collection
-  end
-
-
   post "/ngos/add_admin"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -69,7 +69,7 @@
   <strong>Apartment:</strong>
   <%= @ngo.apartment %>
 </p>
-<% if @ngo == current_user.ngo %>
+<% if @ngo.id == current_user.ngo.id %>
   <% @user = User.new %>
   <%= "you can add admin to " + @ngo.NGO_name %>
   <p> please type his email </p>

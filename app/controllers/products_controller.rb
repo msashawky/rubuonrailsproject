@@ -5,8 +5,6 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  autocomplete :comments, :body
-
   # GET /products
   # GET /products.json
   def index
