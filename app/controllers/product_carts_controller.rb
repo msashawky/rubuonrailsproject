@@ -1,4 +1,5 @@
 class ProductCartsController < ApplicationController
+  include CartsHelper
   layout "index"
   before_action :authenticate_user!
   before_action :set_product_cart, only: [:show, :edit, :update, :destroy]
@@ -6,7 +7,9 @@ class ProductCartsController < ApplicationController
   # GET /product_carts
   # GET /product_carts.json
   def index
+    @carts=Cart.all
     @product_carts = ProductCart.all
+    @products=Product.all 
   end
 
   # GET /product_carts/1
@@ -63,19 +66,8 @@ class ProductCartsController < ApplicationController
     end
   end
 
- #    def add_to_cart #Dummy add to product function "registered user does not has a cart"
- #      @product_cart=ProductCart.new
- #      @product_cart.cart_id=1
- #      @product_cart.product_id=params[:id]
- #      @product_cart.product_amount=10
- #       if  @product_cart.save!
- #     redirect_to("/products")
- #   else
- #     render "new"
- #   end
- # end
 
- 
+
 
        def add_to_cart 
         @cart=Cart.new
