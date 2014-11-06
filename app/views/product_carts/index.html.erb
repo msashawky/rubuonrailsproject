@@ -12,66 +12,44 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
-<% @carts.each do |cart| %>
-<% if cart.registered_user_id == current_user.id %>
-<% @current_user_cart=cart.id%>
-<% break%>
-<% end%>
-<% end%>
-  <tbody>
-
-    <% @product_carts.each do |product_cart| %>
-      <tr>
-        <% if product_cart.cart_id == @current_user_cart %>
-          <td><% @my_product=product_cart.product_id %></td>
-            <%@products.each do |product|%>
-                <% if product.id==@my_product%>
-
-
-
-                            <tr>
-                                <td class="cart-item-image">
-                                    <a href="#">
-                                        
-                                    </a>
-                                </td>
-                                <td><a href="#">New Glass Collection</a>
-                                </td>
-                                <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                                    <input type="text" name="cart-quantity" class="cart-quantity" value="1" /><i class="fa fa-plus cart-item-plus"></i>
-                                </td>
-                                <td>$150</td>
-                                <td class="cart-item-remove">
-                                    <a class="fa fa-times" href="#"></a>
-                                </td>
-                            </tr>
-
-
-
-
-
-
-                <%end%>
-            <%end%>   
-
-
-<%end%>
-    <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            <% @carts.each do |cart| %>
+                                <% if cart.registered_user_id == current_user.id %>
+                                    <% @current_user_cart=cart.id%>
+                                    <% break%>
+                                <% end%>
+                            <% end%>
+                            <% @product_carts.each do |product_cart| %>
+                                <% if product_cart.cart_id == @current_user_cart %>
+                                    <% @my_product=product_cart.product_id %>
+                                    <%@products.each do |product|%>
+                                        <% if product.id==@my_product%>
+                                            <tr>
+                                                <td class="cart-item-image">
+                                                    <a href="#">
+                                                        <%= image_tag product.photo.url(:thumb) %>
+                                                    </a>
+                                                </td>
+                                                
+                                                <td>
+                                                    <a href="#"> <%= product.product_name %></a>
+                                                </td>
+                                                
+                                                <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
+                                                    <input type="text" name="cart-quantity" class="cart-quantity" value="<%=product_cart.product_amount%>" /><i class="fa fa-plus cart-item-plus"></i>
+                                                </td>
+                                                
+                                                <td>
+                                                    <%=product.product_price%>
+                                                </td>
+                                                
+                                                <td class="cart-item-remove">
+                                                    <a class="fa fa-times" href="#"></a>
+                                                </td>
+                                            </tr>
+                                        <%end%>
+                                    <%end%>
+                                <%end%>
+                            <% end %>
                         </tbody>
                     </table>  <a href="#" class="btn btn-primary">Update the cart</a>
                 </div>
@@ -89,6 +67,7 @@
                     <a href="#" class="btn btn-primary btn-lg">Checkout</a>
                 </div>
             </div>
+        </div>
 
 
 
