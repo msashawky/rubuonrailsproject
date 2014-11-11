@@ -1,6 +1,6 @@
 class Ngo < ActiveRecord::Base
 	has_many :projects
-	belongs_to :registered_user
+	belongs_to :user
 
 	validates :NGO_name, :bank_account, :NGO_number, :phone_number, presence: true
 	validates :NGO_name, :bank_account, :NGO_number, uniqueness: true

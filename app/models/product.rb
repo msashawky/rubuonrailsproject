@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   validates_length_of :product_name, :maximum => 30
 
   validates_with AttachmentSizeValidator, :attributes => :photo, :less_than => 1.megabytes
-	 has_many :registered_users, through: :user_products
+	 has_many :users, through: :user_products
 	 belongs_to :project
 	 belongs_to :product_category
 	 has_many :carts, through: :product_carts

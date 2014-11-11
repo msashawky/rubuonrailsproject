@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141016081820) do
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "registered_user_id"
+    t.integer  "user_id"
   end
 
   create_table "commontator_comments", force: true do |t|
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.string   "apartment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "product_carts", force: true do |t|
@@ -109,10 +110,12 @@ ActiveRecord::Schema.define(version: 20141016081820) do
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
-    t.integer  "product_count",       limit: 255, default: 1
+    t.integer  "product_count",         limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "projects_id"
+    t.integer  "product_categories_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -126,32 +129,9 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.string   "project_social_state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
     t.integer  "ngo_id"
   end
-
-  create_table "registered_users", force: true do |t|
-    t.string   "card_number"
-    t.string   "country"
-    t.string   "city"
-    t.string   "street"
-    t.string   "apartment"
-    t.string   "governorate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-  end
-
-  add_index "registered_users", ["email"], name: "index_registered_users_on_email", unique: true
-  add_index "registered_users", ["reset_password_token"], name: "index_registered_users_on_reset_password_token", unique: true
 
   create_table "site_admins", force: true do |t|
     t.datetime "created_at"
@@ -177,10 +157,18 @@ ActiveRecord::Schema.define(version: 20141016081820) do
   create_table "user_products", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "products_id"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "card_number"
+    t.string   "country"
+    t.string   "city"
+    t.string   "street"
+    t.string   "apartment"
+    t.string   "governorate"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
