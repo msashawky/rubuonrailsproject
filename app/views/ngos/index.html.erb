@@ -1,4 +1,15 @@
+<div class="row">
+<div class="col-md-3">
 <h1>Listing ngos</h1>
+</div>
+<div class="col-md-8">
+</div>
+<div class="col-md-1">
+<%= link_to 'New Ngo', new_ngo_path ,:class=> "btn btn-primary" %>
+</div>
+</div>
+
+
 
 <!--<table>
   <thead>
@@ -25,17 +36,19 @@
   </thead>
 
   <tbody>-->
+    <div class="row">
     <% @ngos.each do |ngo| %>
     <div class="col-md-4">
     <div class="team-member">
-     <%= image_tag ngo.image.url%>
-      <h4> <%= ngo.NGO_name %></h4>
+    <%= link_to ( image_tag ngo.image.url ), ngo %>
+      
+     
       <p class="team-member-position">
           <%= ngo.city %>
         </p>
         <p class="team-member-desciption">
-
-            <%= link_to 'Show', ngo %>
+              <h4> <%= ngo.NGO_name %></h4>
+            
 
         </p>
            <ul class="team-member-social">
@@ -60,10 +73,10 @@
         <td></td>
         <td></td>
         <td> ngo.country </td>
-        <td> ngo.governorate </td>
+      
         <td></td>
         <td> ngo.street </td>
-        <td> ngo.apartment </td>
+       
          <td> ngo.description </td>
           <td> ngo.email </td>
           
@@ -74,11 +87,11 @@
       </div>
       </div>
     <% end %>
- 
+ </div>
 
-<br>
 
-<%= link_to 'New Ngo', new_ngo_path %>
+
+
 
 
     

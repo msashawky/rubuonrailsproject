@@ -1,6 +1,6 @@
 class NgosController < ApplicationController
 layout "index"
-  before_action :set_ngo, only: [:show, :edit, :update, :destroy]
+  before_action :set_ngo, only: [:show, :edit, :update, :destroy ,:approve ,:disapprove ]
 
   # GET /ngos
   # GET /ngos.json
@@ -30,7 +30,7 @@ layout "index"
 
     respond_to do |format|
       if @ngo.save
-        #AdminMail.welcome_email().deliver
+        AdminMail.welcome_email().deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
@@ -64,6 +64,36 @@ layout "index"
     end
   end
 
+
+  def approve
+    respond_to do |format|
+      if @ngo.update(:approved => true )
+        #AdminMail.welcome_email().deliver
+        format.html { redirect_to @ngo, notice: 'Ngo was successfully approved.' }
+        format.json { render :show, status: :ok, location: @ngo }
+      else
+        format.html { redirect_to @ngo, notice: 'You have an error.' }
+        format.json { render :show, status: :ok, location: @ngo }
+        #format.html { render :edit }
+        #format.json { render json: @ngo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
+  def disapprove
+    @ngo.destroy
+    #AdminMail.welcome_email().deliver
+    respond_to do |format|
+      format.html { redirect_to ngos_url, notice: 'Ngo was successfully disapproved.' }
+      format.json { head :no_content }
+    end
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ngo
@@ -72,6 +102,6 @@ layout "index"
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ngo_params
-      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :governorate, :city, :street, :apartment , :description , :email , :image )
+      params.require(:ngo).permit(:NGO_name, :bank_account, :NGO_number, :website, :ZIP_code, :phone_number, :fb_link, :tw_link, :gp_link, :country, :city, :street,:description , :email , :image )
     end
 end

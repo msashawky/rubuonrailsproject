@@ -1,4 +1,4 @@
-<% if @ngo.approved == true %>
+<% if @ngo.approved == true%>
 <p id="notice"><%= notice %></p>
 <div class="row">
 <div class="col-md-6">
@@ -23,17 +23,18 @@
     --> 
 
 </div>
-  
+<div class="col-md-2">
+</div>
 
 <div class="col-md-4">
 
     <div class="product-page-meta box">
-        <h4>
+        <center><h4>
          <%= @ngo.NGO_name %>
-        </h4>
-        <p>
+        </h4></center>
+        <center><p>
            <%= @ngo.phone_number %>
-        </p>
+        </p></center>
         <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
            Our Website
         </a>
@@ -104,6 +105,16 @@
 
 </div>
 </div>
+<!-- @ngo.bank_account -->
+<!--@ngo.email -->
+<!-- @ngo.NGO_number  -->
+<!-- @ngo.ZIP_code -->
+<!-- @ngo.fb_link  -->
+<!-- @ngo.gp_link -->
+<!-- @ngo.tw_link -->
+<!-- @ngo.governorate -->
+<!-- @ngo.apartment  -->
+
 <div class="row">
   <div class="col-md-4">
         <h3>
@@ -122,13 +133,13 @@
 </div>
 </div>
 <% else %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
-<!-- link_to 'approve', approve_ngo_path(@ngo)-->
-<!-- link_to 'Disapprove', @ngo , method: :disapprove , data: { confirm: 'Are you sure?' } -->
+<%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> &nbsp
+<%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
 <!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
  <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
  <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
  <!-- else -->
- <h1> Appending until admin approval </h1>
+ <h1> Pending until admin approval </h1>
 <% end %>
 <!--<p>
   <strong>Ngo name:</strong>
@@ -137,11 +148,11 @@
 
 <p>
   <strong>Bank account:</strong>
-   @ngo.bank_account 
+    
 </p>
 <p>
   <strong>NGO email:</strong>
-   @ngo.email 
+   
 </p>
 <p>
   <strong>NGO description:</strong>
@@ -149,7 +160,7 @@
 </p>
 <p>
   <strong>Ngo number:</strong>
-   @ngo.NGO_number 
+  
 </p>
 
 <p>
@@ -159,7 +170,7 @@
 
 <p>
   <strong>Zip code:</strong>
-   @ngo.ZIP_code
+   
 </p>
 
 <p>
@@ -169,17 +180,17 @@
 
 <p>
   <strong>Fb link:</strong>
-   @ngo.fb_link 
+   
 </p>
 
 <p>
   <strong>Tw link:</strong>
-   @ngo.tw_link 
+    
 </p>
 
 <p>
   <strong>Gp link:</strong>
-   @ngo.gp_link 
+  
 </p>
 
 <p>
@@ -187,10 +198,6 @@
 
 </p>
 
-<p>
-  <strong>Governorate:</strong>
-   @ngo.governorate 
-</p>
 
 <p>
   <strong>City:</strong>
@@ -202,10 +209,7 @@
   
 </p>
 
-<p>
-  <strong>Apartment:</strong>
-  @ngo.apartment 
-</p>-->
+-->
 
 
  <!--link_to 'Edit', edit_ngo_path(@ngo)-->

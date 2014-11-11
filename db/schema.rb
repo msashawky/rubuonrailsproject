@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104161400) do
+ActiveRecord::Schema.define(version: 20141111182539) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -90,10 +90,8 @@ ActiveRecord::Schema.define(version: 20141104161400) do
     t.string   "tw_link"
     t.string   "gp_link"
     t.string   "country"
-    t.string   "governorate"
     t.string   "city"
     t.string   "street"
-    t.string   "apartment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
