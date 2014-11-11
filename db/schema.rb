@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101180458) do
+ActiveRecord::Schema.define(version: 20141111173830) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
