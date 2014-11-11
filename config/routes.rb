@@ -24,11 +24,6 @@ Rails.application.routes.draw do
 
   resources :projects
 
-
-  # Route for Commontator gem
-  mount Commontator::Engine => '/commontator'
-
-
   resources :customers
   devise_for :users, controllers: { sessions: "users/sessions" }
   root to: "home#index"

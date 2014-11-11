@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    commontator_thread_show(@product)
   end
 
   # GET /products/new

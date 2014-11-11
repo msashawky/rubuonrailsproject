@@ -44,9 +44,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    commontator (4.8.0)
-      jquery-rails
-      rails (>= 3.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -109,7 +106,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
-    responders (1.1.1)
+    responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
@@ -167,7 +164,6 @@ PLATFORMS
 DEPENDENCIES
   active_record-acts_as
   coffee-rails (~> 4.0.0)
-  commontator (~> 4.8.0)
   devise
   devise_invitable
   factory_girl_rails

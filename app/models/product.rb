@@ -1,8 +1,5 @@
 class Product < ActiveRecord::Base
 
-	# Product can be commented on
-	acts_as_commontable
-
    has_attached_file :photo , :styles => {
   :thumb=> "100x100#",
   :small  => "150x150>",

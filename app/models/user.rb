@@ -12,13 +12,6 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :products, through: :user_products
 
-  # Some validations
-  #validates :card_number, uniqueness: true
-  #validates :country, :governorate, :city, :street, :apartment, presence: true
-
-  # user can comment on a product
-  acts_as_commontator
-
   validates_presence_of :first_name
   validates_length_of :first_name, :maximum => 50
   validates_presence_of :last_name
