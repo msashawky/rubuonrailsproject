@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+
   acts_as :user_datum
   belongs_to :ngo
   has_one :cart, dependent: :destroy
@@ -17,7 +18,6 @@ class User < ActiveRecord::Base
 
   # user can comment on a product
   acts_as_commontator
-
 
   validates_presence_of :first_name
   validates_length_of :first_name, :maximum => 50

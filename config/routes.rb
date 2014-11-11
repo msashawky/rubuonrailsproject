@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   resources :ngos
 
   resources :product_carts
