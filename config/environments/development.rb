@@ -50,7 +50,7 @@ config.action_mailer.smtp_settings = {
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: "nashope.mp@gmail.com",
-      password: "As12345678912"
+      password: "Asd12345678912"
 
   }
 

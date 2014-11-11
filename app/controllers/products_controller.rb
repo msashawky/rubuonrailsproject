@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @comments = @product.comments.all
+    @comment = @product.comments.build
   end
 
   # GET /products/new

@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Ask about it</h1>
+    <p>
+      <%= link_to 'new comment', new_comment_path, class: 'btn btn-primary btn-lg' %>
+    </p>
+  </div>
+</div>
+ 
+<%= render @comments %>
