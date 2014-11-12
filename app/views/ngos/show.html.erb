@@ -1,5 +1,12 @@
+<div class="row">
+  <div class="col-md-11"></div>
+  <div class="col-md-1">
+    <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
+  </div>
+</div>
 <% if @ngo.approved == true%>
 <p id="notice"><%= notice %></p>
+
 <div class="row">
 <div class="col-md-6">
 
@@ -30,17 +37,18 @@
 
     <div class="product-page-meta box">
         <center><h4>
-         <%= @ngo.NGO_name %>
+       City: <%= @ngo.city %>
         </h4></center>
         <center><p>
-           <%= @ngo.phone_number %>
+          Phone_number: <%= @ngo.phone_number %>
         </p></center>
         <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
-           Our Website
+           <%= @ngo.NGO_name %>
         </a>
-        <ul class="list product-page-meta-info">
+       <ul class="list product-page-meta-info">
             <li>
                 <ul class="list product-page-meta-price-list">
+                <div class="col-md-4" >
                     <li>
                         <span class="product-page-meta-title">
 
@@ -53,6 +61,8 @@
 
                         </span>
                     </li>
+                </div>
+                  <div class="col-md-4" >
                     <li>
                         <span class="product-page-meta-title">
 
@@ -65,6 +75,8 @@
 
                         </span>
                     </li>
+                    </div>
+                    <div class="col-md-4" >
                     <li>
                         <span class="product-page-meta-title">
 
@@ -77,11 +89,12 @@
 
                         </span>
                     </li>
+                    </div>
                 </ul>
             </li>
             <li>
                 <span class="product-page-meta-title">
-                  Address
+                 <center>Address</center> 
                 </span>
                 <!--
 
@@ -89,15 +102,15 @@
 
                 -->
                 <div >
-                    <div class="days">   <%= @ngo.country %>  &nbsp <%= @ngo.city %> &nbsp <%= @ngo.street %></div>
+                    <div class="days"> <center>   <%= @ngo.street %></center></div>
                   
                 </div>
             </li>
             <li>
                 <span class="product-page-meta-title">
 
-                    
-                     <%= link_to 'Back', ngos_path %>
+                    <center>Zip_code: <%= @ngo.ZIP_code %> </center>
+                     
                 </span>
             </li>
         </ul>
@@ -108,7 +121,7 @@
 <!-- @ngo.bank_account -->
 <!--@ngo.email -->
 <!-- @ngo.NGO_number  -->
-<!-- @ngo.ZIP_code -->
+
 <!-- @ngo.fb_link  -->
 <!-- @ngo.gp_link -->
 <!-- @ngo.tw_link -->
@@ -133,8 +146,12 @@
 </div>
 </div>
 <% else %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
-<%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> &nbsp
+<div class="col-md-4">
+<%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
+</div>
+<div class="col-md-4">
 <%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
+</div>
 <!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
  <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
  <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
