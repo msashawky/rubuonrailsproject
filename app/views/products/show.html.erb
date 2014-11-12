@@ -30,17 +30,33 @@
                                     </li>
                                     <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
                                     </li>
-                                    <h3>Comments</h3>
-                                    <% @comments.each do |comment| %>
-                                      <div>
-                                        <strong><%= comment.user_email %></strong>
-                                        <br />
-                                        <p><%= comment.body %></p>
-                                        <p><%= link_to 'Delete', controller: :comments, action: :destroy, id: comment %></p>
-                                      </div>
-                                    <% end %>
-                                    <%= render 'comments/form' %>
+                                    <!-- START COMMENTS -->
+                                    <ul class="comments-list">
+                                    <p><h3>Commnets</h3></p>
+                                        <% @comments.each do |comment| %>
+                                        <li>
+                                        <div class="media">
+                                                <div class="pull-left">
+                                                    <img src="/default_large.png" alt="Image Alternative text" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><%= comment.user_email %>
+                                                        <small>
+                                                            <%= comment.created_at %>
+                                                        </small>
+                                                    </h4>
+                                                    <p>
+                                                    <%= comment.body %>
+                                                    </p>
+                                                    <p>
+                                                        <a class="comment-reply" href="#"><i class="fa fa-reply"></i> Reply</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <% end %>
                                 </ul>
+                                <%= render 'comments/form' %>
                             </div>
                         </div>
                     </div>
