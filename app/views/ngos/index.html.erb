@@ -38,6 +38,7 @@
   <tbody>-->
     <div class="row">
     <% @ngos.each do |ngo| %>
+    <% unless  ngo.active_ngo ==  true and ngo.wait_approve == true %>  
     <div class="col-md-4">
     <div class="team-member">
     <%= link_to ( image_tag ngo.image.url ), ngo %>
@@ -86,6 +87,7 @@
       </tr>-->
       </div>
       </div>
+      <% end %> 
     <% end %>
  </div>
 

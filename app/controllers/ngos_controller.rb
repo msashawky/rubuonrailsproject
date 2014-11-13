@@ -26,11 +26,11 @@ layout "index"
   # POST /ngos
   # POST /ngos.json
   def create
-    @ngo = Ngo.new(ngo_params,false )
+    @ngo = Ngo.new(ngo_params ,active_ngo: false , wait_approve: true )
 
     respond_to do |format|
       if @ngo.save
-        AdminMail.welcome_email().deliver
+       # AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
@@ -44,7 +44,7 @@ layout "index"
   # PATCH/PUT /ngos/1.json
   def update
     respond_to do |format|
-      if @ngo.update(ngo_params,true )
+      if @ngo.update(ngo_params ,active_ngo: true ,wait_approve: false )
         format.html { redirect_to @ngo, notice: 'Ngo was successfully updated.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
@@ -67,8 +67,8 @@ layout "index"
 
   def approve
     respond_to do |format|
-      if @ngo.update(:approved => true )
-        #AdminMail.welcome_email().deliver
+      if @ngo.update(active_ngo: true , wait_approve: false )
+        #AdminMail.welcome_email(@ngo.NGO_name).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully approved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
@@ -83,11 +83,18 @@ layout "index"
 
 
   def disapprove
-    @ngo.destroy
-    #AdminMail.welcome_email().deliver
-    respond_to do |format|
-      format.html { redirect_to ngos_url, notice: 'Ngo was successfully disapproved.' }
-      format.json { head :no_content }
+    
+      respond_to do |format|
+      if @ngo.update(active_ngo: false , wait_approve:false )
+        #AdminMail.welcome_email(@ngo.NGO_name).deliver
+        format.html { redirect_to @ngo, notice: 'Ngo was successfully disapproved.' }
+        format.json { render :show, status: :ok, location: @ngo }
+      else
+        format.html { redirect_to @ngo, notice: 'You have an error.' }
+        format.json { render :show, status: :ok, location: @ngo }
+        #format.html { render :edit }
+        #format.json { render json: @ngo.errors, status: :unprocessable_entity }
+      end
     end
   end
 

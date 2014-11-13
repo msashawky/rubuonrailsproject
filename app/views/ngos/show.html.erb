@@ -4,7 +4,7 @@
     <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
   </div>
 </div>
-<% if @ngo.approved == true%>
+<% if  @ngo.active_ngo  == true %>   
 <p id="notice"><%= notice %></p>
 
 <div class="row">
@@ -137,7 +137,7 @@
         </h3>
         <p>
 
-        <%= @ngo.description%>
+        <%= @ngo.description %>
 
         </p>
       
@@ -145,17 +145,20 @@
 
 </div>
 </div>
-<% else %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<div class="row">
 <div class="col-md-4">
 <%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
 </div>
 <div class="col-md-4">
 <%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
 </div>
+</div>
 <!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
  <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
  <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
  <!-- else -->
+ <% else %>
  <h1> Pending until admin approval </h1>
 <% end %>
 <!--<p>
