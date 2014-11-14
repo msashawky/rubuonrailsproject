@@ -71,13 +71,7 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:project_name, :project_description, :project_photo, :project_social_state)
     end
-
-    def add_project
-    end
-
-    def edit_project
-    end
-
+    
     def show_buying_notification
     end
 
