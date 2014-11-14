@@ -45,12 +45,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
+      address: "smtp.mandrillapp.com",
       port: 587,
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: "nashope.mp@gmail.com",
-      password: "Asd12345678912"
+      password: "bfO9wWATdKMY0JRK26Px8A"
 
   }
 
