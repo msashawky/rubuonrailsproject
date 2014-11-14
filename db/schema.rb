@@ -10,8 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20141016081820) do
+ActiveRecord::Schema.define(version: 20141111173830) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -26,47 +25,17 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.integer  "user_id"
   end
 
-  create_table "commontator_comments", force: true do |t|
-    t.string   "creator_type"
-    t.integer  "creator_id"
-    t.string   "editor_type"
-    t.integer  "editor_id"
-    t.integer  "thread_id",                     null: false
-    t.text     "body",                          null: false
-    t.datetime "deleted_at"
-    t.integer  "cached_votes_up",   default: 0
-    t.integer  "cached_votes_down", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "comment_hierarchies", force: true do |t|
   end
 
-  add_index "commontator_comments", ["cached_votes_down"], name: "index_commontator_comments_on_cached_votes_down"
-  add_index "commontator_comments", ["cached_votes_up"], name: "index_commontator_comments_on_cached_votes_up"
-  add_index "commontator_comments", ["creator_id", "creator_type", "thread_id"], name: "index_commontator_comments_on_c_id_and_c_type_and_t_id"
-  add_index "commontator_comments", ["thread_id", "created_at"], name: "index_commontator_comments_on_thread_id_and_created_at"
-
-  create_table "commontator_subscriptions", force: true do |t|
-    t.string   "subscriber_type", null: false
-    t.integer  "subscriber_id",   null: false
-    t.integer  "thread_id",       null: false
+  create_table "comments", force: true do |t|
+    t.string   "user_email"
+    t.text     "body"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
-
-  add_index "commontator_subscriptions", ["subscriber_id", "subscriber_type", "thread_id"], name: "index_commontator_subscriptions_on_s_id_and_s_type_and_t_id", unique: true
-  add_index "commontator_subscriptions", ["thread_id"], name: "index_commontator_subscriptions_on_thread_id"
-
-  create_table "commontator_threads", force: true do |t|
-    t.string   "commontable_type"
-    t.integer  "commontable_id"
-    t.datetime "closed_at"
-    t.string   "closer_type"
-    t.integer  "closer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
 
   create_table "managers", force: true do |t|
     t.datetime "created_at"
@@ -169,7 +138,7 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.string   "apartment"
     t.string   "governorate"
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -188,9 +157,21 @@ ActiveRecord::Schema.define(version: 20141016081820) do
     t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
+    t.integer  "ngo_id"
+
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
