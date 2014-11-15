@@ -13,22 +13,11 @@
 
  *= require_self
  *= require boostrap
-<<<<<<< HEAD
- *= require font_awesome
- *= require ie
- *= require mystyles
- *= require styles
-
- *= require_tree .
-=======
  *= require styles
  *= require font_awesome
  *= require ie
  *= require mystyles
  
  *= require orient
-
- 
->>>>>>> MHossam-AddProductAsProjectOwner
 
  */
