@@ -145,21 +145,24 @@
 
 </div>
 </div>
-<% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
-<div class="row">
+<% elsif @ngo.wait_approve == true  %> <!--current_user == site_admin (devise)-->
+ <h1><strong>Pending until admin approval </strong></h1>
+  <div class="row">
 <div class="col-md-4">
 <%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
 </div>
 <div class="col-md-4">
 <%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
 </div>
+
 </div>
+
 <!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
  <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
  <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
  <!-- else -->
  <% else %>
- <h1> Pending until admin approval </h1>
+
 <% end %>
 <!--<p>
   <strong>Ngo name:</strong>
