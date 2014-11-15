@@ -13,8 +13,9 @@
                         </thead>
                         <tbody>
                             <% @carts.each do |cart| %>
-                                <% if cart.registered_user_id == current_user.id %>
-                                    <% @current_user_cart=cart.id%>
+                                <% if cart.user_id == current_user.id %>
+                                    <%= @current_user_cart=cart.id%>
+                                   
                                     <% break%>
                                 <% end%>
                             <% end%>
@@ -44,7 +45,7 @@
                                                 </td>
                                                 
                                                 <td class="cart-item-remove">
-                                                    <a class="fa fa-times" href="#"></a>
+                                                    <a class="fa fa-times" href="product_carts/destroy/ <%= product_cart.id %>"></a>
                                                 </td>
                                             </tr>
                                         <%end%>
@@ -52,8 +53,8 @@
                                 <%end%>
                             <% end %>
                         </tbody>
-                    </table>  <a href="#" class="btn btn-primary">Update the cart</a>
-                    <%= link_to "Empty cart", {:action => "empty_cart" }%>
+                    </table> 
+                                                    <a class="btn btn-danger" href="carts/destroy/<%= @current_user_card%>">Empty my cart</a>
                 </div>
                 <div class="col-md-3">
                     <ul class="cart-total-list">

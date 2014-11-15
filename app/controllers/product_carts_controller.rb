@@ -69,20 +69,21 @@ class ProductCartsController < ApplicationController
 
 
       def add_to_cart 
+        @carts=Cart.all
 
-          if !@carts=Cart.all
+          if @carts.any?
           @carts.each do |cart|
-            if cart.registered_user_id==current_user.id
+            if cart.user_id==current_user.id
                 @mycart=cart
             else
                @mycart=Cart.new
-               @mycart.registered_user_id = current_user.id
+               @mycart.user_id = current_user.id
              end
           end
         else
                @mycart=Cart.new
-               @mycart.registered_user_id = current_user.id
-end
+               @mycart.user_id = current_user.id
+    end
           @product_cart = ProductCart.new
            @product_cart.cart_id=@mycart.id
           @product_cart.cart = @mycart
@@ -103,7 +104,7 @@ end
         @carts=Cart.all
         @product_carts=ProductCart.all
         @carts.each do |cart|
-          if cart.registered_user_id==current_user.id
+          if cart.user_id==current_user.id
             @current_user_cart=cart.id
             break
           end
