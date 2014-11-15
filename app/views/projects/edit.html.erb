@@ -1,6 +1,35 @@
 <h1>Editing project</h1>
 
-<%= render 'form' %>
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-6">
+  <form role="form">
+    <div class="form-group">
+      <label for="project_name"><strong>Project name</strong></label>
+      <%= @project.project_name %>
+      </div>
+    <div class="form-group">
+      <label for="project_description"><strong>Description</strong></label>
+      <textarea id="project_description" name="project[project_description]" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="project_photo"><strong>Profile photo</strong></label>
+      <input type="file" id="project_photo" name="project[project_photo]">
+    </div>
+    <p><input type="submit" class="btn btn-primary"/></p>
+  </form>
+<% end %>
 <%= link_to 'Show', @project %> |
 <%= link_to 'Back', projects_path %>
+</div>
+

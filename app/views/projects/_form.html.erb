@@ -10,8 +10,11 @@
       </ul>
     </div>
   <% end %>
-
   <form role="form">
+    <% @project.user_id = current_user.id %>
+    <% if current_user.ngo %>
+    <% @project.ngo_id = current_user.ngo.id%>
+    <% end %>
     <div class="form-group">
       <label for="project_name"><strong>Project name</strong></label>
       <input id="project_name" name="project[project_name]" type="text" class="form-control" placeholder="ex: ahmed hassan">
@@ -29,6 +32,6 @@
       <input type="file" id="project_photo" name="project[project_social_state]">
       <p>attach a photo of your documentation</p>
     </div>
-    <p><button type="submit" class="btn btn-primary">Submit</button></p>
+    <p><input type="submit" class="btn btn-primary"/></p>
   </form>
 <% end %>

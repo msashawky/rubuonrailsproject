@@ -18,14 +18,20 @@
         <td><%= project.project_description %></td>
         <td><%= project.project_photo %></td>
         <td><%= project.project_social_state %></td>
-        <td><a href="projects/<%= project.id%>">Show</a></td>
-        <td><a href="projects/<%= project.id%>/edit">Edit</a></td>
+        <td><a href="projects/show/<%= project.id%>">Show</a></td>
+        <td>
+          <% if current_user %>
+          <% if current_user.id == project.id %>
+          <a href="projects/edit/<%= project.id%>">Edit</a></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user %>
 <%= link_to 'New Project', new_project_path %>
+<% end %>
