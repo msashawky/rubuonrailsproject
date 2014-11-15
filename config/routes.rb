@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   resources :ngos
 
-  resources :product_carts
+   resources :product_carts
+
+
+  resources :product_carts 
 
   resources :carts
 
@@ -20,7 +23,7 @@ Rails.application.routes.draw do
 
 
   resources :customers
-  match ":controller(/:action(/:id))",:via =>:get
+get ':controller(/:action(/:id))'
 
   resources :projects
 
