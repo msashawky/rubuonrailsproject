@@ -1,0 +1,13 @@
+describe UsersInvitationsController do
+  let(:user) { User.new }  
+  before :each do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    UsersInvitationsController.any_instance.should_receive(:current_user).at_least(1).and_return user
+    UsersInvitationsController.any_instance.stub(:resource_params).and_return @user_params
+    @user_email_mock = User.should_receive(:find_by_email).with(@user_params[:email])
+    @user_params.should_receive(:[]=).with(:can_create,false)
+     UsersInvitationsController.any_instance.should_receive(:authorize!)
+  end
+end

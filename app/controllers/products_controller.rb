@@ -1,11 +1,10 @@
 class ProductsController < ApplicationController
-# ...before_action :authenticate_user!
+before_action :authenticate_user!
+
   layout "index"
   
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
-  autocomplete :comments, :body
 
   # GET /products
   # GET /products.json
@@ -16,7 +15,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    commontator_thread_show(@product)
+    @comments = @product.comments.all
+    @comment = @product.comments.build
   end
 
   # GET /products/new
