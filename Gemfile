@@ -31,9 +31,10 @@ gem 'rails4-autocomplete'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem "jquery-rails", "~> 2.3.0"
+gem "jquery-rails"
 
- gem "jquery-ui-rails"
+# email invitation
+gem 'devise_invitable'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -43,10 +44,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# supporting hierarchies in comments
+gem 'closure_tree'
 
-# organize comments
-# DOC: http://rubydoc.info/gems/commontator/frames
-gem 'commontator', '~> 4.8.0'
 
 #Enable pagination " Comments "
 gem 'will_paginate'

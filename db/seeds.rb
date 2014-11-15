@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Comment.create(user_email: 'moomen.abdelwahed@yahoo.com', body: 'Test comment', product_id: 1, created_at: "2014-11-11 22:27:22", updated_at: "2014-11-11 22:27:22")
