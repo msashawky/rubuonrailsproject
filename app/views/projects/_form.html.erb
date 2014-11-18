@@ -11,24 +11,28 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :project_name %><br>
-    <%= f.text_field :project_name %>
-  </div>
-  <div class="field">
-    <%= f.label :project_description %><br>
-    <%= f.text_area :project_description %>
-  </div>
-  <div class="field">
-    <%= f.label :project_social_state %><br>
-    <%= f.text_field :project_social_state %>
-  </div>
-  <div class="field">
-  <%= f.label :project_photo %><br>
-   <%= f.file_field :project_photo %>
-   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form role="form">
+    <% @project.user_id = current_user.id %>
+    <% if current_user.ngo %>
+    <% @project.ngo_id = current_user.ngo.id%>
+    <% end %>
+    <div class="form-group">
+      <label for="project_name"><strong>Project name</strong></label>
+      <input id="project_name" name="project[project_name]" type="text" class="form-control" placeholder="ex: ahmed hassan">
+    </div>
+    <div class="form-group">
+      <label for="project_description"><strong>Description</strong></label>
+      <textarea id="project_description" name="project[project_description]" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="project_photo"><strong>Profile photo</strong></label>
+      <input type="file" id="project_photo" name="project[project_photo]">
+    </div>
+    <div class="form-group">
+      <label for="project_social_state"><strong>Social state</strong></label>
+      <input type="file" id="project_photo" name="project[project_social_state]">
+      <p>attach a photo of your documentation</p>
+    </div>
+    <p><input type="submit" class="btn btn-primary"/></p>
+  </form>
 <% end %>

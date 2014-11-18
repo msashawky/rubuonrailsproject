@@ -31,12 +31,16 @@ gem 'rails4-autocomplete'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem "jquery-rails", "~> 2.3.0"
+gem "jquery-rails"
 
- gem "jquery-ui-rails"
+# email invitation
+gem 'devise_invitable'
+
+
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -45,10 +49,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# supporting hierarchies in comments
+gem 'closure_tree'
 
-# organize comments
-# DOC: http://rubydoc.info/gems/commontator/frames
-gem 'commontator', '~> 4.8.0'
 
 #Enable pagination " Comments "
 gem 'will_paginate'
@@ -63,8 +66,9 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'hirb'
 
-
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

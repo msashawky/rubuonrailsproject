@@ -26,11 +26,38 @@
                                 <p class="text-smaller text-muted"><%= @product.product_description %></p>
 
                                 <ul class="list-inline">
-                                    <li><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    </li>
+                                    <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }%>
+                                   
                                     <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
                                     </li>
+                                    <!-- START COMMENTS -->
+                                    <ul class="comments-list">
+                                    <p><h3>Commnets</h3></p>
+                                        <% @comments.each do |comment| %>
+                                        <li>
+                                        <div class="media">
+                                                <div class="pull-left">
+                                                    <img src="/default_large.png" alt="Image Alternative text" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><%= comment.user_email %>
+                                                        <small>
+                                                            <%= comment.created_at %>
+                                                        </small>
+                                                    </h4>
+                                                    <p>
+                                                    <%= comment.body %>
+                                                    </p>
+                                                    <p>
+                                                        <a class="comment-reply" href="#"><i class="fa fa-reply">
+                                                        </i> Reply</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <% end %>
                                 </ul>
+                                <%= render 'comments/form' %>
                             </div>
                         </div>
                     </div>

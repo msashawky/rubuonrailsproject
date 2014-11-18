@@ -1,12 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-<<<<<<< HEAD
-config.action_mailer.default_url_options = { host: 'mohamedshawky.herokuapp.com' }
-=======
   
   # to autoload local files of commontator gem
   config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
->>>>>>> 3a4624dd3b1275fbfc0e1d425455e02096cffb7a
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -84,15 +80,14 @@ config.action_mailer.default_url_options = { host: 'mohamedshawky.herokuapp.com'
   config.active_record.dump_schema_after_migration = false
 
 
-  config.action_mailer.default_url_options =   { :host => 'your_app.herokuapp.com' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
+      address: "smtp.mandrillapp.com",
       port: 587,
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: "masshawky@gmail.com",
-      password: "Ab#12345"
+      user_name: "nashope.mp@gmail.com",
+      password: "bfO9wWATdKMY0JRK26Px8A"
 
   }
 

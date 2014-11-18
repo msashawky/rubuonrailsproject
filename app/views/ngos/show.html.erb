@@ -236,3 +236,18 @@
 
 
  <!--link_to 'Edit', edit_ngo_path(@ngo)-->
+<p>
+  <strong>Apartment:</strong>
+  <%= @ngo.apartment %>
+</p>
+<% if @ngo == current_user.ngo %>
+  <% @user = User.new %>
+  <%= "you can add admin to " + @ngo.NGO_name %>
+  <p> please type his email </p>
+  <%= form_for @user, url: {controller: "ngos", action: "add_admin"} do |f| %>
+    <%= f.email_field "email" %>
+    <%= f.submit "Invite" %>
+  <% end %>
+<% end %>
+<%= link_to 'Edit', edit_ngo_path(@ngo) %>|
+<%= link_to 'Back', ngos_path %>
