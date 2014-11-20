@@ -15,6 +15,7 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories/new
   def new
     @product_category = ProductCategory.new
+   # redirect_to :controller => 'product_categories' , :action =>'index' 
   end
 
   # GET /product_categories/1/edit
@@ -35,6 +36,8 @@ class ProductCategoriesController < ApplicationController
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to :controller => 'product_category' , :action =>'index'
+    #render :action => "index"
   end
 
   # PATCH/PUT /product_categories/1

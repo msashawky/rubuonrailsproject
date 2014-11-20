@@ -15,6 +15,7 @@
     <!-- Bootstrap styles -->
 <%= stylesheet_link_tag('application' , :media => 'all') %>
        <%= javascript_include_tag("application") %>
+       <%= javascript_include_tag :defaults %>
 
 </head>
 
@@ -63,6 +64,8 @@
                     <div class="col-md-6">
                         
                         <!-- LOGIN REGISTER LINKS -->
+
+                       <% if ! user_signed_in? %>
                         <ul class="login-register">
                             <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
                                 <div class="shopping-cart-box">
@@ -90,11 +93,19 @@
                                     </ul>
                                 </div>
                             </li>
+                            
                             <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a>
                             </li>
                             <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Sign up</a>
+                            
                             </li>
                         </ul>
+                        <% else %>
+                        <div class="sign_out">
+                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                       </div>
+
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -105,7 +116,33 @@
             <i class="fa fa-sign-in dialog-icon"></i>
             <h3>Member Login</h3>
             <h5>Welcome back, friend. Login to get started</h5>
-            <form class="dialog-form">
+            <%= form_for(resource, :html => {:class => 'dialog-form'}, as: resource_name,  url: session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div> 
+
+  <div><%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div><%= f.submit "Log in" %></div>
+<% end %>
+
+          <!--:class=>'dialog-form',-->
+
+
+
+
+
+
+
+
+
+
+
+           <!--  <form class="dialog-form">
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="text" placeholder="email@domain.com" class="form-control">
@@ -126,7 +163,7 @@
                 </li>
                 <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Forgot password</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
 
 
@@ -134,7 +171,56 @@
             <i class="fa fa-edit dialog-icon"></i>
             <h3>Member Register</h3>
             <h5>Ready to get best offers? Let's get started!</h5>
-            <form class="dialog-form">
+
+             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div>
+
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name, autofocus: true %>
+
+  </div>
+
+  <div>
+
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name, autofocus: true %>
+    
+  </div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+    <!--phone_field  radio_button-->
+    <div>
+
+    <%= f.label :phone_number %><br/>
+    <%= f.phone_field :phone_number, autofocus: true %>
+
+  </div>
+
+<%= radio_button_tag(:gender, "male" ,checked="checked") %>
+<%= label_tag(:age_child, "male") %>
+
+<%= radio_button_tag(:gender, "female" ,checked="checked") %>
+<%= label_tag(:age_adult, "female") %>
+
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+
+
+            <!-- <form class="dialog-form">
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="text" placeholder="email@domain.com" class="form-control">
@@ -171,7 +257,7 @@
             <ul class="dialog-alt-links">
                 <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
 
 
@@ -391,7 +477,7 @@
 
 
         <!-- Scripts queries -->
-
+        <%= javascript_include_tag :defaults %>
         <%= javascript_include_tag("public") %>
     </div>
 </body>
