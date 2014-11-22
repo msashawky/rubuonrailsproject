@@ -36,7 +36,8 @@ class ProductCategoriesController < ApplicationController
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to :controller => 'product_category' , :action =>'index'
+    redirect_to :controller => "product_categories", :action => "index"
+    #redirect_to :controller => 'product_category' , :action =>'index'
     #render :action => "index"
   end
 
