@@ -1,5 +1,8 @@
 <div class="row">
-  <div class="col-md-11"></div>
+  <div class="col-md-1">
+   <h1> <%= @ngo.NGO_name %></h1>
+  </div>
+  <div class="col-md-10"></div>
   <div class="col-md-1">
     <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
   </div>
@@ -43,7 +46,7 @@
           Phone_number: <%= @ngo.phone_number %>
         </p></center>
         <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
-           <%= @ngo.NGO_name %>
+           <%= @ngo.NGO_name %> website
         </a>
        <ul class="list product-page-meta-info">
             <li>
@@ -238,12 +241,5 @@
  <!--link_to 'Edit', edit_ngo_path(@ngo)-->
 
 <!--  if @ngo == current_user.ngo 
- -->  <% @user = User.new %>
-  <%= "you can add admin to " + @ngo.NGO_name %>
-  <p> please type his email </p>
-  <%= form_for @user, url: {controller: "ngos", action: "add_admin"} do |f| %>
-    <%= f.email_field "email" %>
-    <%= f.submit "Invite" %>
-  <% end %>
-
+ --> 
 

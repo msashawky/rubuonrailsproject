@@ -1,5 +1,5 @@
 class AdminMail < ActionMailer::Base
-   default from: "promohamed91@gmail.com"
+   default from: "nashope.mp@gmail.com"
 
   def welcome_email(ngo)
   	@ngo = ngo

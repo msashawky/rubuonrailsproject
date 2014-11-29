@@ -30,7 +30,7 @@ layout "index"
 
     respond_to do |format|
       if @ngo.save
-       # AdminMail.welcome_email(@ngo).deliver
+       AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
       else
@@ -67,7 +67,7 @@ layout "index"
   def approve
     respond_to do |format|
       if @ngo.update(active_ngo: true , wait_approve: false )
-        #AdminMail.welcome_email(@ngo.NGO_name).deliver
+        AdminMail.welcome_email(@ngo.NGO_name).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully approved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
@@ -85,7 +85,7 @@ layout "index"
     
       respond_to do |format|
       if @ngo.update(active_ngo: false , wait_approve:false )
-        #AdminMail.welcome_email(@ngo.NGO_name).deliver
+        AdminMail.welcome_email(@ngo.NGO_name).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully disapproved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
