@@ -11,33 +11,31 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-8">
+     <div id="popup-gallery" class="row row-no-gutter">
+  
+            <!--
 
-    <!--
+             HOVER IMAGE 
 
-     START BOOTSTRAP CAROUSEL 
-
-    -->
-    <div id="my-carousel" class="carousel slide">
-        <div class="carousel-inner">
-            
-                <%= image_tag @ngo.image.url %>
-            
+            -->
+            <a class="hover-img popup-gallery-image" data-effect="mfp-zoom-out" href = '<%=  @ngo.image.url %> '>
+                <img title="Gamer Chick" alt="Image Alternative text" src= '<%=  @ngo.image.url %>'></img>
+                <i class="fa fa-resize-full hover-icon"></i>
+            </a>
         </div>
-       
+        
+        
     </div>
     <!--
 
      END BOOTSTRAP CAROUSEL 
 
     --> 
-
-</div>
-<div class="col-md-2">
+<div class="col-md-1">
 </div>
 
-<div class="col-md-4">
-
+<div class="col-md-3">
     <div class="product-page-meta box">
         <center><h4>
        City: <%= @ngo.city %>
@@ -60,7 +58,7 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                            <a class="fa fa-facebook" href="<% @ngo.fb_link %>"></a>
+                            <a class="fa fa-facebook" href='<% @ngo.fb_link %>'></a>
 
                         </span>
                     </li>
@@ -74,7 +72,7 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                            <a class="fa fa-twitter" href="<% @ngo.tw_link %>"></a>
+                            <a class="fa fa-twitter" href='<% @ngo.tw_link %>'></a>
 
                         </span>
                     </li>
@@ -88,7 +86,7 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                              <a class="fa fa-google-plus" href="<% @ngo.gp_link %>"></a>
+                              <a class="fa fa-google-plus" href='<% @ngo.gp_link %>'></a>
 
                         </span>
                     </li>
@@ -131,21 +129,24 @@
 <!-- @ngo.governorate -->
 <!-- @ngo.apartment  -->
 
+<br>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-8">
+  <div class="tabbable">        
         <h3>
 
             Discription
 
         </h3>
-        <p>
+<div class="tab-content">
 
-        <%= @ngo.description %>
-
-        </p>
-      
+    <div id="tab-1" class="tab-pane fade in active">
+        <div class="row text-smaller">
+             <%= @ngo.description %>
+        </div>
+    </div>      
     </div>
-
+</div>
 </div>
 </div>
 <% elsif @ngo.wait_approve == true  %> <!--current_user == site_admin (devise)-->
@@ -167,6 +168,7 @@
  <% else %>
 
 <% end %>
+
 <!--<p>
   <strong>Ngo name:</strong>
   
