@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :user_data
 
   resources :products
+    resources :user
+
 
 
   resources :customers

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Couponia - Index</title>
+    <title>NasHope</title>
     <!-- meta info -->
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta name="keywords" content="Koupon HTML5 Template" />
@@ -14,8 +14,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap styles -->
 <%= stylesheet_link_tag('application' , :media => 'all') %>
-       <%= javascript_include_tag("application") %>
        <%= javascript_include_tag :defaults %>
+       
+
 
 </head>
 
@@ -45,7 +46,7 @@
                         <nav>
                             <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
 
-                                <li class="active"><a href="index.html">Home</a>
+                                <li class="active"><a href="/home">Home</a>
                                 </li>
 
                                 <li><a href="category-page-shop.html">Category</a>
@@ -101,8 +102,16 @@
                             </li>
                         </ul>
                         <% else %>
+
+                         <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
+                         <nav>
+                         <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
                         <div class="sign_out">
-                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                        <li class="active">
+                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "nav nav-pills flexnav" %></li>
+                       </div>
+                         </ul>
+                         </nav>
                        </div>
 
                         <% end %>
@@ -112,23 +121,35 @@
         </header>
 
         <!-- LOGIN REGISTER LINKS CONTENT -->
+        <!-- :html => {:class => "dialog-form"},-->
         <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="fa fa-sign-in dialog-icon"></i>
-            <h3>Member Login</h3>
-            <h5>Welcome back, friend. Login to get started</h5>
-            <%= form_for(resource, :html => {:class => 'dialog-form'}, as: resource_name,  url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div> 
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+<!--             <i class="fa fa-sign-in dialog-icon"></i>
+ -->            <h3>Sign In</h3>
+            <h5>Welcome back, Login to get started</h5>
+            
+            <%= form_for(resource, as: resource_name, :class=>"dialog-form",  url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+            <br />
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true , :class=>"form-control" %>
+  </div>
+ 
+  <div class="form-group">
+  <%= f.label :password%>
+    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control"  %>
+    </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+   <div class="checkbox">
+    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </div>
   <% end -%>
 
-  <div><%= f.submit "Log in" %></div>
+  <!-- <div  class="btn btn-primary"><%= f.submit "Log in" %>
+  </div> -->
+  <input type="submit" value="Sign in" class="btn btn-primary">
 <% end %>
+<!--form-group end-->
 
           <!--:class=>'dialog-form',-->
 
@@ -169,40 +190,40 @@
 
         <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
             <i class="fa fa-edit dialog-icon"></i>
-            <h3>Member Register</h3>
+            <h3>SignUp</h3>
             <h5>Ready to get best offers? Let's get started!</h5>
 
-             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+             <%= form_for(resource, as: resource_name, :class=>"dialog-form", url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div>
-
-    <%= f.label :first_name %><br/>
-    <%= f.text_field :first_name, autofocus: true %>
+  <div class="form-group">
+    <br/>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, :class=>"form-control" %>
 
   </div>
 
-  <div>
+  <div class="form-group">
 
-    <%= f.label :last_name %><br/>
-    <%= f.text_field :last_name, autofocus: true %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true, :class=>"form-control"  %>
     
   </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div><%= f.label :email %>
+  <%= f.email_field :email, autofocus: true , :class=>"form-control" %></div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
+    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" , :class=>"form-control" %></div>
 
     <!--phone_field  radio_button-->
     <div>
 
-    <%= f.label :phone_number %><br/>
-    <%= f.phone_field :phone_number, autofocus: true %>
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number, autofocus: true , :class=>"form-control" %>
 
   </div>
 
@@ -213,7 +234,7 @@
 <%= label_tag(:age_adult, "female") %>
 
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><input type="submit" value="SignUp" class="btn btn-primary"></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
