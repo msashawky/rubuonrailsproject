@@ -14,7 +14,8 @@
                         <tbody>
                             <% @carts.each do |cart| %>
                                 <% if cart.user_id == current_user.id %>
-                                    <%= @current_user_cart=cart.id%>
+                                    <% @current_user_cart=cart.id%>
+                                   
                                    
                                     <% break%>
                                 <% end%>
@@ -22,6 +23,7 @@
                             <% @product_carts.each do |product_cart| %>
                                 <% if product_cart.cart_id == @current_user_cart %>
                                     <% @my_product=product_cart.product_id %>
+
                                     <%@products.each do |product|%>
                                         <% if product.id==@my_product%>
                                            <% @totalprice = @totalprice.to_i+product.product_price.to_i%>
@@ -54,7 +56,8 @@
                             <% end %>
                         </tbody>
                     </table> 
-                                                    <a class="btn btn-danger" href="carts/destroy/<%= @current_user_card%>">Empty my cart</a>
+                        
+                        <%= link_to "Add to cart", {:controller => "carts", :action => "destroy", :id => @current_user_cart }%>
                 </div>
                 <div class="col-md-3">
                     <ul class="cart-total-list">
