@@ -2,11 +2,7 @@ Rails.application.routes.draw do
 
   resources :charities
 
-  devise_for :registered_users
-
-
-
-  resources :registered_users
+  
 
   resources :ngos
 
