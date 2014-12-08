@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-
 <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -19,17 +18,17 @@
                         </div>
                         <div class="col-md-5">
                             <div class="product-info box">
-	                           <small><a href="#" class="text-muted">based on 8 reviews</a></small>
+                            
                                 <h3><%= @product.product_name %></h3>
+                                
                                 <p class="product-info-price">$<%= @product.product_price%></p>
                                 <p class="product-info-price"> <%= @product.product_count%>  Pieces</p>
                                 <p class="text-smaller text-muted"><%= @product.product_description %></p>
 
                                 <ul class="list-inline">
-                                    <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }%>
+                                    <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }, :class=>"btn btn-primary"%>
                                    
-                                    <li><a href="#" class="btn"><i class="fa fa-star"></i> To Wishlist</a>
-                                    </li>
+                                    
                                     <!-- START COMMENTS -->
                                     <ul class="comments-list">
                                     <p><h3>Commnets</h3></p>
@@ -64,6 +63,6 @@
                     <div class="gap"></div>
                     <div class="gap"></div>
                 </div>    
-			</div>        
+            </div>        
         </div>
 
