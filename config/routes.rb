@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :charities
 
+
+
+
   resources :ngos
 
   resources :product_carts
