@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113081050) do
+ActiveRecord::Schema.define(version: 20141208142411) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -94,12 +94,12 @@ ActiveRecord::Schema.define(version: 20141113081050) do
   create_table "projects", force: true do |t|
     t.string   "project_name"
     t.text     "project_description"
-    t.string   "project_photo"
-    t.string   "project_social_state"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "ngo_id"
+    t.string   "project_photo"
+    t.string   "project_social_state"
   end
 
   create_table "site_admins", force: true do |t|
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20141113081050) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.integer  "ngo_id"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

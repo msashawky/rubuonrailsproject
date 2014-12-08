@@ -12,12 +12,12 @@
 
 <p>
   <strong>Project photo:</strong>
-  <%= @project.project_photo %>
+  <%= image_tag @project.project_photo %>
 </p>
 
 <p>
   <strong>Project social state:</strong>
-  <%= @project.project_social_state %>
+  <%= image_tag @project.project_social_state %>
 </p>
 <% if current_user %>
 <% if current_user.id == @project.user_id %>

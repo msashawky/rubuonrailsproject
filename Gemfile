@@ -51,7 +51,7 @@ gem 'closure_tree'
 #Enable pagination " Comments "
 gem 'will_paginate'
 
-
+# for file uploading
 gem "paperclip", "~> 4.2"
 
 group :development ,:test do
@@ -61,7 +61,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-
+# for file uploading
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
