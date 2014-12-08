@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113081050) do
+ActiveRecord::Schema.define(version: 20141204164453) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -79,12 +79,12 @@ ActiveRecord::Schema.define(version: 20141113081050) do
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
-    t.integer  "product_count",         limit: 255, default: 1
+    t.integer  "product_count",       limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "projects_id"
-    t.integer  "product_categories_id"
+    t.integer  "project_id"
+    t.integer  "product_category_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20141113081050) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.integer  "ngo_id"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

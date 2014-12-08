@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   resources :ngos
 
-  resources :product_carts
+   resources :product_carts
+
+
+  resources :product_carts 
 
   resources :carts
 
@@ -17,15 +20,22 @@ Rails.application.routes.draw do
   resources :user_data
 
   resources :products
+    resources :user
+
 
 
   resources :customers
-  match ":controller(/:action(/:id))",:via =>:get
+get ':controller(/:action(/:id))'
 
   resources :projects
 
   resources :customers
   devise_for :users, controllers: { sessions: "users/sessions" }
+    devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' 
+      # match 'users/sign_out' => "devise/sessions#destroy"
+      
+    end
+
   root to: "home#index"
   resources:profile
 
