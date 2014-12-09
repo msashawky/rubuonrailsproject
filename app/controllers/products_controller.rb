@@ -19,8 +19,11 @@ before_action :authenticate_user!
     @comment = @product.comments.build
   end
 
+
+
   # GET /products/new
   def new
+    @category =ProductCategory.all
     @product = Product.new
   end
 
@@ -34,7 +37,23 @@ before_action :authenticate_user!
     @product = Product.new(product_params)
 
     respond_to do |format|
+      
       if @product.save
+
+          if params[:images]&&params[:images].length < 4
+
+                  
+            #===== The magic is here ;)
+            params[:images].each { |image|
+              @product.product_pictures.create(image: image)
+
+            }
+          
+          else         
+        @product.errors.add(:images, 'You Can not add more than 4 images')
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -63,7 +82,7 @@ before_action :authenticate_user!
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Product was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -77,7 +96,7 @@ before_action :authenticate_user!
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
 
-      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo)
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo).merge(:product_categories_id => params[:product_categories_id][:id])
     end
 
   def add_product
@@ -94,5 +113,6 @@ before_action :authenticate_user!
 
   def suspend_product
   end
+
 
 end
