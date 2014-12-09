@@ -21,6 +21,7 @@ before_action :authenticate_user!
 
   # GET /products/new
   def new
+    @projects = Project.all
     @product = Product.new
   end
 
@@ -31,8 +32,9 @@ before_action :authenticate_user!
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
 
+    @product = Product.new(product_params)
+     @product.projects_id=params[:id]
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -77,7 +79,7 @@ before_action :authenticate_user!
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
 
-      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo)
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo,:projects_id)
     end
 
   def add_product
