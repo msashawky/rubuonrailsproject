@@ -33,7 +33,8 @@ layout "index"
        AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
-        User.update(ngo_id: @ngo.id )
+        @user= User.find(current_user.id)
+        @user.update(ngo_id: @ngo.id )
       else
         format.html { render :new }
         format.json { render json: @ngo.errors, status: :unprocessable_entity }
