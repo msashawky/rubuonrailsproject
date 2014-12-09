@@ -15,6 +15,7 @@ before_action :authenticate_user!
   # GET /products/1
   # GET /products/1.json
   def show
+     @product_picture = ProductPicture.all
     @comments = @product.comments.all
     @comment = @product.comments.build
   end
@@ -54,7 +55,7 @@ before_action :authenticate_user!
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
           end
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @product }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
