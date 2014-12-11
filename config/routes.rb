@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :charities
 
-
+get 'controller/index'
 
 
   resources :ngos
