@@ -7,6 +7,7 @@ layout "index"
   def index
     #AdminMail.welcome_email().deliver
     @ngos = Ngo.all
+    @ngos = @ngos.paginate(:page => 1, :per_page => 2)
   end
 
   # GET /ngos/1

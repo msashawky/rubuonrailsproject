@@ -36,8 +36,10 @@
   </thead>
 
   <tbody>-->
+
     <div class="row">
     <% @ngos.each do |ngo| %>
+    <%= will_paginate @ngos, renderer: BootstrapPagination::Rails %>
     <% unless  ngo.active_ngo ==  true and ngo.wait_approve == true %>  
     <div class="col-md-4">
     <div class="team-member">
