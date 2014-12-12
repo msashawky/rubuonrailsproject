@@ -38,8 +38,15 @@
                                                     <a href="#"> <%= product.product_name %></a>
                                                 </td>
                                                 
-                                                <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                                                    <input type="text" name="cart-quantity" class="cart-quantity" value="<%=product_cart.product_amount%>" /><i class="fa fa-plus cart-item-plus"></i>
+                                                <td class="cart-item-quantity">
+                                                <a href="product_carts/decrease_amount/<%= product_cart.id %>">
+                                                    <i class="fa fa-minus cart-item-minus"></i>
+                                                </a>
+                                                    
+                                                    <input type="text" name="cart-quantity" class="cart-quantity" value="<%=product_cart.product_amount%>" />
+                                                <a href="product_carts/increase_amount/<%= product_cart.id %>">
+                                                    <i class="fa fa-plus cart-item-plus"></i>
+                                                </a>                                                    
                                                 </td>
                                                 
                                                 <td>

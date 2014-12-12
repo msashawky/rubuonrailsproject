@@ -66,7 +66,25 @@ class ProductCartsController < ApplicationController
     end
   end
 
+    def increase_amount   
+      @product_cart=ProductCart.find(params[:id])
+      @product_cart.product_amount = @product_cart.product_amount + 1
+          if  @product_cart.save!       
+            redirect_to :back
+          else
+            render "new"
+          end  
+    end
 
+    def decrease_amount
+      @product_cart=ProductCart.find(params[:id])
+      @product_cart.product_amount = @product_cart.product_amount - 1
+        if  @product_cart.save!       
+            redirect_to :back
+        else
+            render "new"
+        end  
+    end
 
       def add_to_cart 
         @carts=Cart.all
