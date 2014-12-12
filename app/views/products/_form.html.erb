@@ -39,6 +39,24 @@
           *  <%= f.label :product_name %><br>
             <%= f.text_field :product_name ,:class=>"form-control",:placeholder=>"name" %>
           </div>
+            <div class="form-group">
+          *  <%= f.label :product_category %><br>
+
+            <%= collection_select(:product_categories_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
+          </div>
+          
+          <div class="control-group">
+            <%= f.label :Gallery_photos, :class => 'control-label' %>
+            <div class="controls">
+              <!-- The magic is coming ...look at my eyes....shazammmm -->
+              <!-- Use HTML5 multiple attribute to enable multiple selection
+                   and pass back to controller all files as an array, ready 
+                   for paperclip!!
+                   file_field_tag, since images is not a gallery attribute
+               -->
+              <%= file_field_tag "images[]", type: :file, multiple: true %>
+            </div>
+          </div>
 
           <div class="form-group">
             *  <%= f.label :product_price %><br>
@@ -58,7 +76,7 @@
           </div>
 
           <div class="form-group">
-              <%= f.label :upload_image %><br>
+              <%= f.label :upload_main_image %><br>
               <%= f.file_field :photo %>
           </div>
           <%=project.id%>
