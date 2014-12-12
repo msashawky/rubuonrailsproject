@@ -1,0 +1,33 @@
+<% if current_user %>
+<h2 class="sub-header">Checkout Requests</h2>
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Phone number</th>
+                  <th>Address</th>
+                  <th>Product name</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<% @checkouts = Checkout.all %>
+              	<% @checkouts.each do |checkout| %>
+					<% @projects.each do |project| %>
+                		<% if project.user == current_user && project.product == checkout.product %>
+              	
+                <tr>
+                  <td><%= checkout.id %></td>
+                  <td><%= checkout.name %></td>
+                  <td><%= checkout.phone_number %></td>
+                  <td><%= checkout.address %></td>
+                  <td><%= checkout.product.product_name %></td>
+                </tr>
+                		<% end %>
+                	<% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+<% end %>
