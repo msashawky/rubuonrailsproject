@@ -12,13 +12,16 @@
 
 <p>
   <strong>Project photo:</strong>
-  <%= @project.project_photo %>
+  <%= image_tag @project.project_photo %>
 </p>
 
 <p>
   <strong>Project social state:</strong>
-  <%= @project.project_social_state %>
+  <%= image_tag @project.project_social_state %>
 </p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<% if current_user %>
+<% if current_user.id == @project.user_id %>
+<a href="../edit/<%= @project.id %>">Edit</a> |
+<% end %>
+<% end %>
 <%= link_to 'Back', projects_path %>
