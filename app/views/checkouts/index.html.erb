@@ -13,9 +13,11 @@
               </thead>
               <tbody>
               	<% @checkouts = Checkout.all %>
+                <% @products = Product.all %>
               	<% @checkouts.each do |checkout| %>
-					<% @projects.each do |project| %>
-                		<% if project.user == current_user && project.product == checkout.product %>
+					       <% @products.each do |product| %>
+                 <% if product.project %>
+                		<% if product.project.user == current_user && product == checkout.product %>
               	
                 <tr>
                   <td><%= checkout.id %></td>
@@ -24,6 +26,7 @@
                   <td><%= checkout.address %></td>
                   <td><%= checkout.product.product_name %></td>
                 </tr>
+                    <% end %>
                 		<% end %>
                 	<% end %>
                 <% end %>
