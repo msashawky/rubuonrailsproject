@@ -1,45 +1,47 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+           <%= form_for(resource, as: resource_name, :class=>"dialog-form", url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div>
-
-  	<%= f.label :first_name %><br/>
-  	<%= f.text_field :first_name, autofocus: true %>
+  <div class="form-group">
+    <br/>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, :class=>"form-control" %>
 
   </div>
 
-  <div>
+  <div class="form-group">
 
-  	<%= f.label :last_name %><br/>
-  	<%= f.text_field :last_name, autofocus: true %>
-  	
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true, :class=>"form-control"  %>
+    
   </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div><%= f.label :email %>
+  <%= f.email_field :email, autofocus: true , :class=>"form-control" %></div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
+    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" , :class=>"form-control" %></div>
 
     <!--phone_field  radio_button-->
     <div>
 
-  	<%= f.label :phone_number %><br/>
-  	<%= f.phone_field :phone_number, autofocus: true %>
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number, autofocus: true , :class=>"form-control" %>
 
   </div>
 
-<%= radio_button_tag(:gender, "male") %>
+<%= radio_button_tag(:gender, "male" ,checked="checked") %>
 <%= label_tag(:age_child, "male") %>
-<%= radio_button_tag(:gender, "female") %>
+
+<%= radio_button_tag(:gender, "female" ,checked="checked") %>
 <%= label_tag(:age_adult, "female") %>
 
-  <div><%= f.submit "Sign up" %></div>
+
+  <div><input type="submit" value="SignUp" class="btn btn-primary"></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
