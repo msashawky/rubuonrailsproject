@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
    belongs_to :project
    belongs_to :product_category
    has_many :carts, through: :product_carts
-   validates :product_name,  :product_price, :product_description, presence: true
+   validates :product_name,  :product_price,:product_category, :product_description, presence: true
    validates :product_price, :product_count, numericality: { only_integer: true }
    validates :product_count , :product_price, numericality: { :greater_than => 0 }
    validates :product_name, length: { minimum: 4 }
