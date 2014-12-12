@@ -15,9 +15,12 @@ before_action :authenticate_user!
   # GET /products/1
   # GET /products/1.json
   def show
+     @product_picture = ProductPicture.all
     @comments = @product.comments.all
     @comment = @product.comments.build
   end
+
+
 
   # GET /products/new
   def new
@@ -35,8 +38,24 @@ before_action :authenticate_user!
     @product = Product.new(product_params)
 
     respond_to do |format|
+      
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+
+          if params[:images]&&params[:images].length < 4
+
+                  
+            #===== The magic is here ;)
+            params[:images].each { |image|
+              @product.product_pictures.create(image: image)
+
+            }
+          
+          else         
+        @product.errors.add(:images, 'You Can not add more than 4 images')
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
+        format.html { redirect_to @product }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -95,5 +114,6 @@ before_action :authenticate_user!
 
   def suspend_product
   end
+
 
 end

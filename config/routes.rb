@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :user_data
 
   resources :products
+    resources :user
+
 
 
   resources :customers
@@ -29,6 +31,11 @@ get ':controller(/:action(/:id))'
 
   resources :customers
   devise_for :users, controllers: { sessions: "users/sessions" }
+    devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' 
+      # match 'users/sign_out' => "devise/sessions#destroy"
+      
+    end
+
   root to: "home#index"
   resources:profile
 

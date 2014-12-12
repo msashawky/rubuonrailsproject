@@ -1,68 +1,78 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="container">
+        <div class="container">
+
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-
+                    
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="150" data-thumbwidth="150">
-                                
-                                <%= image_tag @product.photo.url(:large) %>
-
+                            <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="100" data-thumbwidth="150">
+                            <% @product_picture.each do |picture| %>
+                                <%if picture.product_id== @product.id%>    
+                                    <%= image_tag picture.image.url(:thumb) %>
+                                <%end%>
+                            <%end%>
                             </div>
-                            <div class="gap"></div>
-                            <%= link_to 'Edit', edit_product_path(@product) ,:class=>"btn btn-primary"%> |
-                            <%= link_to 'Back', products_path,:class=>"btn btn-danger" %>
                         </div>
                         <div class="col-md-5">
-                            <div class="product-info box">
-                            
+                 
+
                                 <h3><%= @product.product_name %></h3>
                                 
                                 <p class="product-info-price">$<%= @product.product_price%></p>
-                                <p class="product-info-price"> <%= @product.product_count%>  Pieces</p>
+                                <p class="product-info-price"><%= @product.product_count%>  Pieces</p>
                                 <p class="text-smaller text-muted"><%= @product.product_description %></p>
+
 
                                 <ul class="list-inline">
                                     <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }, :class=>"btn btn-primary"%>
                                    
                                     
                                     <!-- START COMMENTS -->
+
                                     <ul class="comments-list">
                                     <p><h3>Commnets</h3></p>
                                         <% @comments.each do |comment| %>
-                                        <li>
-                                        <div class="media">
-                                                <div class="pull-left">
-                                                    <img src="/default_large.png" alt="Image Alternative text" />
+                                            <li>
+                                                <div class="media">
+                                                    <div class="pull-left">
+                                                        <img src="/default_large.png" alt="Image Alternative text" />
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><%= comment.user_email %>
+                                                            <small>
+                                                                <%= comment.created_at %>
+                                                            </small>
+                                                        </h4>
+                                                        <p>
+                                                        <%= comment.body %>
+                                                        </p>
+
+                                                        <p>
+                                                            <a class="comment-reply" href="#"><i class="fa fa-reply">
+                                                            </i> Reply</a>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading"><%= comment.user_email %>
-                                                        <small>
-                                                            <%= comment.created_at %>
-                                                        </small>
-                                                    </h4>
-                                                    <p>
-                                                    <%= comment.body %>
-                                                    </p>
-                                                    <p>
-                                                        <a class="comment-reply" href="#"><i class="fa fa-reply">
-                                                        </i> Reply</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <% end %>
-                                </ul>
-                                <%= render 'comments/form' %>
+                                            </li>
+                                        <% end %><!-- end comment -->
+                                    </ul>
+                                    <%= render 'comments/form' %>
+
                             </div>
                         </div>
                     </div>
                     <div class="gap"></div>
+                    
                     <div class="gap"></div>
-                </div>    
-            </div>        
-        </div>
+          
+                    <div class="gap gap-small"></div>
+                </div>
+            </div>
+
+                                    <%= link_to 'Edit', edit_product_path(@product) ,:class=>"btn btn-primary"%> |
+                            <%= link_to 'Back', products_path,:class=>"btn btn-danger" %>
+
 
