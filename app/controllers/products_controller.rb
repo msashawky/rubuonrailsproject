@@ -38,9 +38,18 @@ before_action :authenticate_user!
     @product = Product.new(product_params)
 
     respond_to do |format|
-      
-      if @product.save
+      if !params[:images]
+        @product.errors.add(:images, 'images can not be empty')
+        format.html { render :new }
+        format.json { render :show, status: :created, location: @product }
+      elsif params[:images].length > 4
+        @product.errors.add(:images, 'You Can not add more than 4 images')
+        format.html { render :new }
+        format.json { render :show, status: :created, location: @product }    
+      else
 
+      if @product.save
+           
           if params[:images]&&params[:images].length < 4
 
                   
@@ -49,13 +58,8 @@ before_action :authenticate_user!
               @product.product_pictures.create(image: image)
 
             }
-          
-          else         
-        @product.errors.add(:images, 'You Can not add more than 4 images')
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
           end
-        format.html { redirect_to @product }
+        format.html { render :new }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -63,6 +67,7 @@ before_action :authenticate_user!
       end
     end
   end
+end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
