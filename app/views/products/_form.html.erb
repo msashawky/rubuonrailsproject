@@ -1,9 +1,13 @@
-<% @projects.each do |project|%>
 <% @checkboolean=0%>
+<%if !@products%>
+  <%checkboolean=0%>
+<%end%>
+<% @projects.each do |project|%>
+
   <% if project.user_id== current_user.id%>
   <% @checkboolean=1%>
      <%@product.projects_id=project.id%>
-    <%=@product.projects_id%>  
+   
 
 
 
@@ -79,8 +83,7 @@
               <%= f.label :upload_main_image %><br>
               <%= f.file_field :photo %>
           </div>
-          <%=project.id%>
-          <%= f.button :submit , name: "id", value: project.id %>
+                    <%= f.button :submit , name: "id", value: project.id %>
           <%= link_to 'Back', products_path ,:class=>"btn btn-danger"%>
       </form>
   </div>
@@ -94,7 +97,7 @@
 <%end%>
 <%end%>
 <%if @checkboolean==0%>
-<%= "you are not welcomed here."%>
+<h3> "you don not have access to add a product."</h3>
 <%end%>
 
 
