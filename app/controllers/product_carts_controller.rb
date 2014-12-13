@@ -10,6 +10,7 @@ class ProductCartsController < ApplicationController
     @carts=Cart.all
     @product_carts = ProductCart.all
     @products=Product.all 
+    @checkout=Checkout.new
   end
 
   # GET /product_carts/1

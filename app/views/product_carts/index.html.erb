@@ -23,7 +23,6 @@
                             <% @product_carts.each do |product_cart| %>
                                 <% if product_cart.cart_id == @current_user_cart %>
                                     <% @my_product=product_cart.product_id %>
-
                                     <%@products.each do |product|%>
                                         <% if product.id==@my_product%>
                                            <% @totalprice = @totalprice.to_i+product.product_price.to_i%>
@@ -56,8 +55,8 @@
                             <% end %>
                         </tbody>
                     </table> 
+                        <a class="btn btn-danger" href="carts/destroy/ <%=@current_user_cart%>">Empty my cart</a>
                         
-                        <%= link_to "Add to cart", {:controller => "carts", :action => "destroy", :id => @current_user_cart }%>
                 </div>
                 <div class="col-md-3">
                     <ul class="cart-total-list">
@@ -70,7 +69,43 @@
                         <li><span>Total</span><span>$<%=@totalprice%></span>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-lg">Checkout</a>
+
+
+<%= form_for(@checkout) do |f| %>
+    <% if @checkout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checkout.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+
+      <ul>
+      <% checkout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+      <form accept-charset="UTF-8" action="/checkouts" class="new_product" id="new_product"method="post">
+          <div class="form-group">
+          *  <%= f.label :name %><br>
+            <%= f.text_field :name ,:value=>current_user.first_name,:class=>"form-control",:placeholder=>"name" %>
+          </div>
+
+          <div class="form-group">
+            *  <%= f.label :phone_number %><br>
+              <%= f.text_field :phone_number , :value =>current_user.phone_number ,:class=>"form-control",:placeholder=>"$" %>
+          </div>
+
+          <%= f.button :submit , :class=> "btn btn-primary"  %>
+        
+      </form>
+
+
+<% end %>
+
+                  </div>
                 </div>
             </div>
         </div>
