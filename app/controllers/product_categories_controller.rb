@@ -15,6 +15,7 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories/new
   def new
     @product_category = ProductCategory.new
+   # redirect_to :controller => 'product_categories' , :action =>'index' 
   end
 
   # GET /product_categories/1/edit
@@ -28,13 +29,20 @@ class ProductCategoriesController < ApplicationController
 
     respond_to do |format|
       if @product_category.save
-        format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
+        redirect_to :controller => "product_categories", :action => "index"
+        #format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
         format.json { render :show, status: :created, location: @product_category }
+            
+
       else
         format.html { render :new }
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
       end
     end
+    
+
+    
+    
   end
 
   # PATCH/PUT /product_categories/1

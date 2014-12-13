@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Couponia - Index</title>
+    <title>NasHope</title>
     <!-- meta info -->
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta name="keywords" content="Koupon HTML5 Template" />
@@ -14,7 +14,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap styles -->
 <%= stylesheet_link_tag('application' , :media => 'all') %>
+
        <%= javascript_include_tag("application") %>
+
 
 </head>
 
@@ -44,7 +46,7 @@
                         <nav>
                             <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
 
-                                <li class="active"><a href="index.html">Home</a>
+                                <li class="active"><a href="/home">Home</a>
                                 </li>
 
                                 <li><a href="category-page-shop.html">Category</a>
@@ -63,6 +65,8 @@
                     <div class="col-md-6">
                         
                         <!-- LOGIN REGISTER LINKS -->
+
+                       <% if ! user_signed_in? %>
                         <ul class="login-register">
                             <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
                                 <div class="shopping-cart-box">
@@ -90,88 +94,120 @@
                                     </ul>
                                 </div>
                             </li>
+                            
                             <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a>
                             </li>
                             <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Sign up</a>
+                            
                             </li>
                         </ul>
+                        <% else %>
+
+                         <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
+                         <nav>
+                         <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
+                        <div class="sign_out">
+                        <li class="active">
+                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "nav nav-pills flexnav" %></li>
+                       </div>
+                         </ul>
+                         </nav>
+                       </div>
+
+                        <% end %>
                     </div>
                 </div>
             </div>
         </header>
 
         <!-- LOGIN REGISTER LINKS CONTENT -->
+        <!-- :html => {:class => "dialog-form"},-->
         <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="fa fa-sign-in dialog-icon"></i>
-            <h3>Member Login</h3>
-            <h5>Welcome back, friend. Login to get started</h5>
-            <form class="dialog-form">
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="text" placeholder="email@domain.com" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="My secret password" class="form-control">
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Remember me
-                    </label>
-                </div>
-                <input type="submit" value="Sign in" class="btn btn-primary">
-            </form>
-            <ul class="dialog-alt-links">
-                <li><a class="popup-text" href="#register-dialog" data-effect="mfp-zoom-out">Not member yet</a>
-                </li>
-                <li><a class="popup-text" href="#password-recover-dialog" data-effect="mfp-zoom-out">Forgot password</a>
-                </li>
-            </ul>
+<!--             <i class="fa fa-sign-in dialog-icon"></i>
+ -->            <h3>Sign In</h3>
+            <h5>Welcome back, Login to get started</h5>
+            
+            <%= form_for(resource, as: resource_name, :class=>"dialog-form",  url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+            <br />
+  <%= f.label :email %>
+  <%= f.email_field :email, autofocus: true , :class=>"form-control" %>
+  </div>
+ 
+  <div class="form-group">
+  <%= f.label :password%>
+    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control"  %>
+    </div>
+
+  <% if devise_mapping.rememberable? -%>
+   <div class="checkbox">
+    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <!-- <div  class="btn btn-primary"><%= f.submit "Log in" %>
+  </div> -->
+  <input type="submit" value="Sign in" class="btn btn-primary">
+<% end %>
+<!--form-group end-->
+
+          
         </div>
 
 
         <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
             <i class="fa fa-edit dialog-icon"></i>
-            <h3>Member Register</h3>
+            <h3>SignUp</h3>
             <h5>Ready to get best offers? Let's get started!</h5>
-            <form class="dialog-form">
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="text" placeholder="email@domain.com" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="My secret password" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Repeat Password</label>
-                    <input type="password" placeholder="Type your password again" class="form-control">
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label>Your Area</label>
-                            <input type="password" placeholder="Boston" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Postal/Zip</label>
-                            <input type="password" placeholder="12345" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">Get hot offers via e-mail
-                    </label>
-                </div>
-                <input type="submit" value="Sign up" class="btn btn-primary">
-            </form>
-            <ul class="dialog-alt-links">
-                <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
-                </li>
-            </ul>
+
+             <%= form_for(resource, as: resource_name, :class=>"dialog-form", url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <br/>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, :class=>"form-control" %>
+
+  </div>
+
+  <div class="form-group">
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true, :class=>"form-control"  %>
+    
+  </div>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email, autofocus: true , :class=>"form-control" %></div>
+
+  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
+    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control" %></div>
+
+  <div><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" , :class=>"form-control" %></div>
+
+    <!--phone_field  radio_button-->
+    <div>
+
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number, autofocus: true , :class=>"form-control" %>
+
+  </div>
+
+<%= radio_button_tag(:gender, "male" ,checked="checked") %>
+<%= label_tag(:age_child, "male") %>
+
+<%= radio_button_tag(:gender, "female" ,checked="checked") %>
+<%= label_tag(:age_adult, "female") %>
+
+
+  <div><input type="submit" value="SignUp" class="btn btn-primary"></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+
+
         </div>
 
 
@@ -188,32 +224,7 @@
         <!-- END LOGIN REGISTER LINKS CONTENT -->
 
 
-        <!-- SEARCH AREA -->
-        <form class="search-area form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 clearfix">
-                        <label><i class="fa fa-search"></i><span>I am searching for</span>
-                        </label>
-                        <div class="search-area-division search-area-division-input">
-                            <input class="form-control" type="text" placeholder="Travel Vacation" />
-                        </div>
-                    </div>
-                    <div class="col-md-3 clearfix">
-                        <label><i class="fa fa-map-marker"></i><span>In</span>
-                        </label>
-                        <div class="search-area-division search-area-division-location">
-                            <input class="form-control" type="text" placeholder="Boston" />
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <button class="btn btn-block btn-white search-btn" type="submit">Search</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!-- END SEARCH AREA -->
-
+        
         <div class="gap"></div>
 
 
@@ -286,8 +297,8 @@
                             <div class="box">
                                 <form>
                                     <div class="form-group mb10">
-                                        <label>E-mail</label>
-                                        <input type="text" class="form-control" />
+                                        <label>E-mail</label><br/>
+                                        <input type="text" class="newsletter-form" />
                                     </div>
                                     <p class="mb10">Torquent praesent praesent orci integer laoreet adipiscing</p>
                                     <input type="submit" class="btn btn-primary" value="Sign Up" />
@@ -385,13 +396,13 @@
             </div>
         </footer>
         <!-- //////////////////////////////////
-	//////////////END MAIN  FOOTER///////// 
-	////////////////////////////////////-->
+    //////////////END MAIN  FOOTER///////// 
+    ////////////////////////////////////-->
 
 
 
         <!-- Scripts queries -->
-
+        <%= javascript_include_tag :defaults %>
         <%= javascript_include_tag("public") %>
     </div>
 </body>

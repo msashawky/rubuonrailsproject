@@ -1,11 +1,28 @@
+<%
+        @product_category = ProductCategory.all
+
+%>
 <div class="col-md-3">
                     <aside class="sidebar-left">
                         <ul class="nav nav-tabs nav-stacked nav-coupon-category">
-                            <li class="active"><a href="#"><i class="fa fa-ticket"></i>All</a>
+                            <li class="active"><a href="#"><i class="fa fa-ticket"></i>Categories</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-cutlery"></i>Food &amp; Drink</a>
+                            <% @product_category.each do |product_category|%>
+                            <li><a href="#">
+
+                            <i class="fa fa-cutlery"></i>
+                                 <%= product_category.category_name%>
+                                                
+
+                                                
+                            <% end %>
+                            </a>
+
+
                             </li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>Events</a>
+
+
+                            <!-- <li><a href="#"><i class="fa fa-calendar"></i>Events</a>
                             </li>
                             <li><a href="#"><i class="fa fa-female"></i>Beauty</a>
                             </li>
@@ -22,8 +39,11 @@
                             <li><a href="#"><i class="fa fa-home"></i>Home &amp; Garden</a>
                             </li>
                             <li><a href="#"><i class="fa fa-plane"></i>Travel</a>
-                            </li>
+                            </li> -->
                         </ul>
                         
                     </aside>
+                    
                 </div>
+
+

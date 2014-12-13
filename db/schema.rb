@@ -11,8 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141113191245) do
 
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20141209023331) do
+=======
+ActiveRecord::Schema.define(version: 20141211183029) do
+>>>>>>> master
+>>>>>>> master
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -27,13 +35,23 @@ ActiveRecord::Schema.define(version: 20141113191245) do
     t.integer  "user_id"
   end
 
+<<<<<<< HEAD
  create_table "charities", force: true do |t|
     t.string   "charity_field"
+=======
+  create_table "checkouts", force: true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.integer  "product_id"
+>>>>>>> master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
   create_table "comment_hierarchies", force: true do |t|
   end
 
@@ -90,6 +108,16 @@ ActiveRecord::Schema.define(version: 20141113191245) do
     t.datetime "updated_at"
   end
 
+  create_table "product_pictures", force: true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
@@ -117,6 +145,17 @@ ActiveRecord::Schema.define(version: 20141113191245) do
     t.string   "project_photo_content_type"
     t.integer  "project_photo_file_size"
     t.datetime "project_photo_updated_at"
+  end
+
+  create_table "registered_users", force: true do |t|
+    t.string   "card_number"
+    t.string   "country"
+    t.string   "city"
+    t.string   "street"
+    t.string   "apartment"
+    t.string   "governorate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "site_admins", force: true do |t|
@@ -183,6 +222,7 @@ ActiveRecord::Schema.define(version: 20141113191245) do
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
     t.integer  "ngo_id"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
