@@ -6,7 +6,8 @@ layout "index"
   # GET /ngos.json
   def index
     #AdminMail.welcome_email().deliver
-    @ngos = Ngo.all
+    # @ngos = Ngo.all
+    @ngos=Ngo.where(active_ngo: true)
   end
 
   # GET /ngos/1

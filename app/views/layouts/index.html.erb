@@ -68,6 +68,7 @@
 
                        <% if ! user_signed_in? %>
                         <ul class="login-register">
+
                             <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
                                 <div class="shopping-cart-box">
                                     <ul class="shopping-cart-items">
@@ -102,7 +103,9 @@
                             </li>
                         </ul>
                         <% else %>
-
+                           <% if  ! user_signed_in.ngo_id.nil? %>
+                            <%= link_to "My Ngo",{ :controller => 'ngos' , :action => 'show' ,:id => user_signed_in.ngo_id } ,:class=> "nav nav-pills flexnav" %>
+                            <% end %>
                          <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
                          <nav>
                          <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">

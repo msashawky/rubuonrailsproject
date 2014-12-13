@@ -1,16 +1,16 @@
-<<<<<<< HEAD
-<% @counter = 1 %>
+
+
 <div class="row">
 	<div class="col-md-11"></div>
 	<div class="col-md-1">
 	<%= link_to 'See More' , {:controller => 'ngos' , :action => 'index'}, :class=> "btn btn-primary"%>
 	</div>
 </div>
+<br>
    <div class="row">
-   <% @ngos = Ngo.order("id DESC").all %>
+
     <% @ngos.each do |ngo| %>
-    <% if @counter < 4 %>
-    <% unless  ngo.active_ngo ==  true and ngo.wait_approve == true %>  
+  
     <div class="col-md-4">
     <div class="team-member">
     <%= link_to ( image_tag ngo.image.url ), ngo %>
@@ -38,12 +38,10 @@
   
       </div>
       </div>
-      <% end %> 
-      <% end %>
-      <% ++@counter %>
+ 
     <% end %>
     </div>
-=======
+<br>
 <!-- Home -->
 <div class="row">
 <%= render "layouts/partials/header" %>
@@ -77,4 +75,4 @@
 </div>
 <div class="gap"></div>
 </div>
->>>>>>> master
+

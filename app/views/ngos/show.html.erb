@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- <div class="row"> -->
  <!-- if @ngo.id == current_user.ngo_id -->
 
@@ -16,20 +15,15 @@
    <h1> <%= @ngo.NGO_name %></h1>
   </div>
   <div class="col-md-10"></div>
-
-=======
-<div class="row">
-  <div class="col-md-11"></div>
->>>>>>> master
   <div class="col-md-1">
     <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
   </div>
 </div>
-<% if  @ngo.active_ngo  == true %>   
+ 
 <p id="notice"><%= notice %></p>
-
+<% if  @ngo.active_ngo  == true %>  
 <div class="row">
-<<<<<<< HEAD
+
 <div class="col-md-8">
      <div id="popup-gallery" class="row row-no-gutter">
   
@@ -45,55 +39,20 @@
         </div>
         
         
-=======
-<div class="col-md-6">
-
-    <!--
-
-     START BOOTSTRAP CAROUSEL 
-
-    -->
-    <div id="my-carousel" class="carousel slide">
-        <div class="carousel-inner">
-            
-                <%= image_tag @ngo.image.url %>
-            
-        </div>
-       
->>>>>>> master
-    </div>
-    <!--
-
-     END BOOTSTRAP CAROUSEL 
-
-    --> 
-<<<<<<< HEAD
-<div class="col-md-1">
 </div>
-
+<div class="col-md-1"></div>
 <div class="col-md-3">
-=======
-
-</div>
-<div class="col-md-2">
-</div>
-
-<div class="col-md-4">
-
->>>>>>> master
     <div class="product-page-meta box">
         <center><h4>
-       City: <%= @ngo.city %>
+        Country : <% @ngo.country %>
         </h4></center>
         <center><p>
-          Phone_number: <%= @ngo.phone_number %>
+         City: <%= @ngo.city %>
         </p></center>
         <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
-<<<<<<< HEAD
+
            <%= @ngo.NGO_name %> website
-=======
-           <%= @ngo.NGO_name %>
->>>>>>> master
+
         </a>
        <ul class="list product-page-meta-info">
             <li>
@@ -107,11 +66,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-<<<<<<< HEAD
+
                             <a class="fa fa-facebook" href='<% @ngo.fb_link %>'></a>
-=======
-                            <a class="fa fa-facebook" href="<% @ngo.fb_link %>"></a>
->>>>>>> master
+
 
                         </span>
                     </li>
@@ -125,11 +82,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-<<<<<<< HEAD
+
                             <a class="fa fa-twitter" href='<% @ngo.tw_link %>'></a>
-=======
-                            <a class="fa fa-twitter" href="<% @ngo.tw_link %>"></a>
->>>>>>> master
+
 
                         </span>
                     </li>
@@ -143,11 +98,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-<<<<<<< HEAD
+
                               <a class="fa fa-google-plus" href='<% @ngo.gp_link %>'></a>
-=======
-                              <a class="fa fa-google-plus" href="<% @ngo.gp_link %>"></a>
->>>>>>> master
+
 
                         </span>
                     </li>
@@ -171,7 +124,7 @@
             <li>
                 <span class="product-page-meta-title">
 
-                    <center>Zip_code: <%= @ngo.ZIP_code %> </center>
+                    <center>  Phone_number: <%= @ngo.phone_number %></center>
                      
                 </span>
             </li>
@@ -180,32 +133,19 @@
 
 </div>
 </div>
-<<<<<<< HEAD
+</div>
 
 <br>
 <div class="row">
   <div class="col-md-8">
   <div class="tabbable">        
-=======
-<!-- @ngo.bank_account -->
-<!--@ngo.email -->
-<!-- @ngo.NGO_number  -->
 
-<!-- @ngo.fb_link  -->
-<!-- @ngo.gp_link -->
-<!-- @ngo.tw_link -->
-<!-- @ngo.governorate -->
-<!-- @ngo.apartment  -->
-
-<div class="row">
-  <div class="col-md-4">
->>>>>>> master
         <h3>
 
             Discription
 
         </h3>
-<<<<<<< HEAD
+
 <div class="tab-content">
 
     <div id="tab-1" class="tab-pane fade in active">
@@ -217,44 +157,22 @@
 </div>
 </div>
 </div>
-<% elsif @ngo.wait_approve == true  %> <!--current_user == site_admin (devise)-->
- <h1><strong>Pending until admin approval </strong></h1>
-  <div class="row">
-=======
-        <p>
-
-        <%= @ngo.description %>
-
-        </p>
-      
+<% Project.where(ngo_id: @ngo.id).last(3) %>
+<div class="row">
+  
     </div>
-
-</div>
-</div>
 <% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
 <div class="row">
->>>>>>> master
+
 <div class="col-md-4">
 <%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
 </div>
 <div class="col-md-4">
 <%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
 </div>
-<<<<<<< HEAD
+
 
 </div>
 <% end %>
 
- 
 
-=======
-</div>
-<!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
- <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
- <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
- <!-- else -->
- <% else %>
- <h1> Pending until admin approval </h1>
-<% end %>
-
->>>>>>> master

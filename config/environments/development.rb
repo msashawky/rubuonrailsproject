@@ -40,10 +40,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.raise_delivery_errors = true
-<<<<<<< HEAD
-  config.action_mailer.perform_deliveries = true
-=======
+
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
 #   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
@@ -55,7 +53,7 @@ Rails.application.configure do
 #       enable_starttls_auto: true,ُُُُُ
 #       user_name: "masshawky@gmail.com",
 #       password: "Ab#12345"
->>>>>>> master
+
 
 #   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 # config.action_mailer.delivery_method = :smtp
