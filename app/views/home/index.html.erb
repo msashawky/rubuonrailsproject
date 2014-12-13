@@ -1,1 +1,33 @@
-<h1>Home</h1>
+<!-- Home -->
+<div class="row">
+<%= render "layouts/partials/header" %>
+
+
+
+<h1>latest products</h1>
+
+    <% @products.each do |product| %>
+
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag product.photo.url(:medium) %>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= product.product_name %></h5>
+              <h3 > <%= product.product_price%>  $</h3>
+              <h5 class="product-count"><%= product.product_count%>  pieces</h5>
+              <p class="product-desciption"><%= product.product_description %></p>
+              <a class="product-price" href="products/<%= product.id%>">Show</a>
+              
+             
+              
+            </div>
+          </div>
+        </div>    
+    <% end %>
+   
+</div>
+</div>
+<div class="gap"></div>
+</div>
