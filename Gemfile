@@ -69,8 +69,6 @@ end
 gem 'hirb'
 
 gem "font-awesome-rails"
-# for file uploading
-gem 'carrierwave'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

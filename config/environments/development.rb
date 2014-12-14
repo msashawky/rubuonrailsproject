@@ -1,4 +1,6 @@
 Rails.application.configure do
+  # to make Paperclip dealing with ImageMagick
+  Paperclip.options[:command_path] = "/usr/bin/"
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
