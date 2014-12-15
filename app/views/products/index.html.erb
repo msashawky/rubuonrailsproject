@@ -15,12 +15,9 @@
               <h3 > <%= product.product_price%>  $</h3>
               <h5 class="product-count"><%= product.product_count%>  pieces</h5>
               <p class="product-desciption"><%= product.product_description %></p>
-              <%= link_to "Edit", {:controller => "products", :action => "edit", :id => product.id },:class=>"product-price"%>
-              <%= link_to "Show", {:controller => "products", :action => "show", :id => product.id },:class=>"product-price"%>
-              
-
-              
-              <a data-confirm="Are you sure?" data-method="delete" href="products/destroy/<%= product.id%>" rel="nofollow">Destroy</a>
+              <a class="product-price" href="/products/edit/<%= product.id%>">Edit</a>
+              <a class="product-price" href="/products/show/<%= product.id%>">Show</a>
+              <a data-confirm="Are you sure?"  href="/products/destroy/<%= product.id%>" rel="nofollow">Delete</a>
               
             </div>
           </div>
