@@ -103,12 +103,14 @@
                             </li>
                         </ul>
                         <% else %>
-                           <% if  ! user_signed_in.ngo_id.nil? %>
-                            <%= link_to "My Ngo",{ :controller => 'ngos' , :action => 'show' ,:id => user_signed_in.ngo_id } ,:class=> "nav nav-pills flexnav" %>
-                            <% end %>
+                    
                          <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
                          <nav>
                          <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
+                        <% if   current_user.ngo_id %>
+                           <li > <%= link_to "My Ngo",{ :controller => 'ngos' , :action => 'show' ,:id => current_user.ngo_id } ,:class=> "nav nav-pills flexnav" %>
+                           </li>
+                        <% end %>
                         <div class="sign_out">
                         <li class="active">
                         <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "nav nav-pills flexnav" %></li>

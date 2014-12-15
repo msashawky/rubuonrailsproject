@@ -1,15 +1,18 @@
-<!-- <div class="row"> -->
- <!-- if @ngo.id == current_user.ngo_id -->
+<div class="row">
+ <% if  @ngo.active_ngo  == true %>
+ <% if current_user %> 
+ <% if @ngo.id == current_user.ngo_id %>
 
- <!--  <div class="col-md-1">
-     <link_to 'Edit', edit_ngo_path(@ngo)  , :class=> "btn btn-primary" -->
- <!--  </div>
-  <div class="col-md-1"> -->
-    <!-- link_to 'Delete', { :action => 'destroy' , :ngo => @ngo , :id => @ngo.id  }  ,  :class=> "btn btn-primary" , data: { confirm: 'Are you sure?' } > 
-  </div> -->
-  <!-- end -->
-  <!-- <div class="col-md-10"></div>
-</div> -->
+  <div class="col-md-1">
+     <%=link_to 'Edit', edit_ngo_path(@ngo)  , :class=> "btn btn-primary" %>
+   </div>
+  <div class="col-md-1"> 
+ <%=   link_to 'Delete', { :action => 'destroy' , :ngo => @ngo , :id => @ngo.id  }  ,  :class=> "btn btn-primary" , data: { confirm: 'Are you sure?' } %> 
+  </div> 
+  <% end %>
+  <% end %>
+ <div class="col-md-10"></div>
+</div>
 <div class="row">
   <div class="col-md-1">
    <h1> <%= @ngo.NGO_name %></h1>
@@ -49,7 +52,7 @@
         <center><p>
          City: <%= @ngo.city %>
         </p></center>
-        <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
+        <a class="btn btn-primary btn-lg btn-block" href="//<%= @ngo.website %>">
 
            <%= @ngo.NGO_name %> website
 
@@ -67,7 +70,7 @@
                         <span class="product-page-meta-price">
 
 
-                            <a class="fa fa-facebook" href='<% @ngo.fb_link %>'></a>
+                            <a class="fa fa-facebook" href='//<%= @ngo.fb_link %>'></a>
 
 
                         </span>
@@ -83,7 +86,7 @@
                         <span class="product-page-meta-price">
 
 
-                            <a class="fa fa-twitter" href='<% @ngo.tw_link %>'></a>
+                            <a class="fa fa-twitter" href='//<%= @ngo.tw_link %>'></a>
 
 
                         </span>
@@ -99,7 +102,7 @@
                         <span class="product-page-meta-price">
 
 
-                              <a class="fa fa-google-plus" href='<% @ngo.gp_link %>'></a>
+                              <a class="fa fa-google-plus" href='//<%= @ngo.gp_link %>'></a>
 
 
                         </span>
@@ -161,7 +164,9 @@
 <div class="row">
   
     </div>
-<% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<% elsif @ngo.wait_approve == true  %> 
+<!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<% if current_user.admin %>
 <div class="row">
 
 <div class="col-md-4">
@@ -173,6 +178,8 @@
 
 
 </div>
+<% end %>
+<% end %>
 <% end %>
 
 

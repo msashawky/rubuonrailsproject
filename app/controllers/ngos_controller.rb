@@ -1,5 +1,6 @@
 class NgosController < ApplicationController
 layout "index"
+before_action :authenticate_user!, only: :new 
   before_action :set_ngo, only: [:show, :edit, :update, :destroy ,:approve ,:disapprove ]
 
   # GET /ngos
@@ -7,7 +8,7 @@ layout "index"
   def index
     #AdminMail.welcome_email().deliver
     # @ngos = Ngo.all
-    @ngos=Ngo.where(active_ngo: true)
+    @ngos=Ngo.where(active_ngo: true).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /ngos/1
@@ -31,11 +32,11 @@ layout "index"
 
     respond_to do |format|
       if @ngo.save
-       AdminMail.welcome_email(@ngo).deliver
+       # AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully created,Waiting admin approval' }
         format.json { render :show, status: :created, location: @ngo }
-        @user= User.find(current_user.id)
-        @user.update(ngo_id: @ngo.id )
+         @user= User.find( current_user.id )
+         @user.update(ngo_id: @ngo.id )
       else
         format.html { render :new }
         format.json { render json: @ngo.errors, status: :unprocessable_entity }
@@ -70,7 +71,7 @@ layout "index"
   def approve
     respond_to do |format|
       if @ngo.update(active_ngo: true , wait_approve: false )
-        AdminMail.welcome_email(@ngo.NGO_name).deliver
+        # AdminMail.welcome_email(@ngo.NGO_name).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully approved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
@@ -88,7 +89,7 @@ layout "index"
     
       respond_to do |format|
       if @ngo.update(active_ngo: false , wait_approve:false )
-        AdminMail.welcome_email(@ngo.NGO_name).deliver
+        # AdminMail.welcome_email(@ngo.NGO_name).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully disapproved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else

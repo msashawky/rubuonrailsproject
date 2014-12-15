@@ -1,3 +1,4 @@
+ 
 <div class="row">
 <div class="col-md-3">
 <h1>Listing ngos</h1>
@@ -5,9 +6,10 @@
 <div class="col-md-8">
 </div>
 <div class="col-md-1">
-  <% if   user_signed_in.ngo_id.nil? %>
+<% if !current_user || ! current_user.ngo_id %>
 <%= link_to 'New Ngo', new_ngo_path ,:class=> "btn btn-primary" %>
-<% end %>
+<%end %>
+
 </div>
 </div>
 
@@ -44,8 +46,8 @@
    
     <% end %>
  </div>
-
-
+<br>
+<%= will_paginate @ngos, :class => "digg_pagination" %>
 
 
 
