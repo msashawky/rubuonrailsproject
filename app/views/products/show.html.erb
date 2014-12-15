@@ -24,10 +24,8 @@
                                 <p class="product-info-price"><%= @product.product_count%>  Pieces</p>
                                 <p class="text-smaller text-muted"><%= @product.product_description %></p>
 
-                                    <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }, :class=>"btn btn-primary"%>
-                                   
-                                    
-                                    <!-- START COMMENTS -->
+                                <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id },:class=>"btn btn-primary"%>
+                                <!-- START COMMENTS -->
 
                                     <ul class="comments-list">
                                     <p><h3>Commnets</h3></p>
