@@ -24,7 +24,11 @@ before_action :authenticate_user!
 
   # GET /products/new
   def new
+
+    @projects = Project.all
+
     @category =ProductCategory.all
+
     @product = Product.new
   end
 
@@ -35,8 +39,9 @@ before_action :authenticate_user!
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
 
+    @product = Product.new(product_params)
+     @product.project_id=params[:id]
     respond_to do |format|
       if !params[:images]
         @product.errors.add(:images, ' can not be empty')
@@ -102,7 +107,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
 
+
       params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo).merge(:product_category_id => params[:product_category_id][:id])
+
     end
 
   def add_product
