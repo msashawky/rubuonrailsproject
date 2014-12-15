@@ -1,7 +1,12 @@
-<div class="row">
-    <% @products = Product.where(project_id: params[:project_id]) %>
+<div class="row row-wrap">
+  <div class="col-md-10"></div>
+  <div class="col-md-2 digg_pagination">
+      <%= will_paginate @products, :page_links => false, :class => "digg_pagination" %>
+  </div>
+</div>
+<div class="row row-wrap">
     <% @products.each do |product| %>
-        <div class="col-md-3" >
+        <div class="col-md-4" >
           <a class="hover-img" href="../../../products/show/<%= product.id %>">
           <div class="product-thumb">
             <header class="product-header">
@@ -15,7 +20,7 @@
             </div>
           </div>
         </a>
+        <div class="gap"></div>
         </div>    
     <% end %>
 </div>
-<div class="gap"></div>

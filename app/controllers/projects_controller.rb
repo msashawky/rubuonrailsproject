@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
 
   # see more products that ralated to @project
   def see_more
+    @products = Product.where(project_id: params[:project_id]).paginate(:page => params[:page], :per_page => 9) 
   end
   # GET /projects/new
   def new
