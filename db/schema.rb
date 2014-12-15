@@ -84,15 +84,25 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.datetime "updated_at"
   end
 
+  create_table "product_pictures", force: true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
-    t.integer  "product_count",         limit: 255, default: 1
+    t.integer  "product_count",       limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "projects_id"
-    t.integer  "product_categories_id"
+    t.integer  "project_id"
+    t.integer  "product_category_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

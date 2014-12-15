@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 		# end
 		@product_category = ProductCategory.all
 		@products = Product.all
+		
 	end
 end
 	#layout"index"

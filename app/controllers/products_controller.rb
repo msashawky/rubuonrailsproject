@@ -15,12 +15,20 @@ before_action :authenticate_user!
   # GET /products/1
   # GET /products/1.json
   def show
+     @product_picture = ProductPicture.all
     @comments = @product.comments.all
     @comment = @product.comments.build
   end
 
+
+
   # GET /products/new
   def new
+
+    @projects = Project.all
+
+    @category =ProductCategory.all
+
     @product = Product.new
   end
 
@@ -31,11 +39,32 @@ before_action :authenticate_user!
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
 
+    @product = Product.new(product_params)
+     @product.project_id=params[:id]
     respond_to do |format|
+      if !params[:images]
+        @product.errors.add(:images, ' can not be empty')
+        format.html { render :new }
+        format.json { render :show, status: :created, location: @product }
+      elsif params[:images].length > 4
+        @product.errors.add(:images, 'You Can not add more than 4 images')
+        format.html { render :new }
+        format.json { render :show, status: :created, location: @product }    
+      else
+
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+           
+          if params[:images]&&params[:images].length < 4
+
+                  
+            #===== The magic is here ;)
+            params[:images].each { |image|
+              @product.product_pictures.create(image: image)
+
+            }
+          end
+        format.html { redirect_to @product , notice: 'product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -43,6 +72,7 @@ before_action :authenticate_user!
       end
     end
   end
+end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -63,7 +93,7 @@ before_action :authenticate_user!
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Product was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -77,7 +107,9 @@ before_action :authenticate_user!
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
 
-      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo)
+
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo).merge(:product_category_id => params[:product_category_id][:id])
+
     end
 
   def add_product
@@ -94,5 +126,6 @@ before_action :authenticate_user!
 
   def suspend_product
   end
+
 
 end
