@@ -5,7 +5,12 @@ class HomeController < ApplicationController
 		# end
 		@product_category = ProductCategory.all
 		@products = Product.all
+
+
+
+		@product_view = Product.where(product_name: true).last(3)
 		
+		#Pagination Query
+
 	end
 end
-	#layout"index"

@@ -21,6 +21,8 @@ gem 'coffee-rails', '~> 4.0.0'
 #for inheritance
 gem 'active_record-acts_as'
 
+
+
 #for authentication
 gem 'devise'
 

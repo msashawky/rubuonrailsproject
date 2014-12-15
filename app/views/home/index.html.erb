@@ -1,4 +1,5 @@
 <!-- Home -->
+
 <div class="row">
 <%= render "layouts/partials/header" %>
 
@@ -7,7 +8,7 @@
 <h1>latest products</h1>
 
     <% @products.each do |product| %>
-
+        <a class="product-price" href="products/<%= product.id%>">
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
@@ -18,16 +19,18 @@
               <h3 > <%= product.product_price%>  $</h3>
               <h5 class="product-count"><%= product.product_count%>  pieces</h5>
               <p class="product-desciption"><%= product.product_description %></p>
-              <a class="product-price" href="products/<%= product.id%>">Show</a>
-              
+<!--               <a class="product-price" href="products/<%= product.id%>">Show</a>
+ -->              
              
               
             </div>
           </div>
-        </div>    
+        </div>
+        </a>    
     <% end %>
    
 </div>
 </div>
 <div class="gap"></div>
 </div>
+

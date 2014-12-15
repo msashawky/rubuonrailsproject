@@ -9,7 +9,9 @@ before_action :authenticate_user!
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.paginate(:page => params[:page], :per_page => 1)
+
+
   end
 
   # GET /products/1
@@ -18,6 +20,9 @@ before_action :authenticate_user!
      @product_picture = ProductPicture.all
     @comments = @product.comments.all
     @comment = @product.comments.build
+  end
+
+  def list_category
   end
 
 

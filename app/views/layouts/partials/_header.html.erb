@@ -1,5 +1,7 @@
+
 <%
         @product_category = ProductCategory.all
+        @product = Product.all
 
 %>
 <div class="col-md-3">
@@ -8,42 +10,23 @@
                             <li class="active"><a href="#"><i class="fa fa-ticket"></i>Categories</a>
                             </li>
                             <% @product_category.each do |product_category|%>
-                            <li><a href="#">
+                            <li>
 
-                            <i class="fa fa-cutlery"></i>
-                                 <%= product_category.category_name%>
-                                                
+                            
+                            <a href="/products/list_category/<%=product_category.id%>"><%=product_category.category_name%>
+                            <i class="fa fa-shopping-cart"></i>
 
-                                                
-                            <% end %>
-                            </a>
+             
+                            
+                            
+</a>
 
-
                             </li>
 
-
-                            <!-- <li><a href="#"><i class="fa fa-calendar"></i>Events</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-female"></i>Beauty</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-bolt"></i>Fitness</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-headphones"></i>Electronics</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-image"></i>Furniture</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-umbrella"></i>Fashion</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Shopping</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-home"></i>Home &amp; Garden</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-plane"></i>Travel</a>
-                            </li> -->
+<% end %>
+                           
                         </ul>
                         
                     </aside>
                     
                 </div>
-
-

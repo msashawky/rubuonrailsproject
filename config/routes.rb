@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :ngos
 
    resources :product_carts
-
+ get 'products/product_in_this_category'
 
   resources :product_carts 
 
@@ -31,11 +31,12 @@ get ':controller(/:action(/:id))'
 
   resources :customers
   devise_for :users, controllers: { sessions: "users/sessions" }
-    devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' 
+  devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' 
+  #destroy_user_session DELETE /users/sign_out(.:format)
+
       # match 'users/sign_out' => "devise/sessions#destroy"
       
     end
-
   root to: "home#index"
   resources:profile
 

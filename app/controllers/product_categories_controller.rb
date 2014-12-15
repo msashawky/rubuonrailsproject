@@ -29,9 +29,9 @@ class ProductCategoriesController < ApplicationController
 
     respond_to do |format|
       if @product_category.save
-        redirect_to :controller => "product_categories", :action => "index"
-        #format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
-        format.json { render :show, status: :created, location: @product_category }
+        # redirect_to :controller => "product_categories", :action => "index"
+        format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
+        #format.json { render :show, status: :created, location: @product_category }
             
 
       else
@@ -47,6 +47,9 @@ class ProductCategoriesController < ApplicationController
 
   # PATCH/PUT /product_categories/1
   # PATCH/PUT /product_categories/1.json
+
+ 
+
   def update
     respond_to do |format|
       if @product_category.update(product_category_params)
