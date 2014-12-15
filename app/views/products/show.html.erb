@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+
 
         <div class="container">
+
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     
@@ -15,12 +16,19 @@
                             </div>
                         </div>
                         <div class="col-md-5">
+
+
                                 <h3><%= @product.product_name %></h3>
+                                
                                 <p class="product-info-price">$<%= @product.product_price%></p>
                                 <p class="product-info-price"><%= @product.product_count%>  Pieces</p>
                                 <p class="text-smaller text-muted"><%= @product.product_description %></p>
-                                <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }%>
-                                <!-- START COMMENTS -->
+
+                                    <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => @product.id }, :class=>"btn btn-primary"%>
+                                   
+                                    
+                                    <!-- START COMMENTS -->
+
                                     <ul class="comments-list">
                                     <p><h3>Commnets</h3></p>
                                         <% @comments.each do |comment| %>
@@ -56,6 +64,7 @@
                     <div class="gap"></div>
                     
                     <div class="gap"></div>
+
                     
                     <div class="gap gap-small"></div>
                 </div>
@@ -63,4 +72,5 @@
 
                                     <%= link_to 'Edit', edit_product_path(@product) ,:class=>"btn btn-primary"%> |
                             <%= link_to 'Back', products_path,:class=>"btn btn-danger" %>
+
 
