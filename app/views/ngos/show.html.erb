@@ -1,82 +1,164 @@
+<div class="row">
+  <div class="col-md-11"></div>
+  <div class="col-md-1">
+    <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
+  </div>
+</div>
+<% if  @ngo.active_ngo  == true %>   
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Ngo name:</strong>
-  <%= @ngo.NGO_name %>
-</p>
+<div class="row">
+<div class="col-md-6">
 
-<p>
-  <strong>Bank account:</strong>
-  <%= @ngo.bank_account %>
-</p>
+    <!--
 
-<p>
-  <strong>Ngo number:</strong>
-  <%= @ngo.NGO_number %>
-</p>
+     START BOOTSTRAP CAROUSEL 
 
-<p>
-  <strong>Website:</strong>
-  <%= @ngo.website %>
-</p>
+    -->
+    <div id="my-carousel" class="carousel slide">
+        <div class="carousel-inner">
+            
+                <%= image_tag @ngo.image.url %>
+            
+        </div>
+       
+    </div>
+    <!--
 
-<p>
-  <strong>Zip code:</strong>
-  <%= @ngo.ZIP_code %>
-</p>
+     END BOOTSTRAP CAROUSEL 
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @ngo.phone_number %>
-</p>
+    --> 
 
-<p>
-  <strong>Fb link:</strong>
-  <%= @ngo.fb_link %>
-</p>
+</div>
+<div class="col-md-2">
+</div>
 
-<p>
-  <strong>Tw link:</strong>
-  <%= @ngo.tw_link %>
-</p>
+<div class="col-md-4">
 
-<p>
-  <strong>Gp link:</strong>
-  <%= @ngo.gp_link %>
-</p>
+    <div class="product-page-meta box">
+        <center><h4>
+       City: <%= @ngo.city %>
+        </h4></center>
+        <center><p>
+          Phone_number: <%= @ngo.phone_number %>
+        </p></center>
+        <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
+           <%= @ngo.NGO_name %>
+        </a>
+       <ul class="list product-page-meta-info">
+            <li>
+                <ul class="list product-page-meta-price-list">
+                <div class="col-md-4" >
+                    <li>
+                        <span class="product-page-meta-title">
 
-<p>
-  <strong>Country:</strong>
-  <%= @ngo.country %>
-</p>
+                            Facebock
 
-<p>
-  <strong>Governorate:</strong>
-  <%= @ngo.governorate %>
-</p>
+                        </span>
+                        <span class="product-page-meta-price">
 
-<p>
-  <strong>City:</strong>
-  <%= @ngo.city %>
-</p>
+                            <a class="fa fa-facebook" href="<% @ngo.fb_link %>"></a>
 
-<p>
-  <strong>Street:</strong>
-  <%= @ngo.street %>
-</p>
+                        </span>
+                    </li>
+                </div>
+                  <div class="col-md-4" >
+                    <li>
+                        <span class="product-page-meta-title">
 
-<p>
-  <strong>Apartment:</strong>
-  <%= @ngo.apartment %>
-</p>
-<% if @ngo == current_user.ngo %>
-  <% @user = User.new %>
-  <%= "you can add admin to " + @ngo.NGO_name %>
-  <p> please type his email </p>
-  <%= form_for @user, url: {controller: "ngos", action: "add_admin"} do |f| %>
-    <%= f.email_field "email" %>
-    <%= f.submit "Invite" %>
-  <% end %>
+                            Twitter
+
+                        </span>
+                        <span class="product-page-meta-price">
+
+                            <a class="fa fa-twitter" href="<% @ngo.tw_link %>"></a>
+
+                        </span>
+                    </li>
+                    </div>
+                    <div class="col-md-4" >
+                    <li>
+                        <span class="product-page-meta-title">
+
+                            Google+
+
+                        </span>
+                        <span class="product-page-meta-price">
+
+                              <a class="fa fa-google-plus" href="<% @ngo.gp_link %>"></a>
+
+                        </span>
+                    </li>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <span class="product-page-meta-title">
+                 <center>Address</center> 
+                </span>
+                <!--
+
+                 COUNTDOWN 
+
+                -->
+                <div >
+                    <div class="days"> <center>   <%= @ngo.street %></center></div>
+                  
+                </div>
+            </li>
+            <li>
+                <span class="product-page-meta-title">
+
+                    <center>Zip_code: <%= @ngo.ZIP_code %> </center>
+                     
+                </span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</div>
+<!-- @ngo.bank_account -->
+<!--@ngo.email -->
+<!-- @ngo.NGO_number  -->
+
+<!-- @ngo.fb_link  -->
+<!-- @ngo.gp_link -->
+<!-- @ngo.tw_link -->
+<!-- @ngo.governorate -->
+<!-- @ngo.apartment  -->
+
+<div class="row">
+  <div class="col-md-4">
+        <h3>
+
+            Discription
+
+        </h3>
+        <p>
+
+        <%= @ngo.description %>
+
+        </p>
+      
+    </div>
+
+</div>
+</div>
+<% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<div class="row">
+<div class="col-md-4">
+<%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
+</div>
+<div class="col-md-4">
+<%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
+</div>
+</div>
+<!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
+ <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
+ <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
+ <!-- else -->
+ <% else %>
+ <h1> Pending until admin approval </h1>
 <% end %>
-<%= link_to 'Edit', edit_ngo_path(@ngo) %>|
-<%= link_to 'Back', ngos_path %>
+
