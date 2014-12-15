@@ -8,6 +8,7 @@
 <% end%>
 
 <%if @current_user_cart%>
+<%arr=Array.new%>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -27,7 +28,8 @@
                                 <% @my_product=product_cart.product_id %>
                                 <%@products.each do |product|%>
                                     <% if product.id==@my_product%>
-
+                                        <%arr.push product.id%>
+                                        <%= arr %>
                                         <% @totalprice = @totalprice.to_i+(product.product_price.to_i*product_cart.product_amount)%>
 
                                         <tr>
@@ -104,7 +106,7 @@
                               <%= f.text_field :phone_number , :value =>current_user.phone_number ,:class=>"form-control",:placeholder=>"$" %>
                           </div>
 
-                          <%= f.button :submit , :class=> "btn btn-primary"  %>
+                          <%= f.button :submit , :class=> "btn btn-primary"  , name: "ids" , value: arr%>
                         
                       </form>
                     <% end %>

@@ -25,8 +25,14 @@ class CheckoutsController < ApplicationController
   # POST /checkouts
   # POST /checkouts.json
   def create
-    @checkout = Checkout.new(checkout_params)
 
+      product_ids=Array.new
+      product_ids=params[:ids].split
+      product_ids.each do |product|
+        @checkout = Checkout.new(checkout_params)
+        @checkout.product_id=product
+        @checkout.save
+        end
     respond_to do |format|
       if @checkout.save
         format.html { redirect_to "/", notice: 'Checkout was successfully done.' }
