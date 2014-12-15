@@ -41,7 +41,7 @@ before_action :authenticate_user!
   def create
 
     @product = Product.new(product_params)
-     @product.projects_id=params[:id]
+     @product.project_id=params[:id]
     respond_to do |format|
       if !params[:images]
         @product.errors.add(:images, ' can not be empty')
