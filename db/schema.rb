@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141209023331) do
-=======
 ActiveRecord::Schema.define(version: 20141211183029) do
->>>>>>> master
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -101,12 +97,12 @@ ActiveRecord::Schema.define(version: 20141211183029) do
   create_table "products", force: true do |t|
     t.string   "product_name"
     t.string   "product_price"
-    t.integer  "product_count",         limit: 255, default: 1
+    t.integer  "product_count",       limit: 255, default: 1
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "projects_id"
-    t.integer  "product_categories_id"
+    t.integer  "project_id"
+    t.integer  "product_category_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -122,17 +118,6 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "ngo_id"
-  end
-
-  create_table "registered_users", force: true do |t|
-    t.string   "card_number"
-    t.string   "country"
-    t.string   "city"
-    t.string   "street"
-    t.string   "apartment"
-    t.string   "governorate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "site_admins", force: true do |t|
