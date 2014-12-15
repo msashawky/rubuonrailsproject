@@ -29,16 +29,20 @@ class ProductCategoriesController < ApplicationController
 
     respond_to do |format|
       if @product_category.save
-        format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
+        redirect_to :controller => "product_categories", :action => "index"
+        #format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
         format.json { render :show, status: :created, location: @product_category }
+            
+
       else
         format.html { render :new }
         format.json { render json: @product_category.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to :controller => "product_categories", :action => "index"
-    #redirect_to :controller => 'product_category' , :action =>'index'
-    #render :action => "index"
+    
+
+    
+    
   end
 
   # PATCH/PUT /product_categories/1
