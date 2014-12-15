@@ -1,103 +1,86 @@
-<div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <table class="table cart-table">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Name</th>
-                                <th>QTY</th>
-                                <th>Price</th>
-                                <th>Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @carts.each do |cart| %>
-                                <% if cart.user_id == current_user.id %>
-                                    <% @current_user_cart=cart.id%>
-                                   
-                                   
-                                    <% break%>
-                                <% end%>
-                            <% end%>
-                            <% @product_carts.each do |product_cart| %>
-                                <% if product_cart.cart_id == @current_user_cart %>
-                                    <% @my_product=product_cart.product_id %>
+<% @carts.each do |cart| %>
+    <% if cart.user_id == current_user.id %>
+        <% @current_user_cart=cart.id%>
+       
+       
+        <% break%>
+    <% end%>
+<% end%>
 
-                                    <%@products.each do |product|%>
-                                        <% if product.id==@my_product%>
-                                           <% @totalprice = @totalprice.to_i+product.product_price.to_i%>
-                                            <tr>
-                                                <td class="cart-item-image">
-                                                    <a href="#">
-                                                        <%= image_tag product.photo.url(:thumb) %>
-                                                    </a>
-                                                </td>
-                                                
-                                                <td>
-                                                    <a href="#"> <%= product.product_name %></a>
-                                                </td>
-                                                
-                                                <td class="cart-item-quantity">
+<%if @current_user_cart%>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table cart-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Name</th>
+                            <th>QTY</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @product_carts.each do |product_cart| %>
+                            <%if product_cart.cart_id == @current_user_cart %>
+                                <% @my_product=product_cart.product_id %>
+                                <%@products.each do |product|%>
+                                    <% if product.id==@my_product%>
+                                        <% @totalprice = @totalprice.to_i+(product.product_price.to_i*product_cart.product_amount)%>
+                                        <tr>
+                                            <td class="cart-item-image">
+                                                <a href="#">
+                                                    <%= image_tag product.photo.url(:thumb) %>
+                                                </a>
+                                            </td>    
+                                            <td>
+                                                <a href="#"> <%= product.product_name %></a>
+                                            </td>    
+                                            <td class="cart-item-quantity">
                                                 <a href="product_carts/decrease_amount/<%= product_cart.id %>">
                                                     <i class="fa fa-minus cart-item-minus"></i>
                                                 </a>
                                                     
                                                     <input type="text" name="cart-quantity" class="cart-quantity" value="<%=product_cart.product_amount%>" />
-                                                <a href="product_carts/increase_amount/<%= product_cart.id %>"><i class="fa fa-plus cart-item-plus"></i></a>
-                                                </td>
+                                                <a href="product_carts/increase_amount/<%= product_cart.id %>">
+                                                    <i class="fa fa-plus cart-item-plus"></i>
+                                                </a>
+                                            </td>
                                                 
-                                                <td>
-                                                    <%=product.product_price%>
-                                                </td>
+                                            <td>
+                                                <%=product.product_price%>
+                                            </td>
                                                 
-                                                <td class="cart-item-remove">
-                                                    <a class="fa fa-times" href="product_carts/destroy/ <%= product_cart.id %>"></a>
-                                                </td>
-                                            </tr>
-                                        <%end%>
+                                            <td class="cart-item-remove">
+                                                <a class="fa fa-times" href="product_carts/destroy/ <%= product_cart.id %>"></a>
+                                            </td>
+                                        </tr>
                                     <%end%>
                                 <%end%>
-                            <% end %>
-                        </tbody>
-                    </table> 
-                        
-                        <%= link_to "Add to cart", {:controller => "carts", :action => "destroy", :id => @current_user_cart }%>
-                </div>
-                <div class="col-md-3">
-                    <ul class="cart-total-list">
-                        <li><span>Sub Total</span><span>$<%=@totalprice%></span>
-                        </li>
-                        <li><span>Shipping</span><span>$0.00</span>
-                        </li>
-                        <li><span>Taxes</span><span>$0.00</span>
-                        </li>
-                        <li><span>Total</span><span>$<%=@totalprice%></span>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary btn-lg">Checkout</a>
-                </div>
+                            <%end%>
+                        <% end %>
+                    </tbody>
+                </table> 
+                <a class="btn btn-danger" href="carts/destroy/<%=@current_user_cart%>">Empty my cart</a>
+            </div>
+            <div class="col-md-3">
+                <ul class="cart-total-list">
+                    <li><span>Sub Total</span><span>$<%=@totalprice%></span>
+                    </li>
+                    <li><span>Shipping</span><span>$0.00</span>
+                    </li>
+                    <li><span>Taxes</span><span>$0.00</span>
+                    </li>
+                    <li><span>Total</span><span>$<%=@totalprice%></span>
+                    </li>
+                </ul>
+
+
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
- 
+    </div>
+<%else%>
+    <h3> sorry your Cart is empty </h3>
+<%end%>
 
