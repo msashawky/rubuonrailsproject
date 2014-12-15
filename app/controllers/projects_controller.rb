@@ -12,6 +12,9 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  # see more products that ralated to @project
+  def see_more
+  end
   # GET /projects/new
   def new
     @project = Project.new
@@ -70,14 +73,5 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:project_name, :project_description, :project_photo, :project_social_state).merge(:user_id => current_user.id, :ngo_id => current_user.ngo_id)
-    end
-
-    def show_buying_notification
-    end
-
-    def show_statistics
-    end
-
-    def deactivate
     end
 end

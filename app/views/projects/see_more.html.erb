@@ -1,0 +1,21 @@
+<div class="row">
+    <% @products = Product.where(project_id: params[:project_id]) %>
+    <% @products.each do |product| %>
+        <div class="col-md-3" >
+          <a class="hover-img" href="../../../products/show/<%= product.id %>">
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag product.photo.url(:medium) %>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= product.product_name %></h5>
+              <h3 > <%= product.product_price%>  $</h3>
+              <h5 class="product-count"><%= product.product_count%>  pieces</h5>
+              <p class="product-desciption"><%= product.product_description %></p>
+            </div>
+          </div>
+        </a>
+        </div>    
+    <% end %>
+</div>
+<div class="gap"></div>

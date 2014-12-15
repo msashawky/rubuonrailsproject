@@ -14,11 +14,15 @@
             </div>
             <div class="gap gap-small"></div>
             <div class="row row-wrap">
+            <% @products = Product.where(project_id: @project.id).last(6)  %>
+            <% if !@products.empty? %>
             	<h3>His products</h3>
+            	<div class="col-md-11"></div>
+            	<div class="col-md-1">
+            		<%= link_to "See more", {:controller => 'projects', :action => 'see_more', :project_id => @project.id}, :class => "btn btn-info" %>
+            	</div>
             	<div class="gap gap-mini"></div>
-            <% @products = Product.all %>
             <% @products.each do |product| %>
-            <% if product.project == @project %>
             	<div class="col-md-4">
             		<a class="hover-img" href="../../../products/show/<%= product.id %>">
                                  <div class="product-thumb">
@@ -33,7 +37,6 @@
             						</div>
 								</div>
 							</a>
-            <% else %>
             	<div class="gap gap-small"></div>
             <% end %>
             <% end %>
