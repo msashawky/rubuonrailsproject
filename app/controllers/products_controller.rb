@@ -39,7 +39,7 @@ before_action :authenticate_user!
 
     respond_to do |format|
       if !params[:images]
-        @product.errors.add(:images, 'images can not be empty')
+        @product.errors.add(:images, ' can not be empty')
         format.html { render :new }
         format.json { render :show, status: :created, location: @product }
       elsif params[:images].length > 4
@@ -59,7 +59,7 @@ before_action :authenticate_user!
 
             }
           end
-        format.html { render :new }
+        format.html { redirect_to @product , notice: 'product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -102,7 +102,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
 
-      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo).merge(:product_categories_id => params[:product_categories_id][:id])
+      params.require(:product).permit(:product_name, :product_price, :product_count, :product_description,:photo).merge(:product_category_id => params[:product_category_id][:id])
     end
 
   def add_product

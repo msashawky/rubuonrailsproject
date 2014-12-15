@@ -34,7 +34,7 @@
             <div class="form-group">
           *  <%= f.label :product_category %><br>
 
-            <%= collection_select(:product_categories_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
+            <%= collection_select(:product_category_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
           </div>
           
 
@@ -73,7 +73,7 @@
               <%= f.label :upload_main_image %><br>
               <%= f.file_field :photo %>
           </div>
-          <%= f.submit %>
+          <%= f.submit 'Add Product' ,:class=> 'btn btn-primary' %>
           <%= link_to 'Back', products_path ,:class=>"btn btn-danger"%>
       </form>
   </div>
