@@ -46,9 +46,10 @@
             <div class="form-group">
           *  <%= f.label :product_category %><br>
 
-            <%= collection_select(:product_categories_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
+            <%= collection_select(:product_category_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
           </div>
           
+
           <div class="control-group">
             <%= f.label :Gallery_photos, :class => 'control-label' %>
             <div class="controls">
@@ -61,6 +62,7 @@
               <%= file_field_tag "images[]", type: :file, multiple: true %>
             </div>
           </div>
+
 
           <div class="form-group">
             *  <%= f.label :product_price %><br>
@@ -83,7 +85,9 @@
               <%= f.label :upload_main_image %><br>
               <%= f.file_field :photo %>
           </div>
+
                     <%= f.button :submit , name: "id", value: project.id %>
+
           <%= link_to 'Back', products_path ,:class=>"btn btn-danger"%>
       </form>
   </div>
