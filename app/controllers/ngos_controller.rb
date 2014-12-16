@@ -6,9 +6,13 @@ before_action :authenticate_user!, only: :new
   # GET /ngos
   # GET /ngos.json
   def index
-    #AdminMail.welcome_email().deliver
-    # @ngos = Ngo.all
-    @ngos=Ngo.where(active_ngo: true).paginate(:page => params[:page], :per_page => 5)
+      if current_user
+        if current_user.admin 
+          @ngos=Ngo.all.paginate(:page => params[:page], :per_page => 10)
+        end
+      else
+       @ngos=Ngo.where(active_ngo: true).paginate(:page => params[:page], :per_page => 10)
+     end
   end
 
   # GET /ngos/1
