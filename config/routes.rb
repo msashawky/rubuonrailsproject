@@ -26,6 +26,7 @@ get 'controller/index'
 
   resources :products
     resources :user
+    resources :checkouts
 
 
 

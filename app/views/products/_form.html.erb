@@ -1,3 +1,17 @@
+<% @checkboolean=0%>
+<%if !@products%>
+  <%checkboolean=0%>
+<%end%>
+<% @projects.each do |project|%>
+
+  <% if project.user_id== current_user.id%>
+  <% @checkboolean=1%>
+     <%@product.project_id=project.id%>
+   
+
+
+
+
 
   <div class="row">
         <%= render "layouts/partials/header" %>
@@ -6,8 +20,6 @@
     <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-
       <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -34,9 +46,10 @@
             <div class="form-group">
           *  <%= f.label :product_category %><br>
 
-            <%= collection_select(:product_categories_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
+            <%= collection_select(:product_category_id , :id, ProductCategory.all , :id, :category_name, :include_blank => "Please select") %>
           </div>
           
+
           <div class="control-group">
             <%= f.label :Gallery_photos, :class => 'control-label' %>
             <div class="controls">
@@ -49,6 +62,7 @@
               <%= file_field_tag "images[]", type: :file, multiple: true %>
             </div>
           </div>
+
 
           <div class="form-group">
             *  <%= f.label :product_price %><br>
@@ -71,15 +85,23 @@
               <%= f.label :upload_main_image %><br>
               <%= f.file_field :photo %>
           </div>
-          <%= f.submit %>
+
+                    <%= f.button :submit , name: "id", value: project.id %>
+
           <%= link_to 'Back', products_path ,:class=>"btn btn-danger"%>
       </form>
   </div>
+  <%end%>
+  <%break%>
+    <%else%>
+    <% @checkboolean=0%>
 
 
 </div>
-
 <%end%>
-
+<%end%>
+<%if @checkboolean==0%>
+<h3> "you don not have access to add a product."</h3>
+<%end%>
 
 

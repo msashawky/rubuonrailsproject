@@ -137,17 +137,6 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.datetime "project_photo_updated_at"
   end
 
-  create_table "registered_users", force: true do |t|
-    t.string   "card_number"
-    t.string   "country"
-    t.string   "city"
-    t.string   "street"
-    t.string   "apartment"
-    t.string   "governorate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "site_admins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

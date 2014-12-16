@@ -1,9 +1,7 @@
 
 <%= form_for @project , :url => projects_path , :html => { :multipart => true } do |f| %>
   <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <ul>
       <% @project.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,10 +10,6 @@
     </div>
   <% end %>
   <form role="form">
-    <% @project.user_id = current_user.id %>
-    <% if current_user.ngo %>
-    <% @project.ngo_id = current_user.ngo.id%>
-    <% end %>
     <div class="form-group">
       <label for="project_name"><strong>Project name</strong></label>
       <input id="project_name" name="project[project_name]" type="text" class="form-control" placeholder="ex: ahmed hassan">
