@@ -8,6 +8,7 @@
 <% end%>
 
 <%if @current_user_cart%>
+<%arr=Array.new%>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -27,7 +28,10 @@
                                 <% @my_product=product_cart.product_id %>
                                 <%@products.each do |product|%>
                                     <% if product.id==@my_product%>
+                                        <%arr.push product.id%>
+                                        <%= arr %>
                                         <% @totalprice = @totalprice.to_i+(product.product_price.to_i*product_cart.product_amount)%>
+
                                         <tr>
                                             <td class="cart-item-image">
                                                 <a href="#">
@@ -38,6 +42,7 @@
                                                 <a href="#"> <%= product.product_name %></a>
                                             </td>    
                                             <td class="cart-item-quantity">
+
                                                 <a href="product_carts/decrease_amount/<%= product_cart.id %>">
                                                     <i class="fa fa-minus cart-item-minus"></i>
                                                 </a>
@@ -46,6 +51,7 @@
                                                 <a href="product_carts/increase_amount/<%= product_cart.id %>">
                                                     <i class="fa fa-plus cart-item-plus"></i>
                                                 </a>
+
                                             </td>
                                                 
                                             <td>
@@ -63,6 +69,7 @@
                     </tbody>
                 </table> 
                 <a class="btn btn-danger" href="carts/destroy/<%=@current_user_cart%>">Empty my cart</a>
+
             </div>
             <div class="col-md-3">
                 <ul class="cart-total-list">
@@ -75,12 +82,39 @@
                     <li><span>Total</span><span>$<%=@totalprice%></span>
                     </li>
                 </ul>
+                    <%= form_for(@checkout) do |f| %>
+                        <% if @checkout.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@checkout.errors.count, "error") %> prohibited this product from being saved:</h2>
 
 
+                          <ul>
+                          <% checkout.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                      <form accept-charset="UTF-8" action="/checkouts" class="new_product" id="new_product"method="post">
+                          <div class="form-group">
+                          *  <%= f.label :name %><br>
+                            <%= f.text_field :name ,:value=>current_user.first_name,:class=>"form-control",:placeholder=>"name" %>
+                          </div>
+
+                          <div class="form-group">
+                            *  <%= f.label :phone_number %><br>
+                              <%= f.text_field :phone_number , :value =>current_user.phone_number ,:class=>"form-control",:placeholder=>"$" %>
+                          </div>
+
+                          <%= f.button :submit , :class=> "btn btn-primary"  , name: "ids" , value: arr%>
+                        
+                      </form>
+                    <% end %>
             </div>
         </div>
     </div>
 <%else%>
     <h3> sorry your Cart is empty </h3>
 <%end%>
+
 
