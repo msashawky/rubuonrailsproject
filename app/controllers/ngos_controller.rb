@@ -6,13 +6,10 @@ before_action :authenticate_user!, only: :new
   # GET /ngos
   # GET /ngos.json
   def index
-      if current_user
-        if current_user.admin 
-          @ngos=Ngo.all.paginate(:page => params[:page], :per_page => 10)
-        end
-      else
+     
+      
        @ngos=Ngo.where(active_ngo: true).paginate(:page => params[:page], :per_page => 10)
-     end
+     
   end
 
   # GET /ngos/1
@@ -75,7 +72,7 @@ before_action :authenticate_user!, only: :new
   def approve
     respond_to do |format|
       if @ngo.update(active_ngo: true , wait_approve: false )
-        AdminMail.welcome_email(@ngo.NGO_name).deliver
+        AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully approved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else
@@ -92,7 +89,7 @@ before_action :authenticate_user!, only: :new
     
       respond_to do |format|
       if @ngo.update(active_ngo: false , wait_approve:false )
-         AdminMail.welcome_email(@ngo.NGO_name).deliver
+         AdminMail.welcome_email(@ngo).deliver
         format.html { redirect_to @ngo, notice: 'Ngo was successfully disapproved.' }
         format.json { render :show, status: :ok, location: @ngo }
       else

@@ -14,6 +14,7 @@
 </div>
 
     <div class="row">
+
     <% @ngos.each do |ngo| %>
     
     <div class="col-md-4">
@@ -45,6 +46,7 @@
       </div>
    
     <% end %>
+  
  </div>
 <br>
 <%= will_paginate @ngos, :class => "digg_pagination" %>
