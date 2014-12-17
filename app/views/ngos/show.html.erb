@@ -1,49 +1,47 @@
+
 <div class="row">
-  <div class="col-md-11"></div>
+  <div class="col-md-1">
+   <h1> <%= @ngo.NGO_name %></h1>
+  </div>
+  <div class="col-md-10"></div>
   <div class="col-md-1">
     <%= link_to 'Back', ngos_path , :class=> "btn btn-primary" %>
   </div>
 </div>
-<% if  @ngo.active_ngo  == true %>   
+ 
 <p id="notice"><%= notice %></p>
-
+<% if  @ngo.active_ngo  == true %>  
 <div class="row">
-<div class="col-md-6">
 
-    <!--
+<div class="col-md-8">
+     <div id="popup-gallery" class="row row-no-gutter">
+  
+            <!--
 
-     START BOOTSTRAP CAROUSEL 
+             HOVER IMAGE 
 
-    -->
-    <div id="my-carousel" class="carousel slide">
-        <div class="carousel-inner">
-            
-                <%= image_tag @ngo.image.url %>
-            
+            -->
+            <a class="hover-img popup-gallery-image" data-effect="mfp-zoom-out" href = '<%=  @ngo.image.url %> '>
+                <img title="Gamer Chick" alt="Image Alternative text" src= '<%=  @ngo.image.url %>'></img>
+                <i class="fa fa-resize-full hover-icon"></i>
+            </a>
         </div>
-       
-    </div>
-    <!--
-
-     END BOOTSTRAP CAROUSEL 
-
-    --> 
-
+        
+        
 </div>
-<div class="col-md-2">
-</div>
-
-<div class="col-md-4">
-
+<div class="col-md-1"></div>
+<div class="col-md-3">
     <div class="product-page-meta box">
         <center><h4>
-       City: <%= @ngo.city %>
+        Country : <%= @ngo.country %>
         </h4></center>
         <center><p>
-          Phone_number: <%= @ngo.phone_number %>
+         City: <%= @ngo.city %>
         </p></center>
-        <a class="btn btn-primary btn-lg btn-block" href="<% @ngo.website %>">
-           <%= @ngo.NGO_name %>
+        <a class="btn btn-primary btn-lg btn-block" href="//<%= @ngo.website %>">
+
+           <%= @ngo.NGO_name %> website
+
         </a>
        <ul class="list product-page-meta-info">
             <li>
@@ -57,7 +55,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                            <a class="fa fa-facebook" href="<% @ngo.fb_link %>"></a>
+
+                            <a class="fa fa-facebook" href='//<%= @ngo.fb_link %>'></a>
+
 
                         </span>
                     </li>
@@ -71,7 +71,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                            <a class="fa fa-twitter" href="<% @ngo.tw_link %>"></a>
+
+                            <a class="fa fa-twitter" href='//<%= @ngo.tw_link %>'></a>
+
 
                         </span>
                     </li>
@@ -85,7 +87,9 @@
                         </span>
                         <span class="product-page-meta-price">
 
-                              <a class="fa fa-google-plus" href="<% @ngo.gp_link %>"></a>
+
+                              <a class="fa fa-google-plus" href='//<%= @ngo.gp_link %>'></a>
+
 
                         </span>
                     </li>
@@ -109,56 +113,106 @@
             <li>
                 <span class="product-page-meta-title">
 
-                    <center>Zip_code: <%= @ngo.ZIP_code %> </center>
+                    <center>  Phone_number: <%= @ngo.phone_number %></center>
                      
                 </span>
             </li>
+           
+              
+           
         </ul>
     </div>
+   <!--  <br>
+             <if current_user > 
+             < if @ngo.id == current_user.ngo_id >
 
+             <div class="col-md-1">
+             <link_to 'Edit', edit_ngo_path(@ngo)  , :class=> "btn btn-primary" >
+             </div>
+              <div class="col-md-1"></div>
+             
+              <div class="col-md-1"> 
+             <   link_to 'Delete', { :action => 'destroy' , :ngo => @ngo , :id => @ngo.id  }  ,  :class=> "btn btn-primary" , data: { confirm: 'Are you sure?' } > 
+              </div> 
+             < end >
+             < end > -->
 </div>
 </div>
-<!-- @ngo.bank_account -->
-<!--@ngo.email -->
-<!-- @ngo.NGO_number  -->
+</div>
 
-<!-- @ngo.fb_link  -->
-<!-- @ngo.gp_link -->
-<!-- @ngo.tw_link -->
-<!-- @ngo.governorate -->
-<!-- @ngo.apartment  -->
 
+
+<br>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-8">
+  <div class="tabbable">        
+
         <h3>
 
             Discription
 
         </h3>
-        <p>
 
-        <%= @ngo.description %>
+<div class="tab-content">
 
-        </p>
-      
+    <div id="tab-1" class="tab-pane fade in active">
+        <div class="row text-smaller">
+             <%= @ngo.description %>
+        </div>
+    </div>      
     </div>
+</div>
+</div>
 
 </div>
-</div>
-<% elsif @ngo.wait_approve == true  %> <!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<br>
+
+<% @projects = Project.where(ngo_id: @ngo.id).last(3) %>
 <div class="row">
+      <div class="col-md-4"> <h1>latest projects</h1></div>
+   <div class="col-md-8"></div>
+</div>
+<br>
+<div class="row">
+    <% @projects.each do |project| %>
+        <a class="product-price" href="products/<%= product.id%>">
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag project.project_photo.url(:medium) %>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= project.project_name %></h5>
+              <h3 > <%= project.project_social_state%>  $</h3>
+              <p class="product-desciption"><%= project. project_description %></p>
+           
+             
+              
+            </div>
+          </div>
+        </div>
+        </a>    
+    <% end %>
+   
+
+</div>
+<br>
+<% elsif @ngo.wait_approve == true  %> 
+<!-- @ngo.apporved== false and current_user == site_admin (devise)-->
+<% if current_user.admin %>
+<div class="row">
+
 <div class="col-md-4">
 <%=link_to 'Approve', { :action => 'approve' , :ngo => @ngo ,:id => @ngo.id } ,:class=> "btn btn-primary"%> 
 </div>
 <div class="col-md-4">
 <%= link_to 'Disapprove', { :action => 'disapprove' , :ngo => @ngo , :id => @ngo.id  } ,:class=> "btn btn-primary" %>
 </div>
+
+
 </div>
-<!-- elsif @ngo.apporved== true  and current_user == ngo_admin (devise) -->
- <!-- link_to 'Edit', edit_ngo_path(@ngo) -->
- <!-- link_to 'Delete', @ngo , method: :delete , data: { confirm: 'Are you sure?' } -->
- <!-- else -->
- <% else %>
- <h1> Pending until admin approval </h1>
 <% end %>
+<% end %>
+
+
 

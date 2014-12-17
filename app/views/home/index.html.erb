@@ -1,3 +1,4 @@
+
 <!-- Home -->
 <div class="row">
 <%= render "layouts/partials/header" %>
@@ -28,6 +29,51 @@
     <% end %>
    
 </div>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-4"><h1>Latest Ngos</h1></div>
+  <div class="col-md-7"></div>
+  <div class="col-md-1">
+  <%= link_to 'See More' , {:controller => 'ngos' , :action => 'index'}, :class=> "btn btn-primary"%>
+  </div>
 </div>
-<div class="gap"></div>
-</div>
+<br>
+   <div class="row">
+
+    <% @ngos.each do |ngo| %>
+  
+    <div class="col-md-4">
+    <div class="team-member">
+    <%= link_to ( image_tag ngo.image.url ), ngo %>
+      
+     
+      <p class="team-member-position">
+          <%= ngo.city %>
+        </p>
+        <p class="team-member-desciption">
+              <h4> <%= ngo.NGO_name %></h4>
+            
+
+        </p>
+           <ul class="team-member-social">
+           <li>
+             <a class="fa fa-google-plus" href="//<%= ngo.gp_link %>"></a>
+           </li>
+           <li>
+            <a class="fa fa-twitter" href="//<%= ngo.tw_link %>"></a>
+           </li>
+           <li>
+           <a class="fa fa-facebook" href="//<%= ngo.fb_link %>"></a>
+           </li>
+           </ul>
+  
+      </div>
+      </div>
+ 
+    <% end %>
+    </div>
+<br>

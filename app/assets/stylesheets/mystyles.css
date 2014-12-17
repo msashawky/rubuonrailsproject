@@ -1,8 +1,6 @@
 /*YOUR CUSTOM STYLES*/
-
+.latestprojects{ margin-top: 30px;}
 .sign_out{ float: right;}
-
-/* CSS for pagination  */
 .digg_pagination {
   background: white;
   cursor: default;
@@ -49,3 +47,4 @@
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+

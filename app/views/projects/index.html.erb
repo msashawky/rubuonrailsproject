@@ -16,7 +16,7 @@
       <tr>
         <td><%= project.project_name %></td>
         <td><%= project.project_description %></td>
-        <td><%= project.project_photo %></td>
+        <td><%=  image_tag project.project_photo %></td>
         <td><%= project.project_social_state %></td>
         <td><a href="projects/show/<%= project.id%>">Show</a></td>
         <td>
