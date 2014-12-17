@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, only: :new
   layout "index"
  # before_action :set_project, only: [:show, :edit, :update, :destroy]
 
