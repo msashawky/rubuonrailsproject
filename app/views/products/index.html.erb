@@ -21,10 +21,11 @@
               
             </div>
           </div>
-          <%= will_paginate @products, :class => "digg_pagination"%>
+          
         </div>    
     <% end %>
     <div class="row">
+    <div class="mypagination"><%= will_paginate @products, :class => "digg_pagination"%></div>
 <%= link_to 'New Product', new_product_path, :class=> "btn btn-primary" %>
 </div>
 </div>

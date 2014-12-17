@@ -7,10 +7,12 @@ class HomeController < ApplicationController
 		@products = Product.all
 
 
-
+		#Product_view
 		@product_view = Product.where(product_name: true).last(3)
+
+		#Project_view
+		@projects = Project.where(project_name: true).last(3)
 		
-		#Pagination Query
 
 	end
 end
