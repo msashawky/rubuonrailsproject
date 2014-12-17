@@ -57,6 +57,7 @@ gem 'closure_tree'
 
 #Enable pagination " Comments "
 gem 'will_paginate'
+ 
 
 
 gem "paperclip", "~> 4.2"
