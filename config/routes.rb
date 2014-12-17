@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :charities
+
+get 'controller/index'
+
+
   resources :ngos
 
-   resources :product_carts
+  resources :product_carts
 
 
   resources :product_carts 
 
   resources :carts
-
+  resources :charities
   resources :product_categories
 
   resources :managers

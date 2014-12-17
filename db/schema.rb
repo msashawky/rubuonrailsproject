@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.integer  "user_id"
   end
 
+  create_table "charities", force: true do |t|
+    t.string   "charity_field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "checkouts", force: true do |t|
     t.string   "name"
     t.string   "phone_number"
@@ -68,6 +74,14 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.string   "apartment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "email"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "active_ngo",         default: false
+    t.boolean  "wait_approve",       default: true
   end
 
   create_table "product_carts", force: true do |t|
@@ -112,12 +126,15 @@ ActiveRecord::Schema.define(version: 20141211183029) do
   create_table "projects", force: true do |t|
     t.string   "project_name"
     t.text     "project_description"
-    t.string   "project_photo"
     t.string   "project_social_state"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "ngo_id"
+    t.string   "project_photo_file_name"
+    t.string   "project_photo_content_type"
+    t.integer  "project_photo_file_size"
+    t.datetime "project_photo_updated_at"
   end
 
   create_table "site_admins", force: true do |t|
