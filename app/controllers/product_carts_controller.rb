@@ -10,6 +10,7 @@ class ProductCartsController < ApplicationController
     @carts=Cart.all
     @product_carts = ProductCart.all
     @products=Product.all 
+    @checkout=Checkout.new
   end
 
   # GET /product_carts/1
@@ -67,6 +68,37 @@ class ProductCartsController < ApplicationController
   end
 
 
+    def increase_amount   
+      @product_cart=ProductCart.find(params[:id])
+      @products=Product.all
+      @theproduct=@products.find(@product_cart.product_id)
+      if @theproduct.product_count > @product_cart.product_amount
+        @product_cart.product_amount = @product_cart.product_amount + 1
+            if  @product_cart.save!       
+              redirect_to :back
+            else
+              render "new"
+            end 
+      else         
+          @product_cart.errors.add(:product_amount, 'can not equal 0')
+          redirect_to "/product_carts"
+      end    
+    end
+
+    def decrease_amount
+      @product_cart=ProductCart.find(params[:id])
+      if @product_cart.product_amount > 1
+        @product_cart.product_amount = @product_cart.product_amount - 1
+          if  @product_cart.save!       
+              redirect_to :back
+          else
+              render "new"
+          end  
+      else         
+          @product_cart.errors.add(:product_amount, 'can not equal 0')
+          redirect_to "/product_carts"
+      end   
+    end
 
       def add_to_cart 
         @carts=Cart.all
