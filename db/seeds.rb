@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
 #products=Product.create({product_name: 'sayed',id:'1',product_count:'4',product_price:'40',product_description:'moamennanlhaf'})
 Comment.create(user_email: 'moomen.abdelwahed@yahoo.com', body: 'Test comment', product_id: 1, created_at: "2014-11-11 22:27:22", updated_at: "2014-11-11 22:27:22")
 Product.create(product_name: 'sayed1',product_count:'4',product_price:'40',product_description:'moamennanlhaf', project_id: 3)
@@ -17,6 +16,7 @@ Product.create(product_name: 'sayed6',product_count:'4',product_price:'40',produ
 Product.create(product_name: 'sayed7',product_count:'4',product_price:'40',product_description:'moamennanlhaf', project_id: 3)
 Product.create(product_name: 'sayed8',product_count:'4',product_price:'40',product_description:'moamennanlhaf', project_id: 3)
 Product.create(product_name: 'sayed9',product_count:'4',product_price:'40',product_description:'moamennanlhaf', project_id: 3)
+
 
 
 

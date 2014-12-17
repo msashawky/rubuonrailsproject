@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141214185939) do
 
+
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -125,17 +126,6 @@ ActiveRecord::Schema.define(version: 20141214185939) do
     t.string   "project_social_state_content_type"
     t.integer  "project_social_state_file_size"
     t.datetime "project_social_state_updated_at"
-  end
-
-  create_table "registered_users", force: true do |t|
-    t.string   "card_number"
-    t.string   "country"
-    t.string   "city"
-    t.string   "street"
-    t.string   "apartment"
-    t.string   "governorate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "site_admins", force: true do |t|
