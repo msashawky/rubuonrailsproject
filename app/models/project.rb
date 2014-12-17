@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
 
   validates_attachment_content_type :project_social_state, :content_type => %w(image/jpeg image/jpg image/png)
   validates_with AttachmentSizeValidator, :attributes => :project_social_state, :less_than => 2.megabytes
-	# validates :project_name, :project_description, :project_social_state, presence: true
+	validates :project_name, :project_description, :project_photo, :project_social_state, presence: true
 	validates :project_name, uniqueness: true
 	validates :project_name, length: { minimum: 7 }
 end
