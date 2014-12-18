@@ -9,7 +9,7 @@ before_action :authenticate_user! , only: [:new ,:show, :edit, :update, :destroy
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(:page => params[:page], :per_page => 1)
+    @products = Product.all.paginate(:page => params[:page], :per_page => 3)
 
 
   end
@@ -20,6 +20,10 @@ before_action :authenticate_user! , only: [:new ,:show, :edit, :update, :destroy
      @product_picture = ProductPicture.all
     @comments = @product.comments.all
     @comment = @product.comments.build
+    @product = Product.find_by(id: params[:id])
+    if @product.nil?
+      render action: "index"
+    end
   end
 
   def list_category

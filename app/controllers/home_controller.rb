@@ -5,14 +5,14 @@ class HomeController < ApplicationController
 		# end
 		@ngos=Ngo.where(active_ngo: true).last(3)
 		@product_category = ProductCategory.all
-		@products = Product.all
+		#@products = Product.all
 
 
-		#Product_view
-		@product_view = Product.where(product_name: true).last(3)
-
+		#Product_view .take(2)
+		#@product = Product.where(product_name: true).last(3)
+           @products = Product.last(3)
 		#Project_view
-		@projects = Project.where(project_name: true).last(3)
+		@projects = Project.last(3)
 		
 
 	end

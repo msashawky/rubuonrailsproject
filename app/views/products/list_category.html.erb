@@ -1,9 +1,10 @@
 <div class="row">
 <%= render "layouts/partials/header" %>
 <% @product_for_category= Product.all%>
-
+    <% if Product.count > 0 %>
     <% @products = Product.where(product_category_id: params[:id]) %>
     <% @products.each do |product| %>
+        <a class="product-price" href="../<%= product.id%>">
 
         <div class="col-md-3" >
           <div class="product-thumb">
@@ -18,7 +19,13 @@
             </div>
           </div>
         </div>
-           
+          
+          <% end %>
+          <% else %>
+          <br><br>
+          <h1>This category contains no products</h1>
+          <br><br><br><br><br><br><br><br><br><br> 
     <% end %>
 </div>
+</a>
 <div class="gap"></div>

@@ -15,27 +15,38 @@
             <header class="product-header">
               <%= image_tag product.photo.url(:medium) %>
             </header>
+            </a>
             <div class="product-inner">
               <h5 class="product-title"><%= product.product_name %></h5>
               <h3 > <%= product.product_price%>  $</h3>
               <h5 class="product-count"><%= product.product_count%>  pieces</h5>
               <p class="product-desciption"><%= product.product_description %></p>
              
-             
+           
               
             </div>
+            <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => product.id },:class=>"btn btn-primary"%>
           </div>
+
+  
         </div>
-        </a>    
+
+        
+        
+         
+
     <% end %>
+      <%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary"%>
 
+</div>
     <!--Listing Projects-->
+      <div class="row">
+  <div class="col-md-offset-3"><h1> latest projects</h1></div>
 
-    <div class="latestprojects">
-    <h1>latest projects</h1>
+    
 
     <% @projects.each do |project| %>
-        <a class="product-price" href="products/<%= product.id%>">
+        <a class="product-price" href="projects/<%= project.id%>/show">
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
@@ -43,7 +54,8 @@
             </header>
             <div class="product-inner">
               <h5 class="product-title"><%= project.project_name %></h5>
-               <p class="product-desciption"><%= project.project_description %></p>
+              <h3 > <%= image_tag project.project_social_state%>  $</h3>
+              <p class="product-desciption"><%= project.project_description %></p>
            
              
               
@@ -60,21 +72,16 @@
 
 
 <div class="row">
-  <div class="col-md-4"><h1>Latest Ngos</h1></div>
-  <div class="col-md-7"></div>
+  <div class="col-md-3"></div>
+  <div class="col-md-7"><h1>Latest Ngos</h1></div>
   <div class="col-md-1">
   <%= link_to 'See More' , {:controller => 'ngos' , :action => 'index'}, :class=> "btn btn-primary"%>
   </div>
 </div>
 
 <div class="gap"></div>
-   
-</div>
 
 
-</div>
-
-</div>
 <div class="gap"></div>
 
 
@@ -82,7 +89,6 @@
 
 
 
-</div>
 
 
 <br>
