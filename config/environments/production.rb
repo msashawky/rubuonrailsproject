@@ -9,6 +9,9 @@ Rails.application.configure do
   # to autoload local files of commontator gem
   config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.{rb,yml}')]
 
+
+  config.action_mailer.default_url_options = { :host => 'infinite-fortress-1887.herokuapp.com' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
