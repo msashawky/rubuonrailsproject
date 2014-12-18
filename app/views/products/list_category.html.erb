@@ -1,5 +1,7 @@
 <div class="row">
 <%= render "layouts/partials/header" %>
+<% @product_for_category= Product.all%>
+
     <% @products = Product.where(product_category_id: params[:id]) %>
     <% @products.each do |product| %>
 
@@ -15,7 +17,8 @@
               <p class="product-desciption"><%= product.product_description %></p>
             </div>
           </div>
-        </div>    
+        </div>
+           
     <% end %>
 </div>
 <div class="gap"></div>
