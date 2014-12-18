@@ -68,6 +68,7 @@
 
                        <% if ! user_signed_in? %>
                         <ul class="login-register">
+
                             <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
                                 <div class="shopping-cart-box">
                                     <ul class="shopping-cart-items">
@@ -102,18 +103,14 @@
                             </li>
                         </ul>
                         <% else %>
-
+                    
                          <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
                          <nav>
                          <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-                            <div>
-                                <% @projects = Project.all %>
-                                <% @projects.each do |project| %>
-                            <% if project.user == current_user %>
-                                <li><a href="dashboard.html.erb">Dashboard</a></li>
-                            <% end %>
-                            <% end %>
-                             </div>
+                        <% if   current_user.ngo_id %>
+                           <li > <%= link_to "My Ngo",{ :controller => 'ngos' , :action => 'show' ,:id => current_user.ngo_id } ,:class=> "nav nav-pills flexnav" %>
+                           </li>
+                        <% end %>
                         <div class="sign_out">
                         <li class="active">
                         <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "nav nav-pills flexnav" %></li>

@@ -1,24 +1,46 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Project name:</strong>
-  <%= @project.project_name %>
-</p>
-
-<p>
-  <strong>Project description:</strong>
-  <%= @project.project_description %>
-</p>
-
-<p>
-  <strong>Project photo:</strong>
-  <%= @project.project_photo %>
-</p>
-
-<p>
-  <strong>Project social state:</strong>
-  <%= @project.project_social_state %>
-</p>
+<div class="container">
+            <div class="row row-wrap">
+            	<div class="col-md-8">
+            		<div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="540" data-thumbwidth="960">
+            			<%= image_tag @project.project_photo.url %>
+                    </div>
+            	</div>
+            	<div class="col-md-4">
+            		<h3><%= @project.project_name %></h3>
+            		<p><%= @project.project_description %></p>
+            	</div>
+            </div>
+            <div class="gap gap-small"></div>
+            <div class="row row-wrap">
+            <% @products = Product.where(project_id: @project.id).last(6)  %>
+            <% if !@products.empty? %>
+            	<h3>His products</h3>
+            	<div class="col-md-11"></div>
+            	<div class="col-md-1">
+            		<%= link_to "See more", {:controller => 'projects', :action => 'see_more', :project_id => @project.id}, :class => "btn btn-info" %>
+            	</div>
+            	<div class="gap gap-mini"></div>
+            <% @products.each do |product| %>
+            	<div class="col-md-4">
+            		<a class="hover-img" href="../../../products/show/<%= product.id %>">
+                                 <div class="product-thumb">
+						            <header class="product-header">
+						              <%= image_tag product.photo.url(:medium) %>
+						            </header>
+						            <div class="product-inner">
+						              <h5 class="product-title"><%= product.product_name %></h5>
+						              <h3 > <%= product.product_price%>  $</h3>
+						              <h5 class="product-count"><%= product.product_count%>  pieces</h5>
+						              <p class="product-desciption"><%= product.product_description %></p>
+            						</div>
+								</div>
+							</a>
+            	<div class="gap gap-small"></div>
+            <% end %>
+            <% end %>
+            	</div>
+			</div>
 <% if current_user %>
 <% if current_user.id == @project.user_id %>
 <a href="../edit/<%= @project.id %>">Edit</a> |
