@@ -174,8 +174,8 @@
 </div>
 <br>
 <div class="row">
-    <% @projects.each do |project| %>
-        <a class="product-price" href="products/<%= product.id%>">
+      <% @projects.each do |project| %>
+        <a class="product-price" href="projects/show/<%= project.id%>">
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
@@ -183,18 +183,12 @@
             </header>
             <div class="product-inner">
               <h5 class="product-title"><%= project.project_name %></h5>
-              <h3 > <%= project.project_social_state%>  $</h3>
               <p class="product-desciption"><%= project. project_description %></p>
-           
-             
-              
             </div>
           </div>
         </div>
         </a>    
     <% end %>
-   
-
 </div>
 <br>
 <% elsif @ngo.wait_approve == true  %> 
