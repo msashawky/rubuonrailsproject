@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   acts_as :user_datum
   belongs_to :ngo
   has_one :cart, dependent: :destroy
-  has_many :projects
+  has_one :project
   has_many :products, through: :user_products
 
   validates_presence_of :first_name

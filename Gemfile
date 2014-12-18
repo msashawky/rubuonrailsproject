@@ -6,6 +6,7 @@ gem 'rails', '4.1.6'
 
 group :production, :staging do
   gem "pg"
+  gem 'rails_12factor'
 end
 
 group :development, :test do
@@ -55,8 +56,9 @@ gem 'closure_tree'
 
 #Enable pagination " Comments "
 gem 'will_paginate'
+ 
 
-
+# for file uploading
 gem "paperclip", "~> 4.2"
 
 group :development ,:test do
@@ -73,7 +75,7 @@ gem "font-awesome-rails"
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

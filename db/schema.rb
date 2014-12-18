@@ -10,8 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20141211183029) do
+ActiveRecord::Schema.define(version: 20141214185939) do
 
   create_table "accountants", force: true do |t|
     t.datetime "created_at"
@@ -26,12 +25,19 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.integer  "user_id"
   end
 
+  create_table "charities", force: true do |t|
+    t.string   "charity_field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "checkouts", force: true do |t|
     t.string   "name"
     t.string   "phone_number"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
   end
 
   create_table "comment_hierarchies", force: true do |t|
@@ -68,6 +74,14 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.string   "apartment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "email"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "active_ngo",         default: false
+    t.boolean  "wait_approve",       default: true
   end
 
   create_table "product_carts", force: true do |t|
@@ -101,23 +115,29 @@ ActiveRecord::Schema.define(version: 20141211183029) do
     t.string   "product_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
     t.integer  "product_category_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "project_id"
   end
 
   create_table "projects", force: true do |t|
     t.string   "project_name"
     t.text     "project_description"
-    t.string   "project_photo"
-    t.string   "project_social_state"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "ngo_id"
+    t.string   "project_photo_file_name"
+    t.string   "project_photo_content_type"
+    t.integer  "project_photo_file_size"
+    t.datetime "project_photo_updated_at"
+    t.string   "project_social_state_file_name"
+    t.string   "project_social_state_content_type"
+    t.integer  "project_social_state_file_size"
+    t.datetime "project_social_state_updated_at"
   end
 
   create_table "site_admins", force: true do |t|
