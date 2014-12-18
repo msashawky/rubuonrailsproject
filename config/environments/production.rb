@@ -1,4 +1,9 @@
 Rails.application.configure do
+  # load assets for heroku
+  config.cache_classes = true
+  config.serve_static_assets = true
+  config.assets.compile = true
+  config.assets.digest = true
   # Settings specified here will take precedence over those in config/application.rb.
   
   # to autoload local files of commontator gem
