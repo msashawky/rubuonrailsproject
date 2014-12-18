@@ -10,7 +10,6 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 20141214185939) do
 
   create_table "accountants", force: true do |t|
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141214185939) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
   end
 
   create_table "comment_hierarchies", force: true do |t|
