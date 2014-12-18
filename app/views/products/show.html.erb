@@ -7,12 +7,17 @@
                     
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="100" data-thumbwidth="150">
+                           <div class="fotorama" data-nav="thumbs" data-allowfullscreen="1" data-thumbheight="100" data-thumbwidth="150">
                             <% @product_picture.each do |picture| %>
                                 <%if picture.product_id== @product.id%>    
                                     <%= image_tag picture.image.url(:thumb) %>
                                 <%end%>
                             <%end%>
+                            </div>
+                            <div>
+                                <p>
+                                    <%= social_share_button_tag(@product.product_name) %>
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-5">
