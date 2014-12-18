@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, only: :new
   layout "index"
  # before_action :set_project, only: [:show, :edit, :update, :destroy]
 
@@ -11,8 +12,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project = Project.find_by(id: params[:id])
+    if @project.nil?
+      render action: "index"
+    end
   end
 
+  # see more products that ralated to @project
+  def see_more
+    @products = Product.where(project_id: params[:project_id]).paginate(:page => params[:page], :per_page => 9) 
+  end
   # GET /projects/new
   def new
     @project = Project.new
@@ -71,14 +80,5 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:project_name, :project_description, :project_photo, :project_social_state).merge(:user_id => current_user.id, :ngo_id => current_user.ngo_id)
-    end
-
-    def show_buying_notification
-    end
-
-    def show_statistics
-    end
-
-    def deactivate
     end
 end
