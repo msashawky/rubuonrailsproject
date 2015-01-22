@@ -122,7 +122,7 @@ class ProductCartsController < ApplicationController
           @product_cart.product_id = params[:id]
           @product_cart.product_amount=1
           if  @product_cart.save!       
-            redirect_to("/products")
+            redirect_to :back
           else
             render "new"
           end           

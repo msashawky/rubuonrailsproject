@@ -9,7 +9,6 @@ get 'controller/index'
 
   resources :product_carts
 
-
   resources :product_carts 
 
   resources :carts
@@ -37,11 +36,15 @@ get ':controller(/:action(/:id))'
 
   resources :customers
   devise_for :users, controllers: { sessions: "users/sessions" }
-    devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' 
-      # match 'users/sign_out' => "devise/sessions#destroy"
+  devise_scope :user do get 'users/sign_out' => 'devise/sessions#destroy'
+  #Started GET "/users/sign_out"
+ #destroy_user_session DELETE /users/sign_out(.:format)
+  
+  #destroy_user_session MATCH /users/sign_out(.:format)
+
+       #get 'users/sign_out' => "devise/sessions#destroy"
       
     end
-
   root to: "home#index"
   resources:profile
 

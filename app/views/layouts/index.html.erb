@@ -13,9 +13,11 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap styles -->
-<%= stylesheet_link_tag('application' , :media => 'all') %>
+       <%= stylesheet_link_tag('application' , :media => 'all') %>
 
        <%= javascript_include_tag("application") %>
+       <%= javascript_include_tag :defaults %>
+       
 
 
 </head>
@@ -113,7 +115,7 @@
                         <% end %>
                         <div class="sign_out">
                         <li class="active">
-                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "nav nav-pills flexnav" %></li>
+                        <%= link_to "Sign out", destroy_user_session_path, :method => :get , :class=> "nav nav-pills flexnav" %></li>
                        </div>
                          </ul>
                          </nav>

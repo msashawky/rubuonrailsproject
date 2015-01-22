@@ -1,4 +1,6 @@
+
 <%= form_for @project, :html => { :multipart => true } do |f| %>
+
   <% if @project.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <ul>

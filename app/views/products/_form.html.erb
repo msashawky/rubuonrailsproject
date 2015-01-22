@@ -16,6 +16,7 @@
   <div class="row">
         <%= render "layouts/partials/header" %>
   <div class="col-md-6">
+  <% @product = Product.new %>
     <%= form_for(@product) do |f| %>
     <% if @product.errors.any? %>
     <div id="error_explanation">

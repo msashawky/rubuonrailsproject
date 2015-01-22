@@ -1,3 +1,4 @@
+<%  if current_user.admin  %>
 <h1>Listing product_categories</h1>
 
 <table>
@@ -12,9 +13,9 @@
     <% @product_categories.each do |product_category| %>
       <tr>
         <td><%= product_category.category_name %></td>
-        <td><%= link_to 'Show', product_category %></td>
-        <td><%= link_to 'Edit', edit_product_category_path(product_category) %></td>
-        <td><%= link_to 'Destroy', product_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', product_category ,:class=>"btn btn-danger"%></td>
+        <td><%= link_to 'Edit', edit_product_category_path(product_category) ,:class=>"btn btn-danger"%></td>
+        <td><%= link_to 'Destroy', product_category, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>"btn btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,6 +23,11 @@
 
 <br>
 
-<%= link_to 'New Product category', new_product_category_path %>
+<%= link_to 'New Product category', new_product_category_path ,:class=>"btn btn-danger"%>
+<%else %>
+<br>
+<h1>This Content is not available for users</h1>
+<br><br><br><br><br><br>
 
+<% end %>
 
