@@ -1,417 +1,112 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <title>NasHope</title>
-    <!-- meta info -->
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <meta name="keywords" content="Koupon HTML5 Template" />
-    <meta name="description" content="Koupon - Premiun HTML5 Template for Coupons Website">
-    <meta name="author" content="Tsoy">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
-    <!-- Bootstrap styles -->
-       <%= stylesheet_link_tag('application' , :media => 'all') %>
-
-       <%= javascript_include_tag("application") %>
-       <%= javascript_include_tag :defaults %>
-       
-
-
-</head>
-
-<body>
-
-
-    <div class="global-wrap">
-
-
-        <!-- //////////////////////////////////
-    //////////////MAIN HEADER///////////// 
-    ////////////////////////////////////-->
-        <div class="top-main-area text-center">
-            <div class="container">
-                <a href="index.html" class="logo mt5">
-                    <%= image_tag('logo-small-dark.png')%>
-                </a>
+<!-- Home -->
+<div class="row">
+<%= render "layouts/partials/header" %>
+ <h1>Latest Products</h1>
+<!--Listing Products-->
+    <% @products.each do |product| %>
+        <a class="product-price" href="products/<%= product.id%>">
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag product.photo.url(:medium) %>
+            </header>
+            </a>
+            <div class="product-inner">
+              <h5 class="product-title"><%= product.product_name %></h5>
+              <h3 > <%= product.product_price%>  $</h3>
+              <h5 class="product-count"><%= product.product_count%>  pieces</h5>
+              <p class="product-desciption"><%= product.product_description %></p>
+             
+           
+              
             </div>
-        </div>
-        <header class="main">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <!-- MAIN NAVIGATION -->
-                        <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
-                        <nav>
-                            <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-
-                                <li class="active"><a href="/home">Home</a>
-                                </li>
-
-                                <li><a href="category-page-shop.html">Category</a>
-                                </li>
-
-                                <li><a href="/products/">Product </a>
-                                </li>
-
-                                <li><a href="/ngos/">Ngo </a>
-                                </li>
-                                
-                            </ul>
-                        </nav>
-                        <!-- END MAIN NAVIGATION -->
-                    </div>
-                    <div class="col-md-6">
-                        
-                        <!-- LOGIN REGISTER LINKS -->
-
-                       <% if ! user_signed_in? %>
-                        <ul class="login-register">
-
-                            <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
-                                <div class="shopping-cart-box">
-                                    <ul class="shopping-cart-items">
-                                        <li>
-                                            <a href="product-shop-sidebar.html">
-                                                
-                                                <%= image_tag('70x70.png')%>
-                                                <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-shop-sidebar.html">
-                                                
-                                                <%= image_tag('70x70.png')%>
-                                                <h5>Playstation Accessories</h5><span class="shopping-cart-item-price">$170</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-inline text-center">
-                                        <li><a href="page-cart.html"><i class="fa fa-shopping-cart"></i> View Cart</a>
-                                        </li>
-                                        <li><a href="page-checkout.html"><i class="fa fa-check-square"></i> Checkout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            
-                            <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a>
-                            </li>
-                            <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Sign up</a>
-                            
-                            </li>
-                        </ul>
-                        <% else %>
-                    
-                         <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
-                         <nav>
-                         <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-                        <% if   current_user.ngo_id %>
-                           <li > <%= link_to "My Ngo",{ :controller => 'ngos' , :action => 'show' ,:id => current_user.ngo_id } ,:class=> "nav nav-pills flexnav" %>
-                           </li>
-                        <% end %>
-                        <div class="sign_out">
-                        <li class="active">
-                        <%= link_to "Sign out", destroy_user_session_path, :method => :get , :class=> "nav nav-pills flexnav" %></li>
-                       </div>
-                         </ul>
-                         </nav>
-                       </div>
-
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- LOGIN REGISTER LINKS CONTENT -->
-        <!-- :html => {:class => "dialog-form"},-->
-        <div id="login-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-<!--             <i class="fa fa-sign-in dialog-icon"></i>
- -->            <h3>Sign In</h3>
-            <h5>Welcome back, Login to get started</h5>
-            
-            <%= form_for(resource, as: resource_name, :class=>"dialog-form",  url: session_path(resource_name)) do |f| %>
-            <div class="form-group">
-            <br />
-  <%= f.label :email %>
-  <%= f.email_field :email, autofocus: true , :class=>"form-control" %>
-  </div>
- 
-  <div class="form-group">
-  <%= f.label :password%>
-    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control"  %>
-    </div>
-
-  <% if devise_mapping.rememberable? -%>
-   <div class="checkbox">
-    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <!-- <div  class="btn btn-primary"><%= f.submit "Log in" %>
-  </div> -->
-  <input type="submit" value="Sign in" class="btn btn-primary">
-<% end %>
-<!--form-group end-->
-
-          
-        </div>
-
-
-        <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="fa fa-edit dialog-icon"></i>
-            <h3>SignUp</h3>
-            <h5>Ready to get best offers? Let's get started!</h5>
-
-             <%= form_for(resource, as: resource_name, :class=>"dialog-form", url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="form-group">
-    <br/>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autofocus: true, :class=>"form-control" %>
-
-  </div>
-
-  <div class="form-group">
-
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, autofocus: true, :class=>"form-control"  %>
-    
-  </div>
-
-  <div><%= f.label :email %>
-  <%= f.email_field :email, autofocus: true , :class=>"form-control" %></div>
-
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
-    <%= f.password_field :password, autocomplete: "off" , :class=>"form-control" %></div>
-
-  <div><%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" , :class=>"form-control" %></div>
-
-    <!--phone_field  radio_button-->
-    <div>
-
-    <%= f.label :phone_number %>
-    <%= f.phone_field :phone_number, autofocus: true , :class=>"form-control" %>
-
-  </div>
-
-<%= radio_button_tag(:gender, "male" ,checked="checked") %>
-<%= label_tag(:age_child, "male") %>
-
-<%= radio_button_tag(:gender, "female" ,checked="checked") %>
-<%= label_tag(:age_adult, "female") %>
-
-
-  <div><input type="submit" value="SignUp" class="btn btn-primary"></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-
-
-        </div>
-
-
-        <div id="password-recover-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
-            <i class="icon-retweet dialog-icon"></i>
-            <h3>Password Recovery</h3>
-            <h5>Fortgot your password? Don't worry we can deal with it</h5>
-            <form class="dialog-form">
-                <label>E-mail</label>
-                <input type="text" placeholder="email@domain.com" class="span12">
-                <input type="submit" value="Request new password" class="btn btn-primary">
-            </form>
-        </div>
-        <!-- END LOGIN REGISTER LINKS CONTENT -->
-
-
+            <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => product.id },:class=>"btn btn-primary"%>
+          </div>
+  
         
-        <div class="gap"></div>
-
-
-        <!-- //////////////////////////////////
-    //////////////END MAIN HEADER////////// 
-    ////////////////////////////////////-->
-
-
-        <!-- //////////////////////////////////
-    //////////////PAGE CONTENT///////////// 
-    ////////////////////////////////////-->
-
-
-
-        <div class="container">
-            <div class="row">
-
-                <% if notice %>
-                    <p class="alert alert-success"><%= notice %></p>
-                <% end %>
-                <% if alert %>
-                    <p class="alert alert-danger"><%= alert %></p>
-                <% end %>
-                
-                <%= yield%>
-                <div class="gap gap-small"></div>
+        
+        
+          </div>
+    <% end %>
+   
+</div>
+    <!--Listing Projects-->
+<div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-8"><h1> Latest projects</h1></div>
+   <div class="col-md-1"><%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary"%></div>
+</div>
+<div class="row">
+<div class="col-md-3"></div>
+    <% @projects.each do |project| %>
+        <a class="product-price" href="projects/<%= project.id%>/show">
+        <div class="col-md-3" >
+          <div class="product-thumb">
+            <header class="product-header">
+              <%= image_tag project.project_photo.url(:medium) %>
+            </header>
+            <div class="product-inner">
+              <h5 class="product-title"><%= project.project_name %></h5>
+              <h3 > <%= image_tag project.project_social_state%>  $</h3>
+              <p class="product-desciption"><%= project.project_description %></p>
+           
+             
+              
             </div>
+          </div>
         </div>
-
-
-        <!-- //////////////////////////////////
-    //////////////END PAGE CONTENT///////// 
-    ////////////////////////////////////-->
-
-
-
-        <!-- //////////////////////////////////
-    //////////////MAIN FOOTER////////////// 
-    ////////////////////////////////////-->
-
-        <footer class="main">
-            <div class="footer-top-area">
-                <div class="container">
-                    <div class="row row-wrap">
-                        <div class="col-md-3">
-                            <a href="index.html">
-                                <%= image_tag('logo.png')%>
-                            </a>
-                            <ul class="list list-social">
-                                <li>
-                                    <a class="fa fa-facebook box-icon" href="#" data-toggle="tooltip" title="Facebook"></a>
-                                </li>
-                                <li>
-                                    <a class="fa fa-twitter box-icon" href="#" data-toggle="tooltip" title="Twitter"></a>
-                                </li>
-                                <li>
-                                    <a class="fa fa-flickr box-icon" href="#" data-toggle="tooltip" title="Flickr"></a>
-                                </li>
-                                <li>
-                                    <a class="fa fa-linkedin box-icon" href="#" data-toggle="tooltip" title="LinkedIn"></a>
-                                </li>
-                                <li>
-                                    <a class="fa fa-tumblr box-icon" href="#" data-toggle="tooltip" title="Tumblr"></a>
-                                </li>
-                            </ul>
-                            <p>Cras donec torquent imperdiet habitasse dignissim convallis felis libero dictumst taciti placerat adipiscing ultrices lacinia velit cursus nisi per commodo</p>
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Sign Up to the Newsletter</h4>
-                            <div class="box">
-                                <form>
-                                    <div class="form-group mb10">
-                                        <label>E-mail</label><br/>
-                                        <input type="text" class="newsletter-form" />
-                                    </div>
-                                    <p class="mb10">Torquent praesent praesent orci integer laoreet adipiscing</p>
-                                    <input type="submit" class="btn btn-primary" value="Sign Up" />
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Couponia on Twitter</h4>
-                            <!-- START TWITTER -->
-                            <div class="twitter-ticker" id="twitter-ticker"></div>
-                            <!-- END TWITTER -->
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Recent News</h4>
-                            <ul class="thumb-list">
-                                <li>
-                                    <a href="#">
-                                        <%= image_tag('70x70.png')%>
-                                    </a>
-                                    <div class="thumb-list-item-caption">
-                                        <p class="thumb-list-item-meta">Jul 18, 2014</p>
-                                        <h5 class="thumb-list-item-title"><a href="#">Sagittis inceptos</a></h5>
-                                        <p class="thumb-list-item-desciption">Molestie auctor ante ligula phasellus</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <%= image_tag('70x70.png')%>
-                                    </a>
-                                    <div class="thumb-list-item-caption">
-                                        <p class="thumb-list-item-meta">Jul 18, 2014</p>
-                                        <h5 class="thumb-list-item-title"><a href="#">Nisl congue</a></h5>
-                                        <p class="thumb-list-item-desciption">Ad consectetur lacus fermentum montes</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <%= image_tag('70x70.png')%>
-                                    </a>
-                                    <div class="thumb-list-item-caption">
-                                        <p class="thumb-list-item-meta">Jul 18, 2014</p>
-                                        <h5 class="thumb-list-item-title"><a href="#">Ut ridiculus</a></h5>
-                                        <p class="thumb-list-item-desciption">Mauris ac pretium gravida ante</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p>Copyright © 2014, Your Store, All Rights Reserved</p>
-                        </div>
-                        <div class="col-md-6 col-md-offset-2">
-                            <div class="pull-right">
-                                <ul class="list-inline list-payment">
-                                    <li>
-                                        
-                                        <%= image_tag('payment/american-express-curved-32px.png')%>
-                                    </li>
-                                    <li>
-                                       
-                                        <%= image_tag('payment/cirrus-curved-32px.png')%>
-
-                                    </li>
-                                    <li>
-                                        
-                                        <%= image_tag('payment/discover-curved-32px.png')%>
-
-                                    </li>
-                                    <li>
-                                        
-                                        <%= image_tag('payment/ebay-curved-32px.png')%>
-                                    </li>
-                                    <li>
-                                       
-                                        <%= image_tag('payment/maestro-curved-32px.png')%>
-                                    </li>
-                                    <li>
-                                        <%= image_tag('payment/mastercard-curved-32px.png')%>
-                                        
-                                    </li>
-                                    <li>
-                                        <%= image_tag('payment/visa-curved-32px.png')%>
-                                        
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- //////////////////////////////////
-    //////////////END MAIN  FOOTER///////// 
-    ////////////////////////////////////-->
-
-
-
-        <!-- Scripts queries -->
-        <%= javascript_include_tag :defaults %>
-        <%= javascript_include_tag("public") %>
-    </div>
-</body>
-
-</html>
+        </a>    
+    <% end %>
+   
+</div>
+<div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-8"><h1>Latest Ngos</h1></div>
+   <div class="col-md-1">  <%= link_to 'See More' , {:controller => 'projects' , :action => 'index'}, :class=> "btn btn-primary"%></div>
+</div>
+ 
+<div class="gap"></div>
+<div class="gap"></div>
+<br>
+<div class="row">
+<div class="col-md-3"></div>
+    <% @ngos.each do |ngo| %>
+  
+    <div class="col-md-3">
+    <div class="team-member">
+    <%= link_to ( image_tag ngo.image.url ), ngo %>
+      
+     
+      <p class="team-member-position">
+          <%= ngo.city %>
+        </p>
+        <p class="team-member-desciption">
+              <h4> <%= ngo.NGO_name %></h4>
+            
+        </p>
+           <ul class="team-member-social">
+           <li>
+             <a class="fa fa-google-plus" href="//<%= ngo.gp_link %>"></a>
+           </li>
+           <li>
+            <a class="fa fa-twitter" href="//<%= ngo.tw_link %>"></a>
+           </li>
+           <li>
+           <a class="fa fa-facebook" href="//<%= ngo.fb_link %>"></a>
+           </li>
+           </ul>
+  
+      </div>
+      </div>
+ 
+    <% end %>
+   </div>
+    <br>
+  
+   <div class="row">
+   <div class="col-md-11"></div>
+   <div class="col-md-1">  <%= link_to 'See More' , {:controller => 'ngos' , :action => 'index'}, :class=> "btn btn-primary"%> </div>
+</div>
+    
+</div>
+<br>
