@@ -4,8 +4,9 @@
 <div class="row">
 <%= render "layouts/partials/header" %>
 
-
+<div class="col-md-3"></div>
 <!--Listing Products-->
+<div class="col-md-9">
 <h1>latest products</h1>
 
     <% @products.each do |product| %>
@@ -16,7 +17,8 @@
               <%= image_tag product.photo.url(:medium) %>
             </header>
             </a>
-            <div class="product-inner">
+          </div>
+          <div class="product-inner">
               <h5 class="product-title"><%= product.product_name %></h5>
               <h3 > <%= product.product_price%>  $</h3>
               <h5 class="product-count"><%= product.product_count%>  pieces</h5>
@@ -24,12 +26,11 @@
              
            
               
-            </div>
-            <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => product.id },:class=>"btn btn-primary"%>
           </div>
-
-  
+            <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => product.id },:class=>"btn btn-primary"%>
         </div>
+
+  </div>
 
         
         
@@ -39,11 +40,17 @@
       <%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary"%>
 
 </div>
-    <!--Listing Projects-->
-      <div class="row">
-  <div class="col-md-offset-3"><h1> latest projects</h1></div>
 
-    
+
+<div class="gap"></div>
+
+
+<div class="gap"></div>
+    <!--Listing Projects-->
+<div class="row">
+  <div class="col-md-offset-3">  
+
+  <h1> latest projects</h1>
 
     <% @projects.each do |project| %>
         <a class="product-price" href="projects/<%= project.id%>/show">
@@ -64,16 +71,17 @@
         </div>
         </a>    
     <% end %>
-   
+   </div>
 </div>
 
+<div class="gap"></div>
 
 
-
+<div class="gap"></div>
 
 <div class="row">
   <div class="col-md-3"></div>
-  <div class="col-md-7"><h1>Latest Ngos</h1></div>
+  <div class="col-md-7"><h1>latest Ngos</h1></div>
   <div class="col-md-1">
   <%= link_to 'See More' , {:controller => 'ngos' , :action => 'index'}, :class=> "btn btn-primary"%>
   </div>
@@ -93,10 +101,11 @@
 
 <br>
    <div class="row">
-
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
     <% @ngos.each do |ngo| %>
   
-    <div class="col-md-4">
+    <div class="col-md-3">
     <div class="team-member">
     <%= link_to ( image_tag ngo.image.url ), ngo %>
       
@@ -125,6 +134,7 @@
       </div>
  
     <% end %>
+  </div>
     </div>
 <br>
 
