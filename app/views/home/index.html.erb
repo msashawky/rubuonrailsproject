@@ -10,7 +10,7 @@
 <h1>latest products</h1>
 
     <% @products.each do |product| %>
-        <a class="product-price" href="products/<%= product.id%>">
+        <a class="product-price" href="products/show/<%= product.id%>">
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
@@ -53,7 +53,7 @@
   <h1> latest projects</h1>
 
     <% @projects.each do |project| %>
-        <a class="product-price" href="projects/<%= project.id%>/show">
+        <a class="product-price" href="projects/show/<%= project.id%>">
         <div class="col-md-3" >
           <div class="product-thumb">
             <header class="product-header">
@@ -61,7 +61,6 @@
             </header>
             <div class="product-inner">
               <h5 class="product-title"><%= project.project_name %></h5>
-              <h3 > <%= image_tag project.project_social_state%>  $</h3>
               <p class="product-desciption"><%= project.project_description %></p>
            
              
