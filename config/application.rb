@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+Rack::Utils.key_space_limit = 1000
 module MarketPlace
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -19,7 +19,6 @@ module MarketPlace
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
     config.serve_static_assets = true
     config.assets.paths << Rails.root.join('vendor', 'assets')
   end
