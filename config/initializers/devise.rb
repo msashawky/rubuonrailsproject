@@ -13,7 +13,7 @@ Devise.setup do |config|
   # with default "from" parameter.
 
 #   config.mailer_sender = 'msashawky@gmail.com'#'please-change-me-at-config-initializers-devise@example.com'
-#   config.secret_key = '1788ecf9deaa49646a8cf657d2c00faedd63033f8bfe3e16c7ddc0808502482a11b640c5b0a9f1089696477e7f3199a9861a1594422fccfa4222bb5d151b60fc'
+  config.secret_key = 'aced33490af414e64ebefbcc3ef1f9e86eafe0475b55bdd35b194732069fbca52c925e38c5b83c7b06303a396e1a98afb9455626ded870ee8e89c1c11c03d1f'
 # =======
   config.mailer_sender = 'nashope.mp@gmail.com'
 
