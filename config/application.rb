@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 Rack::Utils.key_space_limit = 1000
+map "/favicon.ico" do
+    run Rack::File.new("./images/favicon.ico")
+end
 module MarketPlace
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
