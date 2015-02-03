@@ -8,6 +8,7 @@
 <!--Listing Products-->
 <div class="col-md-9">
 <h1>latest products</h1>
+  <%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary col-md-offset-11"%>
 
     <% @products.each do |product| %>
         <a class="product-price" href="products/show/<%= product.id%>">
@@ -37,7 +38,7 @@
          
 
 
-      <%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary"%>
+      
 
 </div>
 
