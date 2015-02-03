@@ -29,14 +29,14 @@
           </div>
             <%= link_to "Add to cart", {:controller => "product_carts", :action => "add_to_cart", :id => product.id },:class=>"btn btn-primary"%>
         </div>
-
+    <% end %>
   </div>
 
         
         
          
 
-    <% end %>
+
       <%= link_to 'See More' , {:controller => 'products' , :action => 'index'}, :class=> "btn btn-primary"%>
 
 </div>
